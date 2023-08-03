@@ -28,9 +28,13 @@ Route::get('/category', function () {
 Route::get('/admin',function (){
    return view('admin.index') ;
 });
-Route::get('/admin/category',function (){
-   return view('admin.category.list') ;
-});
+Route::get('/admin/category/list','App\Http\Controllers\CategoryController@list');
 Route::get('/admin/category/create',function (){
    return view('admin.category.create') ;
 });
+Route::get('/admin/user/create',function (){
+   return view('admin.user.create');
+});
+Route::post('/admin/category/save', 'App\Http\Controllers\CategoryController@save');
+Route::get('admin/user/list','App\Http\Controllers\UserController@list');
+Route::post('/admin/user/save', 'App\Http\Controllers\UserController@save');
