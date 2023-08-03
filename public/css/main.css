@@ -1,9 +1,13 @@
 html {
   width: 100%;
 }
-
+@font-face {
+    font-family: 'vazir';
+    src: url('../fonts/Vazir.woff') format('woff');
+}
 body {
-  overflow-x: hidden !important;
+    font-family: vazir;
+    overflow-x: hidden !important;
 }
 
 body.show-spinner>main {
