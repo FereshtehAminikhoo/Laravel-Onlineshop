@@ -232,7 +232,7 @@
         <div class="scroll">
             <ul class="list-unstyled" data-link="dashboard">
                 <li class="active">
-                    <a href="/admin/category">
+                    <a href="/admin/category/list">
                         <i class="simple-icon-rocket"></i> <span class="d-inline-block">دسته بندی ها</span>
                     </a>
                 </li>
@@ -264,12 +264,12 @@
             </ul>
             <ul class="list-unstyled" data-link="applications">
                 <li>
-                    <a href="Apps.MediaLibrary.html">
+                    <a href="/admin/user/list">
                         <i class="simple-icon-picture"></i> <span class="d-inline-block">کاربران</span>
                     </a>
                 </li>
                 <li>
-                    <a href="Apps.Todo.List.html">
+                    <a href="/admin/user/create">
                         <i class="simple-icon-check"></i> <span class="d-inline-block">اضافه کردن</span>
                     </a>
                 </li>
