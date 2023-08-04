@@ -36,7 +36,7 @@ class UserController extends Controller
         $user -> update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password
+            'password'=>Hash::make($request->password)
         ]);
         return redirect() -> route('user_list');
     }
