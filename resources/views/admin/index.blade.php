@@ -52,14 +52,14 @@
         </a>
 
         <div class="search" data-search-path="Pages.Search.html?q=">
-            <input placeholder="Search...">
+            <input placeholder="جستجو ...">
             <span class="search-icon">
                     <i class="simple-icon-magnifier"></i>
                 </span>
         </div>
 
         <a class="btn btn-sm btn-outline-primary ml-3 d-none d-md-inline-block"
-           href="https://1.envato.market/5kAb">&nbsp;BUY&nbsp;</a>
+           href="https://1.envato.market/5kAb">خرید</a>
     </div>
 
 
@@ -188,18 +188,18 @@
         <div class="user d-inline-block">
             <button class="btn btn-empty p-0" type="button" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">
-                <span class="name">Sarah Kortney</span>
+                <span class="name">فرشته امینی خو</span>
                 <span>
                         <img alt="Profile Picture" src="img/profiles/l-1.jpg"/>
                     </span>
             </button>
 
             <div class="dropdown-menu dropdown-menu-right mt-3">
-                <a class="dropdown-item" href="#">Account</a>
-                <a class="dropdown-item" href="#">Features</a>
-                <a class="dropdown-item" href="#">History</a>
-                <a class="dropdown-item" href="#">Support</a>
-                <a class="dropdown-item" href="#">Sign out</a>
+                <a class="dropdown-item" href="#">حساب کاربری</a>
+                <a class="dropdown-item" href="#">ویژگی ها</a>
+                <a class="dropdown-item" href="#">تاریخچه</a>
+                <a class="dropdown-item" href="#">پشتیبانی</a>
+                <a class="dropdown-item" href="#">خروج</a>
             </div>
         </div>
     </div>
@@ -208,7 +208,7 @@
     <div class="main-menu">
         <div class="scroll">
             <ul class="list-unstyled">
-                <li class="active">
+                <li>
                     <a href="#dashboard">
                         <i class="iconsminds-shop-4"></i>
                         <span>دسته بندی</span>
@@ -233,12 +233,12 @@
             <ul class="list-unstyled" data-link="dashboard">
                 <li class="active">
                     <a href="/admin/category/list">
-                        <i class="simple-icon-rocket"></i> <span class="d-inline-block">دسته بندی ها</span>
+                        <i class="simple-icon-rocket"></i> <span class="d-inline-block">لیست دسته بندی ها</span>
                     </a>
                 </li>
                 <li>
                     <a href="/admin/category/create">
-                        <i class="simple-icon-pie-chart"></i> <span class="d-inline-block">اضافه کردن دسته بندی</span>
+                        <i class="simple-icon-pie-chart"></i> <span class="d-inline-block">افزودن دسته بندی</span>
                     </a>
                 </li>
             </ul>
@@ -249,13 +249,13 @@
                             <li>
                                 <a href="Pages.Auth.Login.html">
                                     <i class="simple-icon-user-following"></i> <span
-                                        class="d-inline-block">محصولات</span>
+                                        class="d-inline-block">لیست محصولات</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="Pages.Auth.Register.html">
                                     <i class="simple-icon-user-follow"></i> <span
-                                        class="d-inline-block">اضافه کردن محصول</span>
+                                        class="d-inline-block">افزودن محصول</span>
                                 </a>
                             </li>
                         </ul>
@@ -265,12 +265,12 @@
             <ul class="list-unstyled" data-link="applications">
                 <li>
                     <a href="/admin/user/list">
-                        <i class="simple-icon-picture"></i> <span class="d-inline-block">کاربران</span>
+                        <i class="simple-icon-picture"></i> <span class="d-inline-block">لیست کاربران</span>
                     </a>
                 </li>
                 <li>
                     <a href="/admin/user/create">
-                        <i class="simple-icon-check"></i> <span class="d-inline-block">اضافه کردن</span>
+                        <i class="simple-icon-check"></i> <span class="d-inline-block">افزودن کاربر</span>
                     </a>
                 </li>
             </ul>

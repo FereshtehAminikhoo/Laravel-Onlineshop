@@ -22,7 +22,6 @@
                         <td>{{$user->password}}</td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
         </div>

@@ -16,7 +16,7 @@
                 </label>
                 <label class="form-group has-float-label">
                     <input name="password" type="password" class="form-control" />
-                    <span>رمزعبور</span>
+                    <span>رمز عبور</span>
                 </label>
 
                 <button class="btn btn-primary" type="submit">افزودن</button>
