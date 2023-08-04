@@ -7,7 +7,7 @@
             <form method="post" action="/admin/category/save">
                 @csrf
                 <label class="form-group has-float-label">
-                    <input name="title" class="form-control" />
+                    <input name="name" class="form-control" />
                     <span>نام</span>
                 </label>
 
