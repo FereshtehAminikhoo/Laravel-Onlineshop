@@ -28,7 +28,7 @@ Route::get('/category', function () {
 Route::get('/admin',function (){
    return view('admin.index') ;
 });
-Route::get('/admin/category/list','App\Http\Controllers\CategoryController@list');
+Route::get('/admin/category/list','App\Http\Controllers\CategoryController@list')->name('category_list');
 Route::get('/admin/category/create',function (){
    return view('admin.category.create') ;
 });
@@ -38,3 +38,8 @@ Route::get('/admin/user/create',function (){
 Route::post('/admin/category/save', 'App\Http\Controllers\CategoryController@save');
 Route::get('admin/user/list','App\Http\Controllers\UserController@list');
 Route::post('/admin/user/save', 'App\Http\Controllers\UserController@save');
+
+Route::get('/admin/category/{id}/edit','App\Http\Controllers\CategoryController@edit')->name('category_edit');
+Route::post('/admin/category/{id}/update','App\Http\Controllers\CategoryController@update')->name('category_update');
+
+Route::get('/admin/category/{id}/delete','App\Http\Controllers\CategoryController@delete')->name('category_delete');
