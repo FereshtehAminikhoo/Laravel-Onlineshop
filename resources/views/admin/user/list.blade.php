@@ -11,6 +11,7 @@
                     <th scope="col">نام</th>
                     <th scope="col">ایمیل</th>
                     <th scope="col">رمزعبور</th>
+                    <th scope="col">عملیات</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -20,6 +21,10 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->password}}</td>
+                        <td>
+                            <a class="fa fa-edit fa-2x" href="{{route('user_edit', ['id' => $user->id])}}"></a>
+                            <a class="fa fa-remove fa-2x" href="{{route('user_delete', ['id' => $user->id])}}"></a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

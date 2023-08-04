@@ -36,10 +36,15 @@ Route::get('/admin/user/create',function (){
    return view('admin.user.create');
 });
 Route::post('/admin/category/save', 'App\Http\Controllers\CategoryController@save');
-Route::get('admin/user/list','App\Http\Controllers\UserController@list');
+Route::get('admin/user/list','App\Http\Controllers\UserController@list') -> name('user_list');
 Route::post('/admin/user/save', 'App\Http\Controllers\UserController@save');
 
 Route::get('/admin/category/{id}/edit','App\Http\Controllers\CategoryController@edit')->name('category_edit');
 Route::post('/admin/category/{id}/update','App\Http\Controllers\CategoryController@update')->name('category_update');
 
 Route::get('/admin/category/{id}/delete','App\Http\Controllers\CategoryController@delete')->name('category_delete');
+
+
+Route::get('/admin/user/{id}/edit', 'App\Http\Controllers\UserController@edit') -> name('user_edit');
+Route::post('/admin/user/{id}/update', 'App\Http\Controllers\UserController@update') -> name('user_update');
+Route::get('/admin/user/{id}/delete', '\App\Http\Controllers\UserController@delete') ->name('user_delete');
