@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/css/main.css"/>
     <link rel="stylesheet" href="/css/vendor/bootstrap-float-label.min.css" />
     <link rel="stylesheet" href="/css/vendor/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
 </head>
 
 <body id="app-container" class="menu-default show-spinner">
