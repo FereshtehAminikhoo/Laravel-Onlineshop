@@ -15,7 +15,7 @@
                     <span>ایمیل</span>
                 </label>
                 <label class="form-group has-float-label">
-                    <input name="password" type="password" class="form-control" value="{{Hash::make($user->password)}}"/>
+                    <input name="password" type="password" class="form-control" value="{{$user->password}}"/>
                     <span>رمز عبور</span>
                 </label>
 

@@ -29,9 +29,7 @@ Route::get('/admin',function (){
    return view('admin.index') ;
 });
 Route::get('/admin/category/list','App\Http\Controllers\CategoryController@list')->name('category_list');
-Route::get('/admin/category/create',function (){
-   return view('admin.category.create') ;
-});
+Route::get('/admin/category/create','App\Http\Controllers\CategoryController@create')->name('category_create');
 Route::get('/admin/user/create',function (){
    return view('admin.user.create');
 });

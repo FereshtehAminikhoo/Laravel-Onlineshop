@@ -9,6 +9,8 @@
                 <tr>
                     <th scope="col">ردیف</th>
                     <th scope="col">نام</th>
+                    <th scope="col">والد</th>
+                    <th scope="col">تصویر</th>
                     <th scope="col">عملیات</th>
                 </tr>
                 </thead>
@@ -17,6 +19,12 @@
                     <tr>
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$category->name}}</td>
+                        <td>@if($category->parent_id!==null) {{$category->parent->name}} @else - @endif</td>
+                        <td>
+                            @if($category->file!==null)
+                            <img src="{{asset($category->file)}}" width="50px" height="50px" alt="pic">
+                            @endif
+                        </td>
                         <td>
                             <a class="fa fa-edit fa-2x" href="{{route('category_edit',['id'=>$category->id])}}"></a>
 
