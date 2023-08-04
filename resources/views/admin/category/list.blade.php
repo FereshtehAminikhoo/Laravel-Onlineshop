@@ -9,6 +9,7 @@
                 <tr>
                     <th scope="col">ردیف</th>
                     <th scope="col">نام</th>
+                    <th scope="col">عملیات</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -16,6 +17,11 @@
                     <tr>
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$category->name}}</td>
+                        <td>
+                            <a class="fa fa-edit fa-2x" href="{{route('category_edit',['id'=>$category->id])}}"></a>
+
+                            <a class="fa fa-remove fa-2x" href="{{route('category_delete',['id'=>$category->id])}}"></a>
+                        </td>
                     </tr>
                 @endforeach
 
