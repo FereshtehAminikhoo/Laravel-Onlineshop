@@ -31,7 +31,7 @@
                             </td>
                             <td>
                                 @if($product->file !== null)
-                                    <img src="{{assert($product->file)}}" width="50px" height="50px" alt="pic">
+                                    <img src="{{asset($product->file)}}" width="50px" height="50px" alt="pic">
 
                                 @endif
                             </td>
