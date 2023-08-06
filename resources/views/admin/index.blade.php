@@ -248,13 +248,13 @@
                     <div id="collapseAuthorization" class="collapse show">
                         <ul class="list-unstyled inner-level-menu">
                             <li>
-                                <a href="Pages.Auth.Login.html">
+                                <a href="/admin/product/list">
                                     <i class="simple-icon-user-following"></i> <span
                                         class="d-inline-block">لیست محصولات</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="Pages.Auth.Register.html">
+                                <a href="/admin/product/create">
                                     <i class="simple-icon-user-follow"></i> <span
                                         class="d-inline-block">افزودن محصول</span>
                                 </a>
