@@ -19,15 +19,13 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/','App\Http\Controllers\ClientController@index' )->name('home');
 Route::get('/category', function () {
     return view('category');
 });
 Route::get('/admin',function (){
    return view('admin.index') ;
-});
+})->name('admin_home');
 Route::get('/admin/category/list','App\Http\Controllers\CategoryController@list')->name('category_list');
 Route::get('/admin/category/create','App\Http\Controllers\CategoryController@create')->name('category_create');
 Route::get('/admin/user/create',function (){
@@ -57,3 +55,5 @@ Route::get('/admin/product/{id}/edit', 'App\Http\Controllers\ProductController@e
 Route::post('/admin/product/{id}/update', '\App\Http\Controllers\ProductController@update')->name('product_update');
 Route::get('/admin/product/{id}/delete', 'App\Http\Controllers\ProductController@delete')->name('product_delete');
 
+Route::get('/admin/login','App\Http\Controllers\AdminAuthController@showLoginForm')->name('admin_login_form');
+Route::post('/admin/login','App\Http\Controllers\AdminAuthController@login')->name('admin_login');

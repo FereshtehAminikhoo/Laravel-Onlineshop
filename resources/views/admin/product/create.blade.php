@@ -12,9 +12,8 @@
                 </label>
                 <label>دسته بندی</label>
                 <select class="form-control " data-width="100%" name="category_id">
-                    <option value=""></option>
-                    @foreach($products as $product)
-                        <option value="{{$product->id}}">{{$product->name}}</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
                 <label class="mt-3">تصویر</label>

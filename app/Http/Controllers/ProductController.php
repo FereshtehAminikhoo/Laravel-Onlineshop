@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -9,8 +10,8 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function create(){
-        $products = Product::all();
-        return view('admin.product.create', compact('products'));
+        $categories = Category::all();
+        return view('admin.product.create', compact('categories'));
     }
 
     public function save(Request $request){
@@ -36,16 +37,19 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::where('id', $id)->first();
-        return view('admin.product.edit', compact('product'));
+        $categories=Category::all();
+        return view('admin.product.edit', compact('product','categories'));
     }
 
     public function update($id, Request $request)
     {
         $product = Product::where('id',$id)->first();
+        $file=$request->file('file');;
+        $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
         $product->update([
             'title' => $request->title,
             'category_id' => $request->category_id,
-            'file' => $request->file,
+            'file' => 'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
             'price' => $request->price,
             'color' => $request->color,
             'description' => $request->description

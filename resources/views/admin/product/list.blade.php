@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-    <div class="col-lg-6 col-md-12 mb-4">
+    <div class="col-lg-9 col-md-12 mb-4">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">محصولات</h5>

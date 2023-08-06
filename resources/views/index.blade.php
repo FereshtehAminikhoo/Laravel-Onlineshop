@@ -1839,132 +1839,41 @@
         <div class="collapse navbar-collapse" id="menu1">
             <div class="nav_line"></div>
             <ul class="navbar-nav">
+                @foreach($categories as $category)
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-white dropdown-toggle" data-toggle="dropdown">کالای دیجیتال</a>
+                    <a href="#" class="nav-link text-white dropdown-toggle" data-toggle="dropdown">{{$category->name}}</a>
                     <div class="dropdown-menu dropdown-menu_custom1 shadow-sm rounded-bottom border-0" id="custom-main-dropdown-menu">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12 col-md-3">
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>لوازم جانبی گوشی</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">کیف و کاور گوشی</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پاور بانک</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">هدفون، هدست</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پایه نگهدارنده گوشی</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>گوشی موبایل</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">اپل</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">سامسونگ</a></li>
-                                    </ul>
-                                    <div class="top_link">
+                                    @foreach($category->childs as $item)
+                                        <div class="top_link">
+                                            <a href="#"><i class="material-icons">keyboard_arrow_left</i>{{$item->name}}</a>
+                                        </div>
+                                        <ul class="list-group custom-list-group">
+                                            @foreach($item->childs as $child)
+                                            <li class="list-group-item border-0 px-0"><a href="#">{{$child->name}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    @endforeach
+
+                                   {{-- <div class="top_link">
                                         <a href="#"><i class="material-icons">keyboard_arrow_left</i>واقعیت مجازی</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>مچ بند و ساعت هوشمند</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>هدفون، هدست، هندزفری</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسپیکر بلوتوث و با سیم</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسکوتر برقی</a>
-                                    </div>
+                                    </div>--}}
+
                                 </div>
-                                <div class="col-12 col-md-3">
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>لوازم جانبی گوشی</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">کیف و کاور گوشی</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پاور بانک</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">هدفون، هدست</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پایه نگهدارنده گوشی</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>گوشی موبایل</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">اپل</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">سامسونگ</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>واقعیت مجازی</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>مچ بند و ساعت هوشمند</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>هدفون، هدست، هندزفری</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسپیکر بلوتوث و با سیم</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسکوتر برقی</a>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>لوازم جانبی گوشی</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">کیف و کاور گوشی</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پاور بانک</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">هدفون، هدست</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پایه نگهدارنده گوشی</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>گوشی موبایل</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">اپل</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">سامسونگ</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>واقعیت مجازی</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>مچ بند و ساعت هوشمند</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>هدفون، هدست، هندزفری</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسپیکر بلوتوث و با سیم</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسکوتر برقی</a>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3 d-none d-sm-block">
+                               {{-- <div class="col-12 col-md-3 d-none d-sm-block">
                                     <img src="img/1636.png" class="img-fluid">
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item">
+                @endforeach
+               {{-- <li class="nav-item">
                     <a href="#" class="nav-link text-white">آرایشی، بهداشتی و سلامت</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">وسایل نقلیه، ابزار و اداری</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">مو و پوشاک</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">خانه و آشپزخانه</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">ورزش و سفر</a>
-                </li>
+                </li>--}}
+
             </ul>
             <div class="mr-auto">
                 <ul class="navbar-nav special_sale">

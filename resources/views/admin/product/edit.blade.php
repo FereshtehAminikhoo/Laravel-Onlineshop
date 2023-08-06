@@ -4,22 +4,22 @@
         <div class="card-body">
             <h5 class="mb-4">ویرایش محصول</h5>
 
-            <form method="post" action="{{route('product_update',['id'=>$product->id])}}">
+            <form method="post" action="{{route('product_update',['id'=>$product->id])}}" enctype="multipart/form-data">
                 @csrf
                 <label class="form-group has-float-label">
                     <input  type="text" name="title" value="{{$product->title}}" class="form-control" />
                     <span>عنوان</span>
                 </label>
                 <label>دسته بندی</label>
-                <select class="form-control " data-width="100%" name="category_id" value="{{$product->category_id}}>
-                    <option value=""></option>
-                    @foreach($products as $product)
-                        <option value="{{$product->id}}">{{$product->name}}</option>
+                <select class="form-control " data-width="100%" name="category_id">
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}" @if($category->id==$product->category_id) selected @endif>{{$category->name}}</option>
                     @endforeach
                 </select>
                 <label>تصویر</label>
                 <br>
-                <input type="file" name="file value="{{$product->file}}">
+                <img src="{{asset($product->file)}}" width="25px" height="25px"/>
+                <input type="file" name="file">
                 <label class="form-group has-float-label">
                     <input  type="number" name="price" value="{{$product->price}}" class="form-control" />
                     <span>قیمت</span>
