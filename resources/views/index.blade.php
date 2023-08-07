@@ -897,114 +897,26 @@
             <section class="slider box-shadow">
                 <div class="card panel-title-custom">
                     <div class="card-header card-header-custom" style="margin-bottom: 50px;">
-                        <p>کالای دیجیتال</p>
+                        <p>موبایل</p>
                     </div>
                     <div class="card-body">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1038130.jpg">
+                            @foreach($mobiles as $mobile)
+                                <div class="item">
+                                    <a href="#">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="{{asset($mobile->file)}}">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>{{$mobile->title}}</h4>
+                                                <p>{{$mobile->price}} تومان</p>
+                                            </div>
                                         </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لپ تاپ 15 اینچی مدل VivoBook X541NA -D</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1038130.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لپ تاپ 15 اینچی مدل VivoBook X541NA -D</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1038130.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لپ تاپ 15 اینچی مدل VivoBook X541NA -D</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1038130.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لپ تاپ 15 اینچی مدل VivoBook X541NA -D</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1038130.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لپ تاپ 15 اینچی مدل VivoBook X541NA -D</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1038130.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لپ تاپ 15 اینچی مدل VivoBook X541NA -D</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1038130.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لپ تاپ 15 اینچی مدل VivoBook X541NA -D</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1038130.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لپ تاپ 15 اینچی مدل VivoBook X541NA -D</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1848,32 +1760,20 @@
                                 <div class="col-12 col-md-3">
                                     @foreach($category->childs as $item)
                                         <div class="top_link">
-                                            <a href="#"><i class="material-icons">keyboard_arrow_left</i>{{$item->name}}</a>
+                                            <a href="{{route('show_category',['id'=>$item->id])}}"><i class="material-icons">keyboard_arrow_left</i>{{$item->name}}</a>
                                         </div>
                                         <ul class="list-group custom-list-group">
                                             @foreach($item->childs as $child)
-                                            <li class="list-group-item border-0 px-0"><a href="#">{{$child->name}}</a></li>
+                                            <li class="list-group-item border-0 px-0"><a href="{{route('show_category',['id'=>$child->id])}}">{{$child->name}}</a></li>
                                             @endforeach
                                         </ul>
                                     @endforeach
-
-                                   {{-- <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>واقعیت مجازی</a>
-                                    </div>--}}
-
                                 </div>
-                               {{-- <div class="col-12 col-md-3 d-none d-sm-block">
-                                    <img src="img/1636.png" class="img-fluid">
-                                </div>--}}
                             </div>
                         </div>
                     </div>
                 </li>
                 @endforeach
-               {{-- <li class="nav-item">
-                    <a href="#" class="nav-link text-white">آرایشی، بهداشتی و سلامت</a>
-                </li>--}}
-
             </ul>
             <div class="mr-auto">
                 <ul class="navbar-nav special_sale">

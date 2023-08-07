@@ -2,17 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+//client routes
 Route::get('/login', function () {
     return view('login');
 });
@@ -20,9 +10,10 @@ Route::get('/register', function () {
     return view('register');
 });
 Route::get('/','App\Http\Controllers\ClientController@index' )->name('home');
-Route::get('/category', function () {
-    return view('category');
-});
+Route::get('/category/{id}', 'App\Http\Controllers\ClientController@showCategory')->name('show_category');
+
+//admin routes
+
 Route::get('/admin',function (){
    return view('admin.index') ;
 })->name('admin_home');
@@ -58,6 +49,7 @@ Route::get('/admin/product/{id}/delete', 'App\Http\Controllers\ProductController
 Route::get('/admin/login','App\Http\Controllers\AdminAuthController@showLoginForm')->name('admin_login_form');
 Route::post('/admin/login','App\Http\Controllers\AdminAuthController@login')->name('admin_login');
 
+//auth routes
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
