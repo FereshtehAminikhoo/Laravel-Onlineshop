@@ -34,15 +34,20 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::where('id', '!=', $id)->get();
         $category = Category::where('id', $id)->first();
-        return view('admin.category.edit', compact('category'));
+        return view('admin.category.edit', compact('category','categories'));
     }
 
     public function update($id, Request $request)
     {
+        $file=$request->file('file');;
+        $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
         $category = Category::where('id', $id)->first();
         $category->update([
-            'name' => $request->name
+            'name' => $request->name,
+            'parent_id'=>$request->parent_id,
+            'file'=>'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
         ]);
         return redirect()->route('category_list');
     }
