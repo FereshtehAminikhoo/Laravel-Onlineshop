@@ -200,7 +200,10 @@
                 <a class="dropdown-item" href="#">ویژگی ها</a>
                 <a class="dropdown-item" href="#">تاریخچه</a>
                 <a class="dropdown-item" href="#">پشتیبانی</a>
-                <a class="dropdown-item" href="#">خروج</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                <a class="dropdown-item" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
             </div>
         </div>
     </div>

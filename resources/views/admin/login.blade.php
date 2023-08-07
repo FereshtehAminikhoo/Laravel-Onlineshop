@@ -37,19 +37,33 @@
                             <span class="logo-single"></span>
                         </a>
                         <h6 class="mb-4">Login</h6>
-                        <form action="{{route('admin_login')}}" method="post">
+                        <form action="{{ route('login') }}" method="post">
                             @csrf
                             <label class="form-group has-float-label mb-4">
-                                <input class="form-control" name="email" type="email" />
+                                <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required />
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <span>E-mail</span>
                             </label>
 
                             <label class="form-group has-float-label mb-4">
-                                <input class="form-control" type="text" name="password" placeholder="" />
+                                <input class="form-control @error('password') is-invalid @enderror" type="text" name="password" placeholder="" required />
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <span>Password</span>
                             </label>
                             <div class="d-flex justify-content-between align-items-center">
-                                <a href="#">Forget password?</a>
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        Forget password?
+                                    </a>
+                                @endif
                                 <button class="btn btn-primary btn-lg btn-shadow" type="submit">LOGIN</button>
                             </div>
                         </form>

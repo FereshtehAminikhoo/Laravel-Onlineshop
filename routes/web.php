@@ -57,3 +57,7 @@ Route::get('/admin/product/{id}/delete', 'App\Http\Controllers\ProductController
 
 Route::get('/admin/login','App\Http\Controllers\AdminAuthController@showLoginForm')->name('admin_login_form');
 Route::post('/admin/login','App\Http\Controllers\AdminAuthController@login')->name('admin_login');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
