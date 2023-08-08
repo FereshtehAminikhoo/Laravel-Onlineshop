@@ -15,13 +15,17 @@ class ClientController extends Controller
         //dd($mobileCategories);
         $mobiles = Product::whereIn('category_id', $mobileCategories)->get();
         //$mobiles = Product::whereIn('category_id',[17,18,19])->get();
-        return view('index', compact('categories', 'mobiles'));
+        $laptops = Product::where('category_id', 6)->get();
+        $kids_mode = Product::where('category_id', 12)->get();
+        return view('index', compact('categories', 'mobiles', 'laptops', 'kids_mode'));
     }
 
     public function showCategory($id)
     {
         $categories = Category::whereNull('parent_id')->get();
-        $category=Category::where('id',$id)->first();
-        return view('category',compact('category','categories'));
+        $category = Category::where('id',$id)->first();
+        $productCategories = Category::where('parent_id',$id)->pluck('id')->toArray();
+        $view_products = Product::whereIn('id',$productCategories)->get();
+        return view('category',compact('category','categories', 'view_products'));
     }
 }

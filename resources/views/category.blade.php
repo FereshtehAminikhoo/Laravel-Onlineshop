@@ -238,182 +238,24 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-1">
                         <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="/img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
+                            @foreach($view_products as $view_product)
+                                <div class="row">
+                                    <div class="col-md-4 full_product-box bg-white">
+                                        <div class="product-box bg-white border-bottom">
+                                            <a href="#">
+                                                <img src="{{asset($view_product->file)}}">
+                                            </a>
+                                            <div class="text_product pt-2">
+                                                <p class="title">{{$view_product->title}}</p>
+                                                <p class="price">{{$view_product->price}} تومان</p>
+                                            </div>
+                                        </div>
+                                        <div class="box_rate">
+                                            <span><i class="material-icons">stars</i>2.8</span>
                                         </div>
                                     </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
                                 </div>
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 full_product-box bg-white">
-                                    <div class="product-box bg-white border-bottom">
-                                        <a href="#">
-                                            <img src="img/913367.jpg" class="img-fluid">
-                                        </a>
-                                        <div class="text_product pt-2">
-                                            <p class="title">هندزفری بلوتوث مدل sd-21</p>
-                                            <p class="price">56,000 تومان</p>
-                                        </div>
-                                    </div>
-                                    <div class="box_rate">
-                                        <span><i class="material-icons">stars</i>2.8</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="tab-pane fade show active" id="pills-2">
@@ -1383,7 +1225,6 @@
                     </div>
                     <div class="card-body py-1" style="padding: 50px">
                         <div class="owl-carousel owl-theme">
-
                             <div class="item">
                                 <a href="">
                                     <div class="card panel-custom">

@@ -1,4 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-light navbar_custom">
+@extends('main')
+@section('navbar')
+    <nav class="navbar navbar-expand-md navbar-light navbar_custom">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu1">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,4 +40,4 @@
             </div>
         </div>
     </nav>
-
+@endsection

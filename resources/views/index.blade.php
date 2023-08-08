@@ -1028,101 +1028,25 @@
             <section class="slider box-shadow">
                 <div class="card panel-title-custom">
                     <div class="card-header card-header-custom">
-                        <p>گجت پوشیدنی</p>
+                        <p>لپ تاپ</p>
                     </div>
                     <div class="card-body">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2836814.jpg">
+                            @foreach($laptops as $laptop)
+                                <div class="item">
+                                    <a href="#">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="{{asset($laptop->file)}}">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>{{$laptop->title}}</h4>
+                                                <p>{{$laptop->price}} تومان </p>
+                                            </div>
                                         </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2481611.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1903438.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2795704.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2836814.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2836814.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2836814.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1156,166 +1080,25 @@
             <section class="slider box-shadow">
                 <div class="card panel-title-custom">
                     <div class="card-header card-header-custom">
-                        <p>خانه و آشپزخانه</p>
+                        <p>پوشاک بچگانه</p>
                     </div>
                     <div class="card-body">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3307088.jpg">
+                            @foreach($kids_mode as $kid_mode)
+                                <div class="item">
+                                    <a href="#">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="{{asset($kid_mode->file)}}">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>{{$kid_mode->title}}</h4>
+                                                <p>{{$kid_mode->price}} تومان</p>
+                                            </div>
                                         </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لامپ ال ای دی 12 وات بروکس مدل A60 پایه E27</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3201081.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>10 بسته دستمال کاغذی 200 برگ ایزی پیک</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2766832.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>برنج هاشمی چاپار مقدار 5 کیلوگرم</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1687421.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>کنسول بازی سونی مدل Playstation Slim 4</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3307088.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لامپ ال ای دی 12 وات بروکس مدل A60 پایه E27</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3201081.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>10 بسته دستمال کاغذی 200 برگ ایزی پیک</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2766832.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>برنج هاشمی چاپار مقدار 5 کیلوگرم</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1687421.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>کنسول بازی سونی مدل Playstation Slim 4</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3307088.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لامپ ال ای دی 12 وات بروکس مدل A60 پایه E27</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3201081.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>10 بسته دستمال کاغذی 200 برگ ایزی پیک</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2766832.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>برنج هاشمی چاپار مقدار 5 کیلوگرم</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1687421.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>کنسول بازی سونی مدل Playstation Slim 4</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

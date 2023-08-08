@@ -13,7 +13,6 @@ Route::get('/','App\Http\Controllers\ClientController@index' )->name('home');
 Route::get('/category/{id}', 'App\Http\Controllers\ClientController@showCategory')->name('show_category');
 
 //admin routes
-
 Route::get('/admin',function (){
    return view('admin.index') ;
 })->name('admin_home');
