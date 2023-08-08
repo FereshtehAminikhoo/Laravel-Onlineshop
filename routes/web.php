@@ -11,6 +11,7 @@ Route::get('/register', function () {
 });
 Route::get('/','App\Http\Controllers\ClientController@index' )->name('home');
 Route::get('/category/{id}', 'App\Http\Controllers\ClientController@showCategory')->name('show_category');
+Route::get('/product/{id}', 'App\Http\Controllers\ClientController@showProduct')->name('show_product');
 
 //admin routes
 Route::get('/admin',function (){

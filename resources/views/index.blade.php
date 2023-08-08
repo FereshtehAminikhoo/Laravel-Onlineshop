@@ -1578,15 +1578,15 @@
             </div>
             <div class="col-md-5 col-12 box_banner">
                 <div class="row">
-                    <img src="img/img_footer.JPG" class="img-fluid">
+                    <img src="/img/img_footer.JPG" class="img-fluid">
                 </div>
             </div>
         </div>
         <div class="row pt-4 text-center">
-            <div class="col-md-3 col-6"><img src="img/img_footer1.svg"></div>
-            <div class="col-md-3 col-6"><img src="img/img_footer2.svg"></div>
-            <div class="col-md-3 col-6 pt-2"><img src="img/img_footer3.svg"></div>
-            <div class="col-md-3 col-6"><img src="img/img_footer4.svg"></div>
+            <div class="col-md-3 col-6"><img src="/img/img_footer1.svg"></div>
+            <div class="col-md-3 col-6"><img src="/img/img_footer2.svg"></div>
+            <div class="col-md-3 col-6 pt-2"><img src="/img/img_footer3.svg"></div>
+            <div class="col-md-3 col-6"><img src="/img/img_footer4.svg"></div>
         </div>
         <div class="container border_bottom1 pt-4"></div>
         <div class="container text-center copyRight pt-4">
