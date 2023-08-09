@@ -9,18 +9,24 @@
             <ul class="navbar-nav">
                 @foreach($categories as $category1)
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white dropdown-toggle" data-toggle="dropdown">{{$category1->name}}</a>
-                        <div class="dropdown-menu dropdown-menu_custom1 shadow-sm rounded-bottom border-0" id="custom-main-dropdown-menu">
+                        <a href="#" class="nav-link text-white dropdown-toggle"
+                           data-toggle="dropdown">{{$category1->name}}</a>
+                        <div class="dropdown-menu dropdown-menu_custom1 shadow-sm rounded-bottom border-0"
+                             id="custom-main-dropdown-menu">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12 col-md-3">
                                         @foreach($category1->childs as $item)
                                             <div class="top_link">
-                                                <a href="{{route('show_category',['id'=>$item->id])}}"><i class="material-icons">keyboard_arrow_left</i>{{$item->name}}</a>
+                                                <a href="{{route('show_category',['id'=>$item->id])}}"><i
+                                                        class="material-icons">keyboard_arrow_left</i>{{$item->name}}
+                                                </a>
                                             </div>
                                             <ul class="list-group custom-list-group">
                                                 @foreach($item->childs as $child)
-                                                    <li class="list-group-item border-0 px-0"><a href="{{route('show_category',['id'=>$child->id])}}">{{$child->name}}</a></li>
+                                                    <li class="list-group-item border-0 px-0"><a
+                                                            href="{{route('show_category',['id'=>$child->id])}}">{{$child->name}}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         @endforeach
@@ -44,417 +50,456 @@
 @endsection
 
 @section('content')
-<div class="container-fluid shadow-sm bg-white">
-    <div class="row p-3">
-        <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
-            <span class="logo"></span>
-        </div>
-        <div class="col-lg-6 col-md-4 col-sm-3 col-6">
-            <form>
-                <div class="input-group input-group-sm">
-                    <input type="text" class="form-control rounded-right input_search" placeholder="نام کالا، برند و یا دسته مورد نظر خود را وارد کنید...">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text rounded-left custom-input-group-text">
-                            <a href="#"><i class="material-icons">search</i></a>
+    <div class="container-fluid shadow-sm bg-white">
+        <div class="row p-3">
+            <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
+                <span class="logo"></span>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-3 col-6">
+                <form>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control rounded-right input_search"
+                               placeholder="نام کالا، برند و یا دسته مورد نظر خود را وارد کنید...">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text rounded-left custom-input-group-text">
+                                <a href="#"><i class="material-icons">search</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-6 dropdown_custom text-right">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false" style="line-height: 40px!important;">
+                        ورود/ثبت نام
+                    </a>
+                    <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
+                         aria-labelledby="dropdownMenuButton">
+                        <div class="btn login_box">
+                            <a class="dropdown-item dropdown-item-custom py-2 btn btn-info" href="#">ورود به آنلاین
+                                شاپ</a>
+                        </div>
+                        <ul class="list-inline register">
+                            <li class="list-inline-item">کاربر جدید هستید؟</li>
+                            <li class="list-inline-item"><a href="#">ثبت نام</a></li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        <div class="text-left">
+                            <button onclick="location.href='http://www.google.com'"
+                                    class="dropdown-item border-0 dropdown-item_custom" type="button"><i
+                                    class="material-icons profile_link pr-2">person</i>پروفایل
+                            </button>
+                            <button onclick="location.href='http://www.google.com'"
+                                    class="dropdown-item border-0 dropdown-item_custom" type="button"><i
+                                    class="material-icons profile_link pr-2">assignment_turned_in</i>پیگیری سفارش
+                            </button>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-3 col-6 dropdown_custom text-right">
-            <div class="dropdown">
-                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false" style="line-height: 40px!important;">
-                    ورود/ثبت نام
-                </a>
-                <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
-                     aria-labelledby="dropdownMenuButton">
-                    <div class="btn login_box">
-                        <a class="dropdown-item dropdown-item-custom py-2 btn btn-info" href="#">ورود به آنلاین شاپ</a>
-                    </div>
-                    <ul class="list-inline register">
-                        <li class="list-inline-item">کاربر جدید هستید؟</li>
-                        <li class="list-inline-item"><a href="#">ثبت نام</a></li>
-                    </ul>
-                    <div class="dropdown-divider"></div>
-                    <div class="text-left">
-                        <button onclick="location.href='http://www.google.com'"
-                                class="dropdown-item border-0 dropdown-item_custom" type="button"><i
-                                class="material-icons profile_link pr-2">person</i>پروفایل
-                        </button>
-                        <button onclick="location.href='http://www.google.com'"
-                                class="dropdown-item border-0 dropdown-item_custom" type="button"><i
-                                class="material-icons profile_link pr-2">assignment_turned_in</i>پیگیری سفارش
-                        </button>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
-            <a href="#" class="btn btn-outline-info">
-                <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>۰</span>
-            </a>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
+                <a href="#" class="btn btn-outline-info">
+                    <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>۰</span>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-<!--start menu-->
+    <!--start menu-->
 
-<!--start sidebar-->
-<div class="container-fluid mt-3">
-    <div class="row">
-        <div class="col-md-3 order-last order-md-first">
-            <div class="bg-white sidebar">
-                <div class="sidebar_header">دسته بندی نتایج</div>
-                <div class="sidebar_catalog">
-                    <ul class="pt-1 pr-1">
-                        <a href="#">
-                            <li><span class="material-icons">chevron_left</span>کالای دیجیتال</li>
-                        </a>
-                        <a href="#">
-                            <li class="padding-right15px pt-1"><span class="material-icons">chevron_left</span>کامپیوتر و تجهیزات جانبی</li>
-                        </a>
-                        <li class="padding-right30px pt-1 sidebar_active"><span class="material-icons">chevron_left</span>هدفون، هدست و میکروفون</li>
-                        <a href="#">
-                            <li class="padding-right55px pt-2">هدفون</li>
-                        </a>
-                        <a href="#">
-                            <li class="padding-right55px pt-2">هدست</li>
-                        </a>
-                        <a href="#">
-                            <li class="padding-right55px pt-2">میکروفون</li>
-                        </a>
-                    </ul>
+    <!--start sidebar-->
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-md-3 order-last order-md-first">
+                <div class="bg-white sidebar">
+                    <div class="sidebar_header">دسته بندی نتایج</div>
+                    <div class="sidebar_catalog">
+                        <ul class="pt-1 pr-1">
+                            <a href="#">
+                                <li><span class="material-icons">chevron_left</span>کالای دیجیتال</li>
+                            </a>
+                            <a href="#">
+                                <li class="padding-right15px pt-1"><span class="material-icons">chevron_left</span>کامپیوتر
+                                    و تجهیزات جانبی
+                                </li>
+                            </a>
+                            <li class="padding-right30px pt-1 sidebar_active"><span
+                                    class="material-icons">chevron_left</span>هدفون، هدست و میکروفون
+                            </li>
+                            <a href="#">
+                                <li class="padding-right55px pt-2">هدفون</li>
+                            </a>
+                            <a href="#">
+                                <li class="padding-right55px pt-2">هدست</li>
+                            </a>
+                            <a href="#">
+                                <li class="padding-right55px pt-2">میکروفون</li>
+                            </a>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="bg-white sidebar mt-2">
-                <div class="sidebar_header">جستجو در نتایج :</div>
-                <div class="sidebar_catalog mt-2 mb-2">
-                    <form>
-                        <div class="input-group col">
-                            <span class="material-icons ic-form-control-search">search</span>
-                            <input type="text" class="form-control rounded-right bg-white input_search1" placeholder="نام محصول یا برند مورد نظر را بنویسید">
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="bg-white sidebar mt-2">
-                <div id="accordion" class="brand">
-                    <div class="card">
-                        <a href="#collapseOne" class="card-link" data-toggle="collapse" >
-                            <div class="card-header bg-white">
-                                برند<i class="material-icons pull-left">expand_more</i>
+                <div class="bg-white sidebar mt-2">
+                    <div class="sidebar_header">جستجو در نتایج :</div>
+                    <div class="sidebar_catalog mt-2 mb-2">
+                        <form>
+                            <div class="input-group col">
+                                <span class="material-icons ic-form-control-search">search</span>
+                                <input type="text" class="form-control rounded-right bg-white input_search1"
+                                       placeholder="نام محصول یا برند مورد نظر را بنویسید">
                             </div>
-                        </a>
-                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                            <div class="card-body p-0">
-                                <form>
-                                    <div class="input-group pt-2">
-                                        <span class="material-icons ic-form-control-search">search</span>
-                                        <input type="text" class="form-control rounded-right bg-white input_search2" placeholder="جستجوی نام برند ..">
-                                    </div>
-                                    <hr>
-                                    <div class="form-group input-container">
-                                        <div class="col p-0 m-0">
-                                            <div class="checkbox p-1">
-                                                <label class="checkbox-container">فیلیپس
-                                                    <input type="checkbox">
-                                                    <span class="checkmark-login1"></span>
-                                                </label>
-                                                <span class="pull-left pt-1 brand_eng">Philips</span>
-                                            </div>
-                                            <div class="checkbox p-1">
-                                                <label class="checkbox-container">سونی
-                                                    <input type="checkbox">
-                                                    <span class="checkmark-login2"></span>
-                                                </label>
-                                                <span class="pull-left pt-1 brand_eng">Sony</span>
-                                            </div>
-                                            <div class="checkbox p-1">
-                                                <label class="checkbox-container">ال جی
-                                                    <input type="checkbox">
-                                                    <span class="checkmark-login3"></span>
-                                                </label>
-                                                <span class="pull-left pt-1 brand_eng">Lg</span>
+                        </form>
+                    </div>
+                </div>
+                <div class="bg-white sidebar mt-2">
+                    <div id="accordion" class="brand">
+                        <div class="card">
+                            <a href="#collapseOne" class="card-link" data-toggle="collapse">
+                                <div class="card-header bg-white">
+                                    برند<i class="material-icons pull-left">expand_more</i>
+                                </div>
+                            </a>
+                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                <div class="card-body p-0">
+                                    <form>
+                                        <div class="input-group pt-2">
+                                            <span class="material-icons ic-form-control-search">search</span>
+                                            <input type="text" class="form-control rounded-right bg-white input_search2"
+                                                   placeholder="جستجوی نام برند ..">
+                                        </div>
+                                        <hr>
+                                        <div class="form-group input-container">
+                                            <div class="col p-0 m-0">
+                                                <div class="checkbox p-1">
+                                                    <label class="checkbox-container">فیلیپس
+                                                        <input type="checkbox">
+                                                        <span class="checkmark-login1"></span>
+                                                    </label>
+                                                    <span class="pull-left pt-1 brand_eng">Philips</span>
+                                                </div>
+                                                <div class="checkbox p-1">
+                                                    <label class="checkbox-container">سونی
+                                                        <input type="checkbox">
+                                                        <span class="checkmark-login2"></span>
+                                                    </label>
+                                                    <span class="pull-left pt-1 brand_eng">Sony</span>
+                                                </div>
+                                                <div class="checkbox p-1">
+                                                    <label class="checkbox-container">ال جی
+                                                        <input type="checkbox">
+                                                        <span class="checkmark-login3"></span>
+                                                    </label>
+                                                    <span class="pull-left pt-1 brand_eng">Lg</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white siderbar mt-2">
+                    <div class="sidebar_catalog">
+                        <div>
+                            <label class="position-relative">
+                                <input type="checkbox" class="ios-switch">
+                                <div>
+                                    <div></div>
+                                </div>
+                                <div class="text-switch"><span>فقط کالاهای موجود</span></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--start content-->
+            <div class="col-md-9 order-first order-md-last">
+                <div class="bg-transparent">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">فروشگاه اینترنتی آنلاین شاپ </a></li>
+                            @if($category->parent_id!=null)
+                                @if($category->parent->parent)
+                                    <li class="breadcrumb-item"><a href="#">
+                                            {{$category->parent->parent->name}}
+                                        </a>
+                                    </li>
+                                @endif
+                                <li class="breadcrumb-item"><a href="#">{{$category->parent->name}}</a></li>
+                                <li class="breadcrumb-item"><a href="#">{{$category->name}}</a></li>
+                            @endif
+                        </ol>
+                    </nav>
+                </div>
+                <p class="listing_counter">{{count($viewProducts)}} محصول </p>
+                <div class="box_navpills">
+                    <ul class="nav nav-pills bg-white py-2" id="pills-tab">
+                        <i class="material-icons pt-1 sort">sort</i>
+                        <span class="pt-1 text_sort px-1">مرتب سازی بر اساس :</span>
+                        {{--<li class="nav-item">
+                            <a href="#pills-1" class="nav-link active" id="pills-home-tab" data-toggle="pill">پربازدید ترین</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#pills-2" class="nav-link" id="pills-home-tab1" data-toggle="pill">محبوب ترین</a>
+                        </li>--}}
+                        <li class="nav-item">
+                            <a href="{{route('show_category',['id'=>$category->id,'time_sort'=>'on'])}}"
+                               class="nav-link" {{--id="pills-home-tab2"--}} {{--data-toggle="pill"--}}>جدیدترین</a>
+                        </li>
+                        {{--<li class="nav-item">
+                            <a href="#pills-4" class="nav-link" id="pills-home-tab3" data-toggle="pill">پرفروش ترین</a>
+                        </li>--}}
+                        <li class="nav-item">
+                            <a href="{{route('show_category',['id'=>$category->id,'price_sort'=>'arzan'])}}"
+                               class="nav-link">ارزان ترین</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('show_category',['id'=>$category->id,'price_sort'=>'geran'])}}"
+                               class="nav-link">گران ترین</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-1">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    @foreach($viewProducts as $view_product)
+                                        <div class="col-md-4 full_product-box bg-white">
+                                            <div class="product-box bg-white border-bottom">
+                                                <a href="{{route('show_product',['id'=>$view_product->id])}}">
+                                                    <img src="{{asset($view_product->file)}}" width="150px"
+                                                         height="200px">
+                                                </a>
+                                                <div class="text_product pt-2">
+                                                    <p class="title">{{$view_product->title}}</p>
+                                                    <p class="price">{{$view_product->price}} تومان</p>
+                                                </div>
+                                            </div>
+                                            <div class="box_rate">
+                                                <span><i class="material-icons">stars</i>2.8</span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white siderbar mt-2">
-                <div class="sidebar_catalog">
-                    <div>
-                        <label class="position-relative">
-                            <input type="checkbox" class="ios-switch">
-                            <div>
-                                <div></div>
-                            </div>
-                            <div class="text-switch"><span>فقط کالاهای موجود</span></div>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
         </div>
-        <!--start content-->
-        <div class="col-md-9 order-first order-md-last">
-            <div class="bg-transparent">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">فروشگاه اینترنتی آنلاین شاپ </a></li>
-                        @if($category->parent_id!=null)
-                            @foreach($category->parent as $parent)
-                                <li class="breadcrumb-item"><a href="#">{{$parent->name}}</a></li>
-                            @endforeach
-                        @endif
+    </div>
 
-                        <li class="breadcrumb-item active">هدفون، هدست و میکروفون</li>
-                    </ol>
+    <!--start pagination-->
+    <div class="container mt-3">
+        <div class="row justify-content-end">
+            <div>
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a href="#" class="page-link">
+                                <span>&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a href="#" class="page-link active_pagination">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item">
+                            <a href="#" class="page-link">
+                                <span>&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
             </div>
-            <p class="listing_counter">{{count($viewProducts)}} محصول </p>
-            <div class="box_navpills">
-                <ul class="nav nav-pills bg-white py-2" id="pills-tab">
-                    <i class="material-icons pt-1 sort">sort</i>
-                    <span class="pt-1 text_sort px-1">مرتب سازی بر اساس :</span>
-                    {{--<li class="nav-item">
-                        <a href="#pills-1" class="nav-link active" id="pills-home-tab" data-toggle="pill">پربازدید ترین</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#pills-2" class="nav-link" id="pills-home-tab1" data-toggle="pill">محبوب ترین</a>
-                    </li>--}}
-                    <li class="nav-item">
-                        <a href="{{route('show_category',['id'=>$category->id,'time_sort'=>'on'])}}" class="nav-link" {{--id="pills-home-tab2"--}} {{--data-toggle="pill"--}}>جدیدترین</a>
-                    </li>
-                    {{--<li class="nav-item">
-                        <a href="#pills-4" class="nav-link" id="pills-home-tab3" data-toggle="pill">پرفروش ترین</a>
-                    </li>--}}
-                    <li class="nav-item">
-                        <a href="{{route('show_category',['id'=>$category->id,'price_sort'=>'arzan'])}}" class="nav-link">ارزان ترین</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('show_category',['id'=>$category->id,'price_sort'=>'geran'])}}" class="nav-link">گران ترین</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-1">
-                        <div class="container-fluid">
-                            <div class="row">
-                            @foreach($viewProducts as $view_product)
-                                    <div class="col-md-4 full_product-box bg-white">
-                                        <div class="product-box bg-white border-bottom">
-                                            <a href="{{route('show_product',['id'=>$view_product->id])}}">
-                                                <img src="{{asset($view_product->file)}}" width="150px" height="200px">
-                                            </a>
-                                            <div class="text_product pt-2">
-                                                <p class="title">{{$view_product->title}}</p>
-                                                <p class="price">{{$view_product->price}} تومان</p>
+        </div>
+    </div>
+
+    <!--start ads-->
+    <div class="container-fluid ads mt-4 pt-2 ">
+        <div class="row">
+            <div class="col-md-3 col-6 serv text-center">
+                <a href="#1"> <img src="img/aads1.png" class="w-100 d-block rounded" alt=""> </a>
+
+            </div>
+            <div class="col-md-3 col-6 serv text-center">
+                <a href="#2"> <img src="img/aads2.png" class="w-100 d-block rounded" alt=""></a>
+
+            </div>
+            <div class="col-md-3 col-6 serv pt-md-0 pt-2 text-center">
+                <a href="#3"> <img src="img/aads3.png" class="w-100 d-block rounded" alt=""></a>
+
+            </div>
+            <div class="col-md-3 col-6 serv pt-md-0 pt-2 text-center">
+                <a href="#4"> <img src="img/aads4.png" class="w-100 d-block rounded" alt=""></a>
+
+            </div>
+        </div>
+    </div>
+
+    <!--start slider-->
+    <div class="container-fluid mt-3">
+        <div class="col-12">
+            <section class="slider box_shadow">
+                <div class="row">
+                    <div class="card panel-title-custom">
+                        <div class="card-header  card-header-custom">
+                            <p>محصولات مرتبط
+                            </p>
+                        </div>
+                        <div class="card-body py-1" style="padding: 50px">
+                            <div class="owl-carousel owl-theme">
+                                <div class="item">
+                                    <a href="">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="img/2836814.jpg" alt="">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
+                                                <p>12300 هزاز تومان</p>
                                             </div>
                                         </div>
-                                        <div class="box_rate">
-                                            <span><i class="material-icons">stars</i>2.8</span>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="img/2481611.jpg" alt="">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>مچ بند هوشمند مدل M2</h4>
+                                                <p>12300 هزاز تومان</p>
+                                            </div>
                                         </div>
-                                    </div>
-                            @endforeach
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="img/1903438.jpg" alt="">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>ساعت هوشمند بی اس ان ال مدل A9</h4>
+                                                <p>12300 هزاز تومان</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="img/2795704.jpg" alt="">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>ساعت هوشمند وی سریز مدل A1</h4>
+                                                <p>12300 هزاز تومان</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="img/2836814.jpg" alt="">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
+                                                <p>12300 هزاز تومان</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="img/2481611.jpg" alt="">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>مچ بند هوشمند مدل M2</h4>
+                                                <p>12300 هزاز تومان</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="img/1903438.jpg" alt="">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>ساعت هوشمند بی اس ان ال مدل A9</h4>
+                                                <p>12300 هزاز تومان</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="img/2795704.jpg" alt="">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>ساعت هوشمند وی سریز مدل A1</h4>
+                                                <p>12300 هزاز تومان</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </div>
-</div>
 
-<!--start pagination-->
-<div class="container mt-3">
-    <div class="row justify-content-end">
-        <div>
-            <nav>
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a href="#" class="page-link">
-                            <span>&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a href="#" class="page-link active_pagination">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item">
-                        <a href="#" class="page-link">
-                            <span>&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+    <!--start category-->
+    <div class="container category my-5 bg-white">
+        <div class="row">
+            <span>دسته بندی ها :</span>
+            <a href="#">هدفون</a>
+            -
+            <a href="#">هدفون</a>
+            -
+            <a href="#">هدفون</a>
+            -
+            <a href="#">هدفون</a>
         </div>
     </div>
-</div>
 
-<!--start ads-->
-<div class="container-fluid ads mt-4 pt-2 ">
-    <div class="row">
-        <div class="col-md-3 col-6 serv text-center">
-            <a href="#1"> <img src="img/aads1.png" class="w-100 d-block rounded" alt=""> </a>
 
-        </div>
-        <div class="col-md-3 col-6 serv text-center">
-            <a href="#2"> <img src="img/aads2.png" class="w-100 d-block rounded" alt=""></a>
 
-        </div>
-        <div class="col-md-3 col-6 serv pt-md-0 pt-2 text-center">
-            <a href="#3"> <img src="img/aads3.png" class="w-100 d-block rounded" alt=""></a>
 
-        </div>
-        <div class="col-md-3 col-6 serv pt-md-0 pt-2 text-center">
-            <a href="#4"> <img src="img/aads4.png" class="w-100 d-block rounded" alt=""></a>
 
-        </div>
+
+
+
+
+
+
+
+
+    <!--start jump-to-top-->
+    <div class="container-fluid text-center box_jump_top">
+        <a href="#" id="back2Top" class="d-block jump_top pt-2 pb-2">
+            <i class="material-icons">
+                expand_less
+            </i>
+            <span>برگشت به بالا</span>
+        </a>
     </div>
-</div>
 
-<!--start slider-->
-<div class="container-fluid mt-3">
-    <div class="col-12">
-        <section class="slider box_shadow">
-            <div class="row">
-                <div class="card panel-title-custom">
-                    <div class="card-header  card-header-custom">
-                        <p>محصولات مرتبط
-                        </p>
-                    </div>
-                    <div class="card-body py-1" style="padding: 50px">
-                        <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <a href="">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2836814.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>12300 هزاز تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2481611.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند مدل M2</h4>
-                                            <p>12300 هزاز تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1903438.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>ساعت هوشمند بی اس ان ال مدل A9</h4>
-                                            <p>12300 هزاز تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2795704.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>ساعت هوشمند وی سریز مدل A1</h4>
-                                            <p>12300 هزاز تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2836814.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                            <p>12300 هزاز تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2481611.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>مچ بند هوشمند مدل M2</h4>
-                                            <p>12300 هزاز تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1903438.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>ساعت هوشمند بی اس ان ال مدل A9</h4>
-                                            <p>12300 هزاز تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2795704.jpg" alt="">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>ساعت هوشمند وی سریز مدل A1</h4>
-                                            <p>12300 هزاز تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
-
-<!--start category-->
-<div class="container category my-5 bg-white">
-    <div class="row">
-        <span>دسته بندی ها :</span>
-        <a href="#">هدفون</a>
-        -
-        <a href="#">هدفون</a>
-        -
-        <a href="#">هدفون</a>
-        -
-        <a href="#">هدفون</a>
-    </div>
-</div>
+    <!--start footer-->
 
 
 
@@ -462,211 +507,41 @@
 
 
 
+    <script>
+        $(document).ready(function () {
+            $('#back2Top').click(function () {
+                $("html,body").animate({scrollTop: 0}, "slow")
+                return false;
+            });
+        })
+    </script>
 
-
-
-
-
-
-<!--start jump-to-top-->
-<div class="container-fluid text-center box_jump_top">
-    <a href="#" id="back2Top" class="d-block jump_top pt-2 pb-2">
-        <i class="material-icons">
-            expand_less
-        </i>
-        <span>برگشت به بالا</span>
-    </a>
-</div>
-
-<!--start footer-->
-
-
-
-
-
-
-
-<script>
-    $(document).ready(function(){
-        $('#back2Top').click(function(){
-            $("html,body").animate({scrollTop:0}, "slow")
-            return false;
-        });
-    })
-</script>
-
-<script>
-    $(document).ready()
-    {
-        var owl=$('.owl-carousel');
-        owl.owlCarousel({
-            items:4,
-            rtl:true,
-            margin:25,
-            nav:true,
-            loop:true,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:2
-                },
-                1000:{
-                    items:4
+    <script>
+        $(document).ready()
+        {
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                items: 4,
+                rtl: true,
+                margin: 25,
+                nav: true,
+                loop: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
                 }
-            }
-        });
-    }
-</script>
+            });
+        }
+    </script>
 @endsection
-@section('navbar')
 
-    <nav class="navbar navbar-expand-md navbar-light navbar_custom">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu1">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menu1">
-            <div class="nav_line"></div>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white dropdown-toggle" data-toggle="dropdown">کالای دیجیتال</a>
-                    <div class="dropdown-menu dropdown-menu_custom1 shadow-sm rounded-bottom border-0" id="custom-main-dropdown-menu">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12 col-md-3">
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>لوازم جانبی گوشی</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">کیف و کاور گوشی</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پاور بانک</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">هدفون، هدست</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پایه نگهدارنده گوشی</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>گوشی موبایل</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">اپل</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">سامسونگ</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>واقعیت مجازی</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>مچ بند و ساعت هوشمند</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>هدفون، هدست، هندزفری</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسپیکر بلوتوث و با سیم</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسکوتر برقی</a>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>لوازم جانبی گوشی</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">کیف و کاور گوشی</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پاور بانک</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">هدفون، هدست</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پایه نگهدارنده گوشی</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>گوشی موبایل</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">اپل</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">سامسونگ</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>واقعیت مجازی</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>مچ بند و ساعت هوشمند</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>هدفون، هدست، هندزفری</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسپیکر بلوتوث و با سیم</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسکوتر برقی</a>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>لوازم جانبی گوشی</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">کیف و کاور گوشی</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پاور بانک</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">هدفون، هدست</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">پایه نگهدارنده گوشی</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>گوشی موبایل</a>
-                                    </div>
-                                    <ul class="list-group custom-list-group">
-                                        <li class="list-group-item border-0 px-0"><a href="#">اپل</a></li>
-                                        <li class="list-group-item border-0 px-0"><a href="#">سامسونگ</a></li>
-                                    </ul>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>واقعیت مجازی</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>مچ بند و ساعت هوشمند</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>هدفون، هدست، هندزفری</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسپیکر بلوتوث و با سیم</a>
-                                    </div>
-                                    <div class="top_link">
-                                        <a href="#"><i class="material-icons">keyboard_arrow_left</i>اسکوتر برقی</a>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3 d-none d-sm-block">
-                                    <img src="img/1636.png" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">آرایشی، بهداشتی و سلامت</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">وسایل نقلیه، ابزار و اداری</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">مو و پوشاک</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">خانه و آشپزخانه</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white">ورزش و سفر</a>
-                </li>
-            </ul>
-            <div class="mr-auto">
-                <ul class="navbar-nav special_sale">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">فروش ویژه</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-@endsection
 @section('footer')
     <div class="container-fluid pt-2 bg_footer">
         <div class="row">

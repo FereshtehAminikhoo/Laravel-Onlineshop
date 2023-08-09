@@ -169,7 +169,7 @@
                         <div class="product_guarantee mt-2 text-center text-md-left">
                             <ul class="list-inline">
                                 <li class="list-inline-item mr-0">
-                                    <img src="img/1fb9a3a5.svg">
+                                    <img src="/img/1fb9a3a5.svg">
                                 </li>
                                 <li class="list-inline-item mr-2">
                                     <span>بسته بندی و ارسال توسط آنلاین شاپ</span>
@@ -189,7 +189,7 @@
                         <div class="border_bottom mt-3"></div>
                         <div class="box_price mt-2 text-center text-md-left">
                             <p>{{$product->price}} تومان</p>
-                            <a href="#" class="btn btn_custom2 shadow-sm"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
+                            <a href="{{route('add_product_to_cart',['id'=>$product->id])}}" class="btn btn_custom2 shadow-sm"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
                         </div>
                     </div>
                     <div class="col-md-4 product_params bg-transparent mt-2 text-center text-md-left">
@@ -295,7 +295,7 @@
                         <span class="span1">رضایت خرید: </span><span class="span2">59 % از (1396) رای</span>
                     </td>
                     <td>
-                        <img src="img/warehouse.JPG" width="25">
+                        <img src="/img/warehouse.JPG" width="25">
                         <span class="span2">آماده ارسال</span>
                         <br>
                         <span class="span1">بسته بندی و ارسال توسط آنلاین شاپ</span>
@@ -319,7 +319,7 @@
                         <span class="span1">رضایت خرید: </span><span class="span2">59 % از (1396) رای</span>
                     </td>
                     <td>
-                        <img src="img/warehouse.JPG" width="25">
+                        <img src="/img/warehouse.JPG" width="25">
                         <span class="span2">آماده ارسال</span>
                         <br>
                         <span class="span1">بسته بندی و ارسال توسط آنلاین شاپ</span>

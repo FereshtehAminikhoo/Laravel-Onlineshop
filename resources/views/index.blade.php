@@ -47,8 +47,8 @@
             </div>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
-            <a href="#" class="btn btn-outline-info">
-                <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>۰</span>
+            <a href="{{route('show_shopping_cart')}}" class="btn btn-outline-info">
+                <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>{{count($shoppingCartItems)}}</span>
             </a>
         </div>
     </div>

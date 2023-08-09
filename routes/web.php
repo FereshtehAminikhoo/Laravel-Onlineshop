@@ -12,7 +12,8 @@ Route::get('/register', function () {
 Route::get('/','App\Http\Controllers\ClientController@index' )->name('home');
 Route::get('/category/{id}', 'App\Http\Controllers\ClientController@showCategory')->name('show_category');
 Route::get('/product/{id}', 'App\Http\Controllers\ClientController@showProduct')->name('show_product');
-
+Route::get('/product/{id}/add_to_cart','App\Http\Controllers\ClientController@addToCart')->name('add_product_to_cart');
+Route::get('/shopping_cart','App\Http\Controllers\ClientController@showShoppingCart')->name('show_shopping_cart');
 //admin routes
 Route::get('/admin',function (){
    return view('admin.index') ;
