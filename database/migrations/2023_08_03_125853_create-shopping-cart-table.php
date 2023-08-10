@@ -13,7 +13,7 @@ class CreateShoppingCartTable extends Migration
      */
     public function up()
     {
-        Schema::create('shopping_cart',function (Blueprint $table){
+        Schema::create('shopping_carts',function (Blueprint $table){
             $table -> id();
             $table -> unsignedBigInteger('product_id');
             $table -> unsignedBigInteger('user_id');
