@@ -9,15 +9,16 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
-Route::get('/','App\Http\Controllers\ClientController@index' )->name('home');
+Route::get('/','App\Http\Controllers\ClientController@index' )->name('client_home');
 Route::get('/category/{id}', 'App\Http\Controllers\ClientController@showCategory')->name('show_category');
 Route::get('/product/{id}', 'App\Http\Controllers\ClientController@showProduct')->name('show_product');
 Route::get('/product/{id}/add_to_cart','App\Http\Controllers\ClientController@addToCart')->name('add_product_to_cart');
 Route::get('/shopping_cart','App\Http\Controllers\ClientController@showShoppingCart')->name('show_shopping_cart');
 //admin routes
+
 Route::get('/admin',function (){
    return view('admin.index') ;
-})->name('admin_home');
+})->name('admin_home')->middleware(['auth','is_admin']);
 Route::get('/admin/category/list','App\Http\Controllers\CategoryController@list')->name('category_list');
 Route::get('/admin/category/create','App\Http\Controllers\CategoryController@create')->name('category_create');
 Route::get('/admin/user/create',function (){
@@ -64,3 +65,6 @@ Route::get('admin/brand/{id}/delete', 'App\Http\Controllers\BrandController@dele
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//auth user routes
+Route::get('/client/login','App\Http\Controllers\ClientController@showLoginForm')->name('client_login');
