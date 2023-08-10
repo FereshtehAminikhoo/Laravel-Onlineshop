@@ -32,6 +32,7 @@
 <body>
 
 @yield('navbar')
+@yield('header')
 @yield('content')
 @yield('footer')
 </body>

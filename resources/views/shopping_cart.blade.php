@@ -47,6 +47,61 @@
         </div>
     </nav>
 @endsection
+@section('header')
+    <div class="container-fluid shadow-sm bg-white">
+        <div class="row p-3">
+            <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
+                <span class="logo"></span>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-3 col-6">
+                <form>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control rounded-right input_search" placeholder="نام کالا، برند و یا دسته مورد نظر خود را وارد کنید...">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text rounded-left custom-input-group-text">
+                                <a href="#"><i class="material-icons">search</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-3 col-6 dropdown_custom text-right">
+                <div class="dropdown">
+                    <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false" style="line-height: 40px!important;">
+                        ورود/ثبت نام
+                    </a>
+                    <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
+                         aria-labelledby="dropdownMenuButton">
+                        <div class="btn login_box">
+                            <a class="dropdown-item dropdown-item-custom py-2 btn btn-info" href="#">ورود به آنلاین شاپ</a>
+                        </div>
+                        <ul class="list-inline register">
+                            <li class="list-inline-item">کاربر جدید هستید؟</li>
+                            <li class="list-inline-item"><a href="#">ثبت نام</a></li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        <div class="text-left">
+                            <button onclick="location.href='http://www.google.com'"
+                                    class="dropdown-item border-0 dropdown-item_custom" type="button"><i
+                                    class="material-icons profile_link pr-2">person</i>پروفایل
+                            </button>
+                            <button onclick="location.href='http://www.google.com'"
+                                    class="dropdown-item border-0 dropdown-item_custom" type="button"><i
+                                    class="material-icons profile_link pr-2">assignment_turned_in</i>پیگیری سفارش
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
+                <a href="{{route('show_shopping_cart')}}" class="btn btn-outline-info">
+                    <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>{{count($shoppingCartItems)}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+@endsection
 @section('content')
     <div class="container-fluid mt-5 pr-5 header_shopping_cart">
         <div class="row">

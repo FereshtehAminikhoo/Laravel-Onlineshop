@@ -16,6 +16,12 @@
                         <option value="{{$category->id}}" @if($category->id==$product->category_id) selected @endif>{{$category->name}}</option>
                     @endforeach
                 </select>
+                <label class="mt-2">برند</label>
+                <select class="form-control " data-width="100%" name="brand_id">
+                    @foreach($brands as $brand)
+                        <option value="{{$brand->id}}" @if($brand->id==$product->$brand_id) selected @endif>{{$brand->name}}</option>
+                    @endforeach
+                </select>
                 <label>تصویر</label>
                 <br>
                 <img src="{{asset($product->file)}}" width="25px" height="25px"/>

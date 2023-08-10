@@ -16,6 +16,12 @@
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
+                <label class="mt-2">برند</label>
+                <select class="form-control " data-width="100%" name="brand_id">
+                    @foreach($brands as $brand)
+                        <option value="{{$brand->id}}">{{$brand->name}}</option>
+                    @endforeach
+                </select>
                 <label class="mt-3">تصویر</label>
                 <br>
                 <input type="file" name="file">
@@ -31,16 +37,6 @@
                     <input type="text" name="description" class="form-control" />
                     <span>توضیحات</span>
                 </label>
-{{--                <label>دسته بندی والد</label>--}}
-{{--                <select class="form-control " data-width="100%" name="parent_id">--}}
-{{--                    <option value=""></option>--}}
-{{--                    @foreach($categories as $category)--}}
-{{--                        <option value="{{$category->id}}">{{$category->name}}</option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--                <label>تصویر</label>--}}
-{{--                <br>--}}
-{{--                <input type="file" name="file">--}}
                 <button class="btn btn-primary mt-5" type="submit">افزودن</button>
             </form>
         </div>

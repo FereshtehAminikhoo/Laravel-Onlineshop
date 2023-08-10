@@ -224,6 +224,11 @@
                     </a>
                 </li>
                 <li>
+                   <a href="#ui">
+                       <i class="iconsminds-pantone"></i>برند ها
+                   </a>
+                </li>
+                <li>
                     <a href="#applications">
                         <i class="iconsminds-air-balloon-1"></i> کاربران
                     </a>
@@ -264,6 +269,18 @@
                             </li>
                         </ul>
                     </div>
+                </li>
+            </ul>
+            <ul class="list-unstyled" data-link="ui">
+                <li>
+                    <a href="/admin/brand/list">
+                        <i class="simple-icon-doc"></i> <span class="d-inline-block">لیست برند ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/brand/create">
+                        <i class="simple-icon-check"></i> <span class="d-inline-block">افزودن برند</span>
+                    </a>
                 </li>
             </ul>
             <ul class="list-unstyled" data-link="applications">

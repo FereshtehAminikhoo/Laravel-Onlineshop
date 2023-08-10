@@ -12,6 +12,7 @@ class Product extends Model
     protected $fillable = [
         'title',
         'category_id',
+        'brand_id',
         'file',
         'price',
         'color',
@@ -21,6 +22,11 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 
     public function scopeNewest($query,$timeBasedSort)

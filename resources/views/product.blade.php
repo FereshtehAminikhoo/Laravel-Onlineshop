@@ -41,7 +41,7 @@
         </div>
     </nav>
 @endsection
-@section('content')
+@section('header')
     <div class="container-fluid shadow-sm bg-white">
         <div class="row p-3">
             <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
@@ -89,13 +89,14 @@
                 </div>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
-                <a href="#" class="btn btn-outline-info">
-                    <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>۰</span>
+                <a href="{{route('show_shopping_cart')}}" class="btn btn-outline-info">
+                    <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>{{count($shoppingCartItems)}}</span>
                 </a>
             </div>
         </div>
     </div>
-
+@endsection
+@section('content')
     <!--start product-->
     <div class="container-fluid box_product">
         <div class="row">

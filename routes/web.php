@@ -50,6 +50,16 @@ Route::get('/admin/product/{id}/delete', 'App\Http\Controllers\ProductController
 Route::get('/admin/login','App\Http\Controllers\AdminAuthController@showLoginForm')->name('admin_login_form');
 Route::post('/admin/login','App\Http\Controllers\AdminAuthController@login')->name('admin_login');
 
+
+Route::get('/admin/brand/create', function (){
+    return view('admin.brand.create');
+});
+Route::get('admin/brand/create', 'App\Http\Controllers\BrandController@create')->name('brand_create');
+Route::post('admin/brand/save', 'App\Http\Controllers\BrandController@save');
+Route::get('admin/brand/list', 'App\Http\Controllers\BrandController@list')->name('brand_list');
+Route::get('admin/brand/{id}/edit', 'App\Http\Controllers\BrandController@edit')->name('brand_edit');
+Route::post('admin/brand/{id}/update', 'App\Http\Controllers\BrandController@update')->name('brand_update');
+Route::get('admin/brand/{id}/delete', 'App\Http\Controllers\BrandController@delete')->name('brand_delete');
 //auth routes
 Auth::routes();
 

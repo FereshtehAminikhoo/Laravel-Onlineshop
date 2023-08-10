@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -11,7 +12,8 @@ class ProductController extends Controller
 {
     public function create(){
         $categories = Category::all();
-        return view('admin.product.create', compact('categories'));
+        $brands = Brand::all();
+        return view('admin.product.create', compact('categories', 'brands'));
     }
 
     public function save(Request $request){
@@ -20,6 +22,7 @@ class ProductController extends Controller
         Product::create([
             'title' => $request->title,
             'category_id' => $request->category_id,
+            'brand_id' => $request->brand_id,
             'file'=>'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
             'price' => $request->price,
             'color' => $request->color,
@@ -38,7 +41,8 @@ class ProductController extends Controller
     {
         $product = Product::where('id', $id)->first();
         $categories=Category::all();
-        return view('admin.product.edit', compact('product','categories'));
+        $brands = Brand::all();
+        return view('admin.product.edit', compact('product','categories', 'brands'));
     }
 
     public function update($id, Request $request)
@@ -49,6 +53,7 @@ class ProductController extends Controller
         $product->update([
             'title' => $request->title,
             'category_id' => $request->category_id,
+            'brand_id' => $request->brand_id,
             'file' => 'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
             'price' => $request->price,
             'color' => $request->color,

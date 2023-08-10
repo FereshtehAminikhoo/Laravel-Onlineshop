@@ -10,6 +10,7 @@
                         <th scope="col">ردیف</th>
                         <th scope="col">عنوان</th>
                         <th scope="col">دسته بندی</th>
+                        <th scope="col">برند</th>
                         <th scope="col">تصویر</th>
                         <th scope="col">قیمت</th>
                         <th scope="col">رنگ</th>
@@ -25,6 +26,13 @@
                             <td>
                                 @if($product->category_id !== null)
                                     {{$product->category->name}}
+                                @else
+                                    -
+                                @endif
+                            </td>
+                            <td>
+                                @if($product->brand_id !== null)
+                                    {{$product->brand->name}}
                                 @else
                                     -
                                 @endif

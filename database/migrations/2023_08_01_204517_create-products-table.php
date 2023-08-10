@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
            $table->string('color');
            $table->string('description');
            $table->unsignedInteger('category_id')->nullable();
+           $table->unsignedInteger('brand_id')->nullable();
            $table->timestamps();
         });
     }
