@@ -11,7 +11,11 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $userId=auth()->user()->id;
+        if (auth()->check()){
+            $userId=auth()->user()->id;
+        }else{
+            $userId=null;
+        }
         $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
 
         $categories = Category::whereNull('parent_id')->get();
@@ -30,7 +34,11 @@ class ClientController extends Controller
     public function showCategory($id, Request $request)
     {
         //dd($request);
-        $userId=auth()->user()->id;
+        if (auth()->check()){
+            $userId=auth()->user()->id;
+        }else{
+            $userId=null;
+        }
         $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
 
         $categories = Category::whereNull('parent_id')->get();
@@ -48,7 +56,11 @@ class ClientController extends Controller
 
     public function showProduct($id)
     {
-        $userId=auth()->user()->id;
+        if (auth()->check()){
+            $userId=auth()->user()->id;
+        }else{
+            $userId=null;
+        }
         $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
 
         $product = Product::where('id', $id)->first();
@@ -58,7 +70,6 @@ class ClientController extends Controller
 
     public function addToCart($id)
     {
-        //dd(auth()->user()->id);
         Shopping_cart::create([
             'product_id'=>$id,
             'user_id'=>auth()->user()->id,
@@ -72,5 +83,10 @@ class ClientController extends Controller
         $categories=Category::whereNull('parent_id')->get();
         $items=Shopping_cart::where('user_id',auth()->user()->id)->get();
         return view('shopping_cart',compact('categories','items'));
+    }
+
+    public function showLoginForm()
+    {
+        return view('login');
     }
 }
