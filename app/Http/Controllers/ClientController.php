@@ -30,6 +30,9 @@ class ClientController extends Controller
     public function showCategory($id, Request $request)
     {
         //dd($request);
+        $userId=auth()->user()->id;
+        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
+
         $categories = Category::whereNull('parent_id')->get();
         $category = Category::where('id', $id)->first();
         //dd($request);
@@ -40,14 +43,17 @@ class ClientController extends Controller
             $productCategories = Category::where('parent_id', $id)->pluck('id')->toArray();
             $viewProducts = Product::whereIn('category_id', $productCategories)->newest($request->time_sort)->price($request->price_sort)->get();
         }
-        return view('category', compact('category', 'categories', 'viewProducts'));
+        return view('category', compact('category', 'categories', 'viewProducts', 'shoppingCartItems'));
     }
 
     public function showProduct($id)
     {
+        $userId=auth()->user()->id;
+        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
+
         $product = Product::where('id', $id)->first();
         $categories = Category::whereNull('parent_id')->get();
-        return view('product', compact('product', 'categories'));
+        return view('product', compact('product', 'categories', 'shoppingCartItems'));
     }
 
     public function addToCart($id)
