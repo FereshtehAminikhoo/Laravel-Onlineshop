@@ -12,7 +12,8 @@
 <div class="container-fluid bg-white shadow-sm border form_login">
     <div class="row">
         <div class="col-md-12 mt-2">
-            <form>
+            <form action="{{route('login')}}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-md-12 mt-2">
                         <label>ایمیل یا شماره تماس</label>
@@ -20,29 +21,43 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">person_outline</i></span>
                             </div>
-                            <input type="text" class="form-control rounded-left input_form0" placeholder="ایمیل یا شماره تماس خود را وارد نمایید">
+                            <input name="email" type="email" class="form-control rounded-left input_form0 @error('email') is-invalid @enderror" placeholder="ایمیل خود را وارد نمایید" value="{{ old('email') }}" required />
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 mt-2">
-                        <label>رمز عبور</label>
+                    <div class="col-md-12 mt-2 d-flex justify-content-between align-items-center">
+                        <label class="">رمز عبور</label>
+                        @if (Route::has('password.request'))
+                            <a class="btn btn-link mb-2" href="{{ route('password.request') }}">
+                                رمز عبور خود را فراموش کرده اید؟
+                            </a>
+                        @endif
                     </div>
-                    <div class="col-md-6 mt-2 justify-content-end">
-                        <a href="#">رمز عبور خود را فراموش کرده ام</a>
-                    </div>
+
                     <div class="col-md-12">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">lock_open</i></span>
                             </div>
-                            <input type="text" class="form-control rounded-left input_form0" placeholder="رمز عبور خود را وارد نمایید">
+                            <input type="text" class="form-control rounded-left input_form0 @error('password') is-invalid @enderror" placeholder="رمز عبور خود را وارد نمایید" name="password" required />
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                     </div>
+
                 </div>
                 <div class="row">
                     <div class="col-md-12 mt-3 text-center">
-                        <div class="btn btn-lg btn_login">ورود به آنلاین شاپ</div>
+                        <button type="submit" class="btn btn-lg btn_login">ورود به آنلاین شاپ</button>
                     </div>
                 </div>
                 <div class="row">

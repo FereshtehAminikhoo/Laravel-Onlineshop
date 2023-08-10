@@ -1,5 +1,10 @@
 @extends('main')
 @section('navbar')
+    <script>
+        function showMustLoginAlert(){
+            alert("برای افزودن محصول به سبد خرید، ابتدا وارد حساب کاربری خود شوید!")
+        }
+    </script>
     <nav class="navbar navbar-expand-md navbar-light navbar_custom">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu1">
             <span class="navbar-toggler-icon"></span>
@@ -180,7 +185,7 @@
                         <div class="product_guarantee mt-2 text-center text-md-left">
                             <ul class="list-inline">
                                 <li class="list-inline-item mr-0">
-                                    <img src="img/warehouse.JPG">
+                                    <img src="/img/warehouse.JPG">
                                 </li>
                                 <li class="list-inline-item mr-2">
                                     <span class="text-info">آماده ارسال</span>
@@ -190,7 +195,11 @@
                         <div class="border_bottom mt-3"></div>
                         <div class="box_price mt-2 text-center text-md-left">
                             <p>{{$product->price}} تومان</p>
-                            <a href="{{route('add_product_to_cart',['id'=>$product->id])}}" class="btn btn_custom2 shadow-sm"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
+                            @if(auth()->check())
+                                <a href="{{route('add_product_to_cart',['id'=>$product->id])}}" class="btn btn_custom2 shadow-sm"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
+                            @else
+                                <a href="#" class="btn btn_custom2 shadow-sm" onclick="event.preventDefault();showMustLoginAlert()"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-4 product_params bg-transparent mt-2 text-center text-md-left">
@@ -361,7 +370,7 @@
                                     <a href="">
                                         <div class="card panel-custom">
                                             <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
+                                                <img src="/img/1687421.jpg" alt="">
                                             </div>
                                             <div class="card-footer panel-footer-custom">
                                                 <h4>کنسول بازی سونی مدل Playstation 4</h4>
@@ -1287,7 +1296,7 @@
                         </form>
                         <p class="pt-4">آنلاین شاپ را در شبکه های اجتماعی دنبال کنید:</p>
                         <div class="social_instagram text-center">
-                            <a href="#"><img src="img/instagrams.svg" class="px-1">اینستاگرام آنلاین شاپ</a>
+                            <a href="#"><img src="/img/instagrams.svg" class="px-1">اینستاگرام آنلاین شاپ</a>
                         </div>
                     </div>
                 </div>
@@ -1303,8 +1312,8 @@
                     </ul>
                 </div>
                 <div class="footer_box_left mr-auto">
-                    <a href="#"><img src="img/bazar.png"></a>
-                    <a href="#"><img src="img/sibapp.png"></a>
+                    <a href="#"><img src="/img/bazar.png"></a>
+                    <a href="#"><img src="/img/sibapp.png"></a>
                 </div>
             </div>
         </div>
@@ -1333,5 +1342,6 @@
             <p>استفاده از مطالب فروشگاه اینترنتی آنلاین شاپ فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین شاپ) می باشد.</p>
         </div>
     </footer>
+
 
 @endsection
