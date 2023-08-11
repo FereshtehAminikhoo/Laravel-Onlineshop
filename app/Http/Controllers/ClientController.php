@@ -80,9 +80,12 @@ class ClientController extends Controller
 
     public function showShoppingCart()
     {
+        $userId=auth()->user()->id;
+        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
+
         $categories=Category::whereNull('parent_id')->get();
         $items=Shopping_cart::where('user_id',auth()->user()->id)->get();
-        return view('shopping_cart',compact('categories','items'));
+        return view('shopping_cart',compact('categories','items', 'shoppingCartItems'));
     }
 
     public function showLoginForm()
