@@ -11,14 +11,15 @@
 <div class="container-fluid bg-white shadow-sm border form_register">
     <div class="row">
         <div class="col-md-12 mt-2">
-            <form>
-                <div class="row">
-                    <div class="container mt-2 form_box">
-                        <div class="col-md-12">
-                            <p>اگر قبلا با ایمیل ثبت نام کرده اید، نیاز به ثبت نام مجدد با شماره همراه ندارید</p>
-                        </div>
+            <div class="row">
+                <div class="container mt-2 form_box">
+                    <div class="col-md-12">
+                        <p>اگر قبلا ثبت نام کرده اید، نیاز به ثبت نام مجدد ندارید</p>
                     </div>
                 </div>
+            </div>
+            <form  action="{{route('client_createAccount')}}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-md-12 mt-2">
                         <label>نام</label>
@@ -26,7 +27,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">person_outline</i></span>
                             </div>
-                            <input type="text" class="form-control rounded-left input_form0" placeholder="نام خود را وارد نمایید">
+                            <input type="text" name="name" class="form-control rounded-left input_form0" placeholder="نام خود را وارد نمایید" required>
                         </div>
                     </div>
                 </div>
@@ -37,7 +38,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">person_outline</i></span>
                             </div>
-                            <input type="text" class="form-control rounded-left input_form0" placeholder="نام خانوادگی خود را وارد نمایید">
+                            <input type="text" name="family_name" class="form-control rounded-left input_form0" placeholder="نام خانوادگی خود را وارد نمایید" required>
                         </div>
                     </div>
                 </div>
@@ -48,7 +49,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="fa fa-id-card" aria-hidden="true"></i></span>
                             </div>
-                            <input type="number" class="form-control rounded-left input_form0" placeholder="کدملی خود را وارد نمایید">
+                            <input type="number" name="national" class="form-control rounded-left input_form0" placeholder="کدملی خود را وارد نمایید" required>
                         </div>
                     </div>
                 </div>
@@ -59,7 +60,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">phone</i></span>
                             </div>
-                            <input type="number" class="form-control rounded-left input_form0" placeholder="شماره تماس خود را وارد نمایید">
+                            <input type="number" name="phone_number" class="form-control rounded-left input_form0" placeholder="شماره تماس خود را وارد نمایید" required>
                         </div>
                     </div>
                 </div>
@@ -70,7 +71,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">mail_outline</i></span>
                             </div>
-                            <input type="email" class="form-control rounded-left input_form0" placeholder="ایمیل خود را وارد نمایید">
+                            <input type="email" name="email" class="form-control rounded-left input_form0" placeholder="ایمیل خود را وارد نمایید" required>
                         </div>
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">lock_open</i></span>
                             </div>
-                            <input type="password" class="form-control rounded-left input_form0" placeholder="رمز عبور خود را وارد نمایید">
+                            <input type="password" name="password" class="form-control rounded-left input_form0" placeholder="رمز عبور خود را وارد نمایید" required>
                         </div>
                     </div>
                 </div>
@@ -92,7 +93,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">lock_open</i></span>
                             </div>
-                            <input type="password" class="form-control rounded-left input_form0" placeholder="رمز عبور خود را مجدد وارد نمایید">
+                            <input type="password" name="repeat_password" class="form-control rounded-left input_form0" placeholder="رمز عبور خود را مجدد وارد نمایید" required>
                         </div>
                     </div>
                 </div>
@@ -104,7 +105,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 mt-2 text-center">
-                        <div class="btn btn-lg btn_register">ثبت نام در آنلاین شاپ</div>
+                        <button type="submit" class="btn btn-lg btn_register">ثبت نام در آنلاین شاپ</button>
                     </div>
                 </div>
             </form>
@@ -118,7 +119,7 @@
         <div class="col-md-12 pt-3 text-center register_footer">
             <ul class="list-inline">
                 <span>قبلا در آنلاین شاپ ثبت نام کرده اید؟</span>
-                <li class="list-inline-item"><a href="#">وارد شوید</a></li>
+                <li class="list-inline-item"><a href="{{route('client_login')}}">وارد شوید</a></li>
             </ul>
         </div>
     </div>

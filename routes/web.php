@@ -14,8 +14,9 @@ Route::get('/category/{id}', 'App\Http\Controllers\ClientController@showCategory
 Route::get('/product/{id}', 'App\Http\Controllers\ClientController@showProduct')->name('show_product');
 Route::get('/product/{id}/add_to_cart','App\Http\Controllers\ClientController@addToCart')->name('add_product_to_cart');
 Route::get('/shopping_cart','App\Http\Controllers\ClientController@showShoppingCart')->name('show_shopping_cart');
-//admin routes
+Route::get('/shopping_cart/delete_item/{id}', 'App\Http\Controllers\ClientController@deleteItem')->name('delete_item');
 
+//admin routes
 Route::get('/admin',function (){
    return view('admin.index') ;
 })->name('admin_home')->middleware(['auth','is_admin']);
@@ -68,3 +69,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //auth user routes
 Route::get('/client/login','App\Http\Controllers\ClientController@showLoginForm')->name('client_login');
+Route::get('/client/register', 'App\Http\Controllers\ClientController@showRegisterForm')->name('client_register');
+Route::post('/client/createAccount', 'App\Http\Controllers\ClientController@createAccount')->name('client_createAccount');

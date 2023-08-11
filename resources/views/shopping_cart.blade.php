@@ -66,33 +66,40 @@
                 </form>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-3 col-6 dropdown_custom text-right">
-                <div class="dropdown">
-                    <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false" style="line-height: 40px!important;">
-                        ورود/ثبت نام
-                    </a>
-                    <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
-                         aria-labelledby="dropdownMenuButton">
-                        <div class="btn login_box">
-                            <a class="dropdown-item dropdown-item-custom py-2 btn btn-info" href="#">ورود به آنلاین شاپ</a>
-                        </div>
-                        <ul class="list-inline register">
-                            <li class="list-inline-item">کاربر جدید هستید؟</li>
-                            <li class="list-inline-item"><a href="#">ثبت نام</a></li>
-                        </ul>
-                        <div class="dropdown-divider"></div>
-                        <div class="text-left">
-                            <button onclick="location.href='http://www.google.com'"
-                                    class="dropdown-item border-0 dropdown-item_custom" type="button"><i
-                                    class="material-icons profile_link pr-2">person</i>پروفایل
-                            </button>
-                            <button onclick="location.href='http://www.google.com'"
-                                    class="dropdown-item border-0 dropdown-item_custom" type="button"><i
-                                    class="material-icons profile_link pr-2">assignment_turned_in</i>پیگیری سفارش
-                            </button>
+                @if(auth()->check())
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    <a class="btn btn-outline-danger text-light" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
+                @else
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" style="line-height: 40px!important;">
+                            ورود/ثبت نام
+                        </a>
+                        <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
+                             aria-labelledby="dropdownMenuButton">
+                            <div class="btn login_box">
+                                <a class="dropdown-item dropdown-item-custom py-2 btn btn-info" href="{{route('client_login')}}">ورود به آنلاین شاپ</a>
+                            </div>
+                            <ul class="list-inline register">
+                                <li class="list-inline-item">کاربر جدید هستید؟</li>
+                                <li class="list-inline-item"><a href="{{route('client_register')}}">ثبت نام</a></li>
+                            </ul>
+                            <div class="dropdown-divider"></div>
+                            <div class="text-left">
+                                <button onclick="location.href='http://www.google.com'"
+                                        class="dropdown-item border-0 dropdown-item_custom" type="button"><i
+                                        class="material-icons profile_link pr-2">person</i>پروفایل
+                                </button>
+                                <button onclick="location.href='http://www.google.com'"
+                                        class="dropdown-item border-0 dropdown-item_custom" type="button"><i
+                                        class="material-icons profile_link pr-2">assignment_turned_in</i>پیگیری سفارش
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
                 <a href="{{route('show_shopping_cart')}}" class="btn btn-outline-info">
@@ -135,8 +142,17 @@
                 <div class="bg-white mt-2 shadow-sm border details_box">
                     <div class="row">
                         <div class="col-md-12 mt-3">
-                            <span class="total_price_box">مبلغ کل (1 کالا)</span>
-                            <span class="price_details_box">25,390,000</span>
+                            <span class="total_price_box">مبلغ کل (<span>{{count($shoppingCartItems)}}</span> کالا)</span>
+                            @php
+                                $total_price = 0;
+
+                            @endphp
+                            @foreach($items as $item)
+                                @php
+                                    $total_price += $item->product->price * $item->count;
+                                @endphp
+                            <span class="price_details_box">{{$total_price}}</span>
+                            @endforeach
                         </div>
                     </div>
                     <div class="row">

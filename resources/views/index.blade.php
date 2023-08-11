@@ -36,7 +36,7 @@
                         </div>
                         <ul class="list-inline register">
                             <li class="list-inline-item">کاربر جدید هستید؟</li>
-                            <li class="list-inline-item"><a href="#">ثبت نام</a></li>
+                            <li class="list-inline-item"><a href="{{route('client_register')}}">ثبت نام</a></li>
                         </ul>
                         <div class="dropdown-divider"></div>
                         <div class="text-left">
@@ -51,8 +51,6 @@
                         </div>
                     </div>
                 </div>
-
-
             @endif
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
@@ -1135,167 +1133,25 @@
             <section class="slider box-shadow">
                 <div class="card panel-title-custom">
                     <div class="card-header card-header-custom">
-                        <p>خانه و آشپزخانه</p>
-                        <a href="#" class="float-left">مشاهده همه</a>
+                        <p>پیراهن مردانه</p>
                     </div>
                     <div class="card-body">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3307088.jpg">
+                            @foreach($men_cloths as $men_cloth)
+                                <div class="item">
+                                    <a href="#">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="{{asset($men_cloth->file)}}">
+                                            </div>
+                                            <div class="card-footer panel-footer-custom">
+                                                <h4>{{$men_cloth->title}}</h4>
+                                                <p>{{$men_cloth->price}} تومان</p>
+                                            </div>
                                         </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لامپ ال ای دی 12 وات بروکس مدل A60 پایه E27</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3201081.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>10 بسته دستمال کاغذی 200 برگ ایزی پیک</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2766832.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>برنج هاشمی چاپار مقدار 5 کیلوگرم</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1687421.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>کنسول بازی سونی مدل Playstation Slim 4</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3307088.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لامپ ال ای دی 12 وات بروکس مدل A60 پایه E27</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3201081.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>10 بسته دستمال کاغذی 200 برگ ایزی پیک</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2766832.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>برنج هاشمی چاپار مقدار 5 کیلوگرم</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1687421.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>کنسول بازی سونی مدل Playstation Slim 4</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3307088.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>لامپ ال ای دی 12 وات بروکس مدل A60 پایه E27</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/3201081.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>10 بسته دستمال کاغذی 200 برگ ایزی پیک</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/2766832.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>برنج هاشمی چاپار مقدار 5 کیلوگرم</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/1687421.jpg">
-                                        </div>
-                                        <div class="card-footer panel-footer-custom">
-                                            <h4>کنسول بازی سونی مدل Playstation Slim 4</h4>
-                                            <p>123000 تومان</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -1315,60 +1171,17 @@
                     </div>
                     <div class="card-body">
                         <div class="owl-carousel owl-theme">
-                            <div class="item1">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/pa.png">
+                            @foreach($brands as $brand)
+                                <div class="item1">
+                                    <a href="#">
+                                        <div class="card panel-custom">
+                                            <div class="card-body panel-body-custom">
+                                                <img src="{{asset($brand->file)}}" class="d-flex align-items-center">
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item1">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/ad.png">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item1">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/par.png">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item1">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/sa.png">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item1">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/xv.png">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="item1">
-                                <a href="#">
-                                    <div class="card panel-custom">
-                                        <div class="card-body panel-body-custom">
-                                            <img src="img/lg.png">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

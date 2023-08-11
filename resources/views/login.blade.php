@@ -16,7 +16,7 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-12 mt-2">
-                        <label>ایمیل یا شماره تماس</label>
+                        <label>ایمیل</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">person_outline</i></span>
@@ -76,7 +76,7 @@
         <div class="col-md-12 pt-3 text-center login_footer">
             <ul class="list-inline">
                 <span>کاربر جدید هستید؟</span>
-                <li class="list-inline-item"><a href="#">ثبت نام در آنلاین شاپ</a></li>
+                <li class="list-inline-item"><a href="{{route('client_register')}}">ثبت نام در آنلاین شاپ</a></li>
             </ul>
         </div>
     </div>

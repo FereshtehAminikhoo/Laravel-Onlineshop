@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Shopping_cart;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
@@ -28,7 +31,9 @@ class ClientController extends Controller
         //$products = Product::whereIn('category_id', [20,30,29,25])->get();
         $laptops = Product::where('category_id', 6)->get();
         $kids_mode = Product::where('category_id', 12)->get();
-        return view('index', compact('categories', 'mobiles', 'laptops', 'kids_mode','shoppingCartItems'));
+        $men_cloths = Product::where('category_id', 22)->get();
+        $brands = Brand::all();
+        return view('index', compact('categories', 'mobiles', 'laptops', 'kids_mode','shoppingCartItems', 'men_cloths', 'brands'));
     }
 
     public function showCategory($id, Request $request)
@@ -88,8 +93,34 @@ class ClientController extends Controller
         return view('shopping_cart',compact('categories','items', 'shoppingCartItems'));
     }
 
+//    public function deleteItem($id)
+//    {
+//        $delete_item = Shopping_cart::where('id',$id)->first();
+//        $delete_item->delete();
+//        return back();
+//    }
+
     public function showLoginForm()
     {
         return view('login');
     }
+
+    public function showRegisterForm()
+    {
+        return view('register');
+    }
+
+    public function createAccount(Request $request){
+        User::create([
+           'name' => $request->name,
+           'family_name' => $request->family_name,
+           'national'=> $request->national,
+           'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'password'=>Hash::make($request->password),
+            'repeat_password'=>Hash::make($request->repeat_password)
+        ]);
+        return redirect()->route('client_home');
+    }
+
 }
