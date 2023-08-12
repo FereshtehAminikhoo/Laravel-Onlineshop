@@ -191,7 +191,7 @@
                     aria-expanded="false">
                 <span class="name">فرشته امینی خو</span>
                 <span>
-                        <img alt="Profile Picture" src="img/profiles/l-1.jpg"/>
+                        <img alt="Profile Picture" src="/img/profiles/l-1.jpg"/>
                     </span>
             </button>
 

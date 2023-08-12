@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Payment_order;
+use App\Models\Payment_order_item;
 use App\Models\Product;
 use App\Models\Shopping_cart;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -93,12 +96,12 @@ class ClientController extends Controller
         return view('shopping_cart',compact('categories','items', 'shoppingCartItems'));
     }
 
-//    public function deleteItem($id)
-//    {
-//        $delete_item = Shopping_cart::where('id',$id)->first();
-//        $delete_item->delete();
-//        return back();
-//    }
+    public function deleteItem($id)
+    {
+        $delete_item = Shopping_cart::where('id',$id)->first();
+        $delete_item->delete();
+        return back();
+    }
 
     public function showLoginForm()
     {
@@ -121,6 +124,33 @@ class ClientController extends Controller
             'repeat_password'=>Hash::make($request->repeat_password)
         ]);
         return redirect()->route('client_home');
+    }
+
+    public function finalizePayment()
+    {
+        $userId=auth()->user()->id;
+        $totalPrice=0;
+        $cartItems=Shopping_cart::where('user_id',$userId)->get();
+        foreach ($cartItems as $cartItem){
+            $totalPrice+=$cartItem->count*$cartItem->product->price;
+        }
+        $order=Payment_order::create([
+            'user_id'=>$userId,
+            'total_price'=>$totalPrice,
+            'status'=>'paid',
+            'payment_date'=>Carbon::now()->toDateString()
+        ]);
+
+        foreach ($cartItems as $cartItem){
+            Payment_order_item::create([
+                'order_id'=>$order->id,
+                'product_id'=>$cartItem->product->id,
+                'count'=>$cartItem->count,
+                'price'=>$cartItem->product->price
+            ]);
+            $cartItem->delete();
+        }
+        return back();
     }
 
 }

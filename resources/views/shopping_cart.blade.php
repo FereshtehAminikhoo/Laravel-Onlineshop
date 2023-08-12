@@ -125,8 +125,8 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 <ul class="list-inline">
-                                    <li class="list-inline-item"><a href=""><i class="material-icons">close</i></a></li>
-                                    <li class="list-inline-item"><img src="{{asset($item->product->file)}}" class="img-fluid"></li>
+                                    <li class="list-inline-item"><a href="{{route('delete_item',['id'=>$item->id])}}"><i class="material-icons">close</i></a></li>
+                                    <li class="list-inline-item"><img src="{{asset($item->product->file)}}" class="img-fluid" /></li>
                                     <li class="list-inline-item"><p>{{$item->product->title}} </p>
                                         <!-- <div class="border-bottom mt-2" style="width: 400px;"></div> -->
                                     <li class="list-inline-item"><span>{{$item->count}} عدد</span></li>
@@ -145,14 +145,13 @@
                             <span class="total_price_box">مبلغ کل (<span>{{count($shoppingCartItems)}}</span> کالا)</span>
                             @php
                                 $total_price = 0;
-
                             @endphp
                             @foreach($items as $item)
                                 @php
                                     $total_price += $item->product->price * $item->count;
                                 @endphp
-                            <span class="price_details_box">{{$total_price}}</span>
                             @endforeach
+                            <span class="price_details_box">{{number_format($total_price)}}</span>
                         </div>
                     </div>
                     <div class="row">
@@ -165,8 +164,8 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 mt-3 pt-2 text-center pay_detail_box">
                             <h5>مبلغ قابل پرداخت:</h5>
-                            <span>25,390,000 تومان</span><br>
-                            <a href="#" class="btn btn-lg"><i class="fa fa-shopping-basket" aria-hidden="true"></i>ادامه ثبت سفارش</a>
+                            <span>{{number_format($total_price)}}  تومان</span><br>
+                            <a href="{{route('finalize_payment')}}" class="btn btn-lg"><i class="fa fa-shopping-basket" aria-hidden="true"></i>پرداخت</a>
                             <p> کالا های موجود در سبد شما ثبت و رزرو نشده اند، برای ثبت سفارش مراحل بعدی را تکمیل کنید.<i class="material-icons">info_outline</i></p>
                         </div>
                     </div>

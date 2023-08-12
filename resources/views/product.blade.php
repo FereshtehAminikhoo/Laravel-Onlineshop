@@ -147,7 +147,7 @@
                                 <li class="list-inline-item">
                                     <span>برند</span>
                                     :
-                                    <span>{{$product->brand->name}}</span>
+                                    <span>@if($product->brand_id!=null) {{$product->brand->name}} @else نامشخص  @endif</span>
                                 </li>
                                 <li class="list-inline-item pr-3">
                                     <span>دسته بندی</span>
@@ -159,7 +159,6 @@
                         <div class="box_color mt-1 text-center text-md-left">
                             <ul class="list-inline">
                                 <li class="list-inline-item title"> رنگ :<span class="box_check1">{{$product->color}}</span></li>
-
                             </ul>
                         </div>
                         <br>
