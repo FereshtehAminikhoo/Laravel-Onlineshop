@@ -22,6 +22,7 @@ class ClientController extends Controller
         }else{
             $userId=null;
         }
+        $user = auth()->user()->name;
         $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
 
         $categories = Category::whereNull('parent_id')->get();
@@ -36,7 +37,7 @@ class ClientController extends Controller
         $kids_mode = Product::where('category_id', 12)->get();
         $men_cloths = Product::where('category_id', 22)->get();
         $brands = Brand::all();
-        return view('index', compact('categories', 'mobiles', 'laptops', 'kids_mode','shoppingCartItems', 'men_cloths', 'brands'));
+        return view('index', compact('categories', 'mobiles', 'laptops', 'kids_mode','shoppingCartItems', 'men_cloths', 'brands', 'user'));
     }
 
     public function showCategory($id, Request $request)
@@ -154,13 +155,21 @@ class ClientController extends Controller
     }
 
     public function paymentOrder(){
+        $userId=auth()->user()->id;
+        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
+        $categories=Category::whereNull('parent_id')->get();
+
         $cartOrderItems = Payment_order::all();
-        return view('payment_order', compact('cartOrderItems'));
+        return view('payment_order', compact('cartOrderItems', 'categories', 'shoppingCartItems'));
     }
 
-    public function paymentOrderItem(){
-        $orderItems = Payment_order_item::all();
-        return view('payment_order_item', compact('orderItems'));
+    public function paymentOrderItem($id){
+        $userId=auth()->user()->id;
+        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
+        $categories=Category::whereNull('parent_id')->get();
+
+        $orderItems = Payment_order_item::where('order_id',$id)->get();
+        return view('payment_order_item', compact('orderItems','categories', 'shoppingCartItems'));
     }
 
 }

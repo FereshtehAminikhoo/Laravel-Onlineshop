@@ -17,7 +17,7 @@ Route::get('/shopping_cart','App\Http\Controllers\ClientController@showShoppingC
 Route::get('/shopping_cart/delete_item/{id}', 'App\Http\Controllers\ClientController@deleteItem')->name('delete_item');
 Route::get('/shopping_cart/finalize_payment', 'App\Http\Controllers\ClientController@finalizePayment')->name('finalize_payment');
 Route::get('/payment_order/list', 'App\Http\Controllers\ClientController@paymentOrder')->name('payment_order');
-Route::get('/payment_order_item/list', 'App\Http\Controllers\ClientController@paymentOrderItem')->name('payment_order_item');
+Route::get('/payment_order_item/list/{id}', 'App\Http\Controllers\ClientController@paymentOrderItem')->name('payment_order_item');
 
 //admin routes
 Route::get('/admin',function (){
