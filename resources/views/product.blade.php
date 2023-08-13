@@ -200,7 +200,7 @@
                         </div>
                         <div class="border_bottom mt-3"></div>
                         <div class="box_price mt-2 text-center text-md-left">
-                            <p>{{$product->price}} تومان</p>
+                            <p>{{number_format($product->price)}} تومان</p>
                             @if(auth()->check())
                                 <a href="{{route('add_product_to_cart',['id'=>$product->id])}}" class="btn btn_custom2 shadow-sm"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
                             @else

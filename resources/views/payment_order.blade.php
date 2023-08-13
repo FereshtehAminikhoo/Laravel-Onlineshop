@@ -1,5 +1,10 @@
 @extends('main')
 @section('navbar')
+    <script>
+        function showMustLoginAlert(){
+            alert("برای افزودن محصول به سبد خرید، ابتدا وارد حساب کاربری خود شوید!")
+        }
+    </script>
     <nav class="navbar navbar-expand-md navbar-light navbar_custom">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu1">
             <span class="navbar-toggler-icon"></span>
@@ -9,24 +14,18 @@
             <ul class="navbar-nav">
                 @foreach($categories as $category1)
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-white dropdown-toggle"
-                           data-toggle="dropdown">{{$category1->name}}</a>
-                        <div class="dropdown-menu dropdown-menu_custom1 shadow-sm rounded-bottom border-0"
-                             id="custom-main-dropdown-menu">
+                        <a href="#" class="nav-link text-white dropdown-toggle" data-toggle="dropdown">{{$category1->name}}</a>
+                        <div class="dropdown-menu dropdown-menu_custom1 shadow-sm rounded-bottom border-0" id="custom-main-dropdown-menu">
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12 col-md-3">
                                         @foreach($category1->childs as $item)
                                             <div class="top_link">
-                                                <a href="{{route('show_category',['id'=>$item->id])}}"><i
-                                                        class="material-icons">keyboard_arrow_left</i>{{$item->name}}
-                                                </a>
+                                                <a href="{{route('show_category',['id'=>$item->id])}}"><i class="material-icons">keyboard_arrow_left</i>{{$item->name}}</a>
                                             </div>
                                             <ul class="list-group custom-list-group">
                                                 @foreach($item->childs as $child)
-                                                    <li class="list-group-item border-0 px-0"><a
-                                                            href="{{route('show_category',['id'=>$child->id])}}">{{$child->name}}</a>
-                                                    </li>
+                                                    <li class="list-group-item border-0 px-0"><a href="{{route('show_category',['id'=>$child->id])}}">{{$child->name}}</a></li>
                                                 @endforeach
                                             </ul>
                                         @endforeach
@@ -110,93 +109,64 @@
     </div>
 @endsection
 @section('content')
-    <div class="container-fluid mt-5 pr-5 header_shopping_cart">
+    <div class="container-fluid mt-4">
         <div class="row">
-            <div class="col-md-12">
-                <h4>سبد خرید</h4>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid shopping_cart_details">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="bg-white mt-4 shadow-sm border shopping_cart_box">
-                @foreach($items as $item)
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item"><a href="{{route('delete_item',['id'=>$item->id])}}"><i class="material-icons">close</i></a></li>
-                                    <li class="list-inline-item"><img src="{{asset($item->product->file)}}" class="img-fluid" /></li>
-                                    <li class="list-inline-item"><p>{{$item->product->title}} </p>
-                                        <!-- <div class="border-bottom mt-2" style="width: 400px;"></div> -->
-                                    <li class="list-inline-item"><span>{{$item->count}} عدد</span></li>
-                                    <li class="list-inline-item"><span>{{number_format($item->product->price)}}</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="border-bottom"></div>
-                @endforeach
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="bg-white mt-2 shadow-sm border details_box">
+            <div class="col-md-9 col-sm-10 m-auto">
+                <div class="bg-white shadow-sm border payment_order">
                     <div class="row">
-                        <div class="col-md-12 mt-3">
-                            <span class="total_price_box">مبلغ کل (<span>{{count($shoppingCartItems)}}</span> کالا)</span>
-                            @php
-                                $total_price = 0;
-                            @endphp
-                            @foreach($items as $item)
-                                @php
-                                    $total_price += $item->product->price * $item->count;
-                                @endphp
-                            @endforeach
-                            <span class="price_details_box">{{number_format($total_price)}}</span>
+                        <div class="col-md-12 mt-3 pt-3 header_payment_order">
+                            <h4>لیست سفارشات</h4>
                         </div>
                     </div>
+                    <div class="border_bottom mt-3 mx-auto" style="width: 93%;"></div>
                     <div class="row">
-                        <div class="col-md-12 mt-3">
-                            <span class="total_price_box">هزینه ارسال</span>
-                            <span class="price_details_box">وابسته به آدرس <i class="material-icons icon_details_box">info_outline</i></span>
-                        </div>
-                    </div>
-                    <div class="border-bottom mt-3 mx-auto" style="width: 90%;"></div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 mt-3 pt-2 text-center pay_detail_box">
-                            <h5>مبلغ قابل پرداخت:</h5>
-                            <span>{{number_format($total_price)}}  تومان</span><br>
-                            <a href="{{route('finalize_payment')}}" class="btn btn-lg"><i class="fa fa-shopping-basket" aria-hidden="true"></i>پرداخت</a>
-                            <p> کالا های موجود در سبد شما ثبت و رزرو نشده اند، برای ثبت سفارش مراحل بعدی را تکمیل کنید.<i class="material-icons">info_outline</i></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white shadow-sm border rounded mt-3 about_sending">
-                    <div class="row">
-                        <div class="col-md-12 mt-3 info_sending_products">
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><img src="img/serv1.svg"></li>
-                                <span>هفت روز ضمانت تعویض</span>
-                            </ul>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><img src="img/serv2.svg"></li>
-                                <span>پرداخت در محل با کارت بانکی</span>
-                            </ul>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><img src="img/serv4.svg"></li>
-                                <span>تحویل اکسپرس</span>
-                            </ul>
+                        <div class="col-md-12 mt-3 pt-3 table_payment_order">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">ردیف</th>
+                                    <th scope="col">وضعیت</th>
+                                    <th scope="col">تاریخ پرداخت</th>
+                                    <th scope="col">قیمت کل</th>
+                                    <th scope="col">عملیات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    @foreach($cartOrderItems as $cartOrderItem)
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$cartOrderItem->status}}</td>
+                                    <td>{{$cartOrderItems->payment_date}}</td>
+                                    <td>{{number_format($cartOrderItem->totalPrice)}}</td>
+                                    <td>
+                                        <a class="btn-info p-2 rounded" href="{{route('payment_order_item')}}">نمایش لیست آیتم ها</a>
+                                    </td>
+                                    @endforeach
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--start jump-to-top-->
     <div class="container-fluid text-center box_jump_top">
         <a href="#" id="back2Top" class="d-block jump_top pt-2 pb-2">
             <i class="material-icons">
@@ -205,6 +175,8 @@
             <span>برگشت به بالا</span>
         </a>
     </div>
+
+
 @endsection
 @section('footer')
     <div class="container-fluid pt-2 bg_footer">
@@ -277,7 +249,7 @@
                         </form>
                         <p class="pt-4">آنلاین شاپ را در شبکه های اجتماعی دنبال کنید:</p>
                         <div class="social_instagram text-center">
-                            <a href="#"><img src="img/instagrams.svg" class="px-1">اینستاگرام آنلاین شاپ</a>
+                            <a href="#"><img src="/img/instagrams.svg" class="px-1">اینستاگرام آنلاین شاپ</a>
                         </div>
                     </div>
                 </div>
@@ -293,8 +265,8 @@
                     </ul>
                 </div>
                 <div class="footer_box_left mr-auto">
-                    <a href="#"><img src="img/bazar.png"></a>
-                    <a href="#"><img src="img/sibapp.png"></a>
+                    <a href="#"><img src="/img/bazar.png"></a>
+                    <a href="#"><img src="/img/sibapp.png"></a>
                 </div>
             </div>
         </div>
@@ -323,5 +295,6 @@
             <p>استفاده از مطالب فروشگاه اینترنتی آنلاین شاپ فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین شاپ) می باشد.</p>
         </div>
     </footer>
+
 
 @endsection

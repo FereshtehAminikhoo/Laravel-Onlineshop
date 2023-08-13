@@ -16,6 +16,8 @@ Route::get('/product/{id}/add_to_cart','App\Http\Controllers\ClientController@ad
 Route::get('/shopping_cart','App\Http\Controllers\ClientController@showShoppingCart')->name('show_shopping_cart');
 Route::get('/shopping_cart/delete_item/{id}', 'App\Http\Controllers\ClientController@deleteItem')->name('delete_item');
 Route::get('/shopping_cart/finalize_payment', 'App\Http\Controllers\ClientController@finalizePayment')->name('finalize_payment');
+Route::get('/payment_order/list', 'App\Http\Controllers\ClientController@paymentOrder')->name('payment_order');
+Route::get('/payment_order_item/list', 'App\Http\Controllers\ClientController@paymentOrderItem')->name('payment_order_item');
 
 //admin routes
 Route::get('/admin',function (){
@@ -63,6 +65,8 @@ Route::get('admin/brand/list', 'App\Http\Controllers\BrandController@list')->nam
 Route::get('admin/brand/{id}/edit', 'App\Http\Controllers\BrandController@edit')->name('brand_edit');
 Route::post('admin/brand/{id}/update', 'App\Http\Controllers\BrandController@update')->name('brand_update');
 Route::get('admin/brand/{id}/delete', 'App\Http\Controllers\BrandController@delete')->name('brand_delete');
+Route::get('admin/payment_order/list', 'App\Http\Controllers\Payment_orderController@list')->name('payment_order_list');
+Route::get('admin/payment_order_item/list/{id}', 'App\Http\Controllers\Payment_order_itemController@list')->name('payment_order_item_list');
 //auth routes
 Auth::routes();
 

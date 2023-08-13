@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dore jQuery</title>
+    <title>پنل ادمین</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" href="/font/iconsmind-s/css/iconsminds.css"/>
@@ -229,6 +229,11 @@
                    </a>
                 </li>
                 <li>
+                    <a href="#pagination">
+                        <i class="simple-icon-notebook"></i>سفارشات
+                    </a>
+                </li>
+                <li>
                     <a href="#applications">
                         <i class="iconsminds-air-balloon-1"></i> کاربران
                     </a>
@@ -280,6 +285,13 @@
                 <li>
                     <a href="/admin/brand/create">
                         <i class="simple-icon-check"></i> <span class="d-inline-block">افزودن برند</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="list-unstyled" data-link="pagination">
+                <li>
+                    <a href="/admin/payment_order/list">
+                        <i class="simple-icon-list"></i> <span class="d-inline-block">لیست سفارشات</span>
                     </a>
                 </li>
             </ul>

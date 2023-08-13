@@ -394,10 +394,10 @@ a {
 }
 /*start footer*/
 .border_bottom{
-    border-bottom: 1px solid #f2f2f2;  
+    border-bottom: 1px solid #f2f2f2;
 }
 .border_bottom1{
-    border-bottom: 1px solid #b0bec5;  
+    border-bottom: 1px solid #b0bec5;
 }
 .bg_footer{
     background: #eceff1;
@@ -1003,7 +1003,7 @@ input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
 }
 .product_guarantee span{
     color: #6f6f6f;
-    font-size: 14px;    
+    font-size: 14px;
 }
 .product_guarantee i{
     vertical-align: -7px;
@@ -1017,7 +1017,7 @@ input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
 }
 .seller_rate{
     padding-right: 40px;
-    font-size: 12px;  
+    font-size: 12px;
 }
 .box_price{
     color: #fb3449;
@@ -1166,7 +1166,7 @@ input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
         display: block;
         width: 100%;
         overflow-x: auto;
-    } 
+    }
 }
 .table_suppliers p{
     border-bottom: 1px dashed #1ca2bd;
@@ -1655,6 +1655,26 @@ color: #6f6f6f;
     color: #919191;
     font-size: 15px;
 }
+/*start payment-order*/
+.payment_order{
+    border-radius: 8px;
+}
+.header_payment_order h4{
+    margin-right: 35px;
+    color: #212529;
+    border-bottom: 2px solid #EC430F;
+    line-height: 55px;
+    width: fit-content;
+}
+.table_payment_order{
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.table_payment_order a:hover{
+    background-color: #00bfd6;
+}
+
+
 
 
 

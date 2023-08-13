@@ -917,7 +917,7 @@
                                             </div>
                                             <div class="card-footer panel-footer-custom">
                                                 <h4>{{$mobile->title}}</h4>
-                                                <p>{{$mobile->price}} تومان</p>
+                                                <p>{{number_format($mobile->price)}} تومان</p>
                                             </div>
                                         </div>
                                     </a>
@@ -1048,7 +1048,7 @@
                                             </div>
                                             <div class="card-footer panel-footer-custom">
                                                 <h4>{{$laptop->title}}</h4>
-                                                <p>{{$laptop->price}} تومان </p>
+                                                <p>{{number_format($laptop->price)}} تومان </p>
                                             </div>
                                         </div>
                                     </a>
@@ -1100,7 +1100,7 @@
                                             </div>
                                             <div class="card-footer panel-footer-custom">
                                                 <h4>{{$kid_mode->title}}</h4>
-                                                <p>{{$kid_mode->price}} تومان</p>
+                                                <p>{{number_format($kid_mode->price)}} تومان</p>
                                             </div>
                                         </div>
                                     </a>
@@ -1146,7 +1146,7 @@
                                             </div>
                                             <div class="card-footer panel-footer-custom">
                                                 <h4>{{$men_cloth->title}}</h4>
-                                                <p>{{$men_cloth->price}} تومان</p>
+                                                <p>{{number_format($men_cloth->price)}} تومان</p>
                                             </div>
                                         </div>
                                     </a>

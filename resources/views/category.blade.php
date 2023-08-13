@@ -241,19 +241,10 @@
                     <ul class="nav nav-pills bg-white py-2" id="pills-tab">
                         <i class="material-icons pt-1 sort">sort</i>
                         <span class="pt-1 text_sort px-1">مرتب سازی بر اساس :</span>
-                        {{--<li class="nav-item">
-                            <a href="#pills-1" class="nav-link active" id="pills-home-tab" data-toggle="pill">پربازدید ترین</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#pills-2" class="nav-link" id="pills-home-tab1" data-toggle="pill">محبوب ترین</a>
-                        </li>--}}
                         <li class="nav-item">
                             <a href="{{route('show_category',['id'=>$category->id,'time_sort'=>'on'])}}"
                                class="nav-link" {{--id="pills-home-tab2"--}} {{--data-toggle="pill"--}}>جدیدترین</a>
                         </li>
-                        {{--<li class="nav-item">
-                            <a href="#pills-4" class="nav-link" id="pills-home-tab3" data-toggle="pill">پرفروش ترین</a>
-                        </li>--}}
                         <li class="nav-item">
                             <a href="{{route('show_category',['id'=>$category->id,'price_sort'=>'arzan'])}}"
                                class="nav-link">ارزان ترین</a>
@@ -276,7 +267,7 @@
                                                 </a>
                                                 <div class="text_product pt-2">
                                                     <p class="title">{{$view_product->title}}</p>
-                                                    <p class="price">{{$view_product->price}} تومان</p>
+                                                    <p class="price">{{number_format($view_product->price)}} تومان</p>
                                                 </div>
                                             </div>
                                             <div class="box_rate">

@@ -153,4 +153,14 @@ class ClientController extends Controller
         return back();
     }
 
+    public function paymentOrder(){
+        $cartOrderItems = Payment_order::all();
+        return view('payment_order', compact('cartOrderItems'));
+    }
+
+    public function paymentOrderItem(){
+        $orderItems = Payment_order_item::all();
+        return view('payment_order_item', compact('orderItems'));
+    }
+
 }
