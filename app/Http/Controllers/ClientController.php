@@ -17,38 +17,33 @@ class ClientController extends Controller
 {
     public function index()
     {
-        if (auth()->check()){
-            $userId=auth()->user()->id;
-        }else{
-            $userId=null;
+        if (auth()->check()) {
+            $userId = auth()->user()->id;
+            $user = auth()->user()->name;
+        } else {
+            $userId = null;
+            $user = '';
         }
-        $user = auth()->user()->name;
-        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
-
+        $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
         $categories = Category::whereNull('parent_id')->get();
         $mobileCategories = Category::where('parent_id', 5)->pluck('id')->toArray();//[17,18,19]
-        //dd($mobileCategories);
         $mobiles = Product::whereIn('category_id', $mobileCategories)->get();
-        //$mobiles = Product::whereIn('category_id',[17,18,19])->get();
-        //$products=Product::where('category_id',20)->get();
-        //[20,30,29,25]
-        //$products = Product::whereIn('category_id', [20,30,29,25])->get();
         $laptops = Product::where('category_id', 6)->get();
         $kids_mode = Product::where('category_id', 12)->get();
         $men_cloths = Product::where('category_id', 22)->get();
         $brands = Brand::all();
-        return view('index', compact('categories', 'mobiles', 'laptops', 'kids_mode','shoppingCartItems', 'men_cloths', 'brands', 'user'));
+        return view('index', compact('categories', 'mobiles', 'laptops', 'kids_mode', 'shoppingCartItems', 'men_cloths', 'brands', 'user'));
     }
 
     public function showCategory($id, Request $request)
     {
         //dd($request);
-        if (auth()->check()){
-            $userId=auth()->user()->id;
-        }else{
-            $userId=null;
+        if (auth()->check()) {
+            $userId = auth()->user()->id;
+        } else {
+            $userId = null;
         }
-        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
+        $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
 
         $categories = Category::whereNull('parent_id')->get();
         $category = Category::where('id', $id)->first();
@@ -65,12 +60,12 @@ class ClientController extends Controller
 
     public function showProduct($id)
     {
-        if (auth()->check()){
-            $userId=auth()->user()->id;
-        }else{
-            $userId=null;
+        if (auth()->check()) {
+            $userId = auth()->user()->id;
+        } else {
+            $userId = null;
         }
-        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
+        $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
 
         $product = Product::where('id', $id)->first();
         $categories = Category::whereNull('parent_id')->get();
@@ -80,26 +75,26 @@ class ClientController extends Controller
     public function addToCart($id)
     {
         Shopping_cart::create([
-            'product_id'=>$id,
-            'user_id'=>auth()->user()->id,
-            'count'=>1
+            'product_id' => $id,
+            'user_id' => auth()->user()->id,
+            'count' => 1
         ]);
         return back();
     }
 
     public function showShoppingCart()
     {
-        $userId=auth()->user()->id;
-        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
+        $userId = auth()->user()->id;
+        $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
 
-        $categories=Category::whereNull('parent_id')->get();
-        $items=Shopping_cart::where('user_id',auth()->user()->id)->get();
-        return view('shopping_cart',compact('categories','items', 'shoppingCartItems'));
+        $categories = Category::whereNull('parent_id')->get();
+        $items = Shopping_cart::where('user_id', auth()->user()->id)->get();
+        return view('shopping_cart', compact('categories', 'items', 'shoppingCartItems'));
     }
 
     public function deleteItem($id)
     {
-        $delete_item = Shopping_cart::where('id',$id)->first();
+        $delete_item = Shopping_cart::where('id', $id)->first();
         $delete_item->delete();
         return back();
     }
@@ -114,62 +109,68 @@ class ClientController extends Controller
         return view('register');
     }
 
-    public function createAccount(Request $request){
-        User::create([
-           'name' => $request->name,
-           'family_name' => $request->family_name,
-           'national'=> $request->national,
-           'phone_number' => $request->phone_number,
+    public function createAccount(Request $request)
+    {
+        $user=User::create([
+            'name' => $request->name,
+            'family_name' => $request->family_name,
+            'national_code' => $request->national,
+            'mobile' => $request->phone_number,
             'email' => $request->email,
-            'password'=>Hash::make($request->password),
-            'repeat_password'=>Hash::make($request->repeat_password)
+            'password' => Hash::make($request->password),
+            'repeat_password' => Hash::make($request->repeat_password)
         ]);
+        if ($user){
+            auth()->loginUsingId($user->id);
+        }
         return redirect()->route('client_home');
     }
 
     public function finalizePayment()
     {
-        $userId=auth()->user()->id;
-        $totalPrice=0;
-        $cartItems=Shopping_cart::where('user_id',$userId)->get();
-        foreach ($cartItems as $cartItem){
-            $totalPrice+=$cartItem->count*$cartItem->product->price;
+        $userId = auth()->user()->id;
+        $totalPrice = 0;
+        $cartItems = Shopping_cart::where('user_id', $userId)->get();
+        foreach ($cartItems as $cartItem) {
+            $totalPrice += $cartItem->count * $cartItem->product->price;
         }
-        $order=Payment_order::create([
-            'user_id'=>$userId,
-            'total_price'=>$totalPrice,
-            'status'=>'paid',
-            'payment_date'=>Carbon::now()->toDateString()
+        $order = Payment_order::create([
+            'user_id' => $userId,
+            'total_price' => $totalPrice,
+            'status' => 'paid',
+            'payment_date' => Carbon::now()->toDateString()
         ]);
 
-        foreach ($cartItems as $cartItem){
+        foreach ($cartItems as $cartItem) {
             Payment_order_item::create([
-                'order_id'=>$order->id,
-                'product_id'=>$cartItem->product->id,
-                'count'=>$cartItem->count,
-                'price'=>$cartItem->product->price
+                'order_id' => $order->id,
+                'product_id' => $cartItem->product->id,
+                'count' => $cartItem->count,
+                'price' => $cartItem->product->price
             ]);
             $cartItem->delete();
         }
         return back();
     }
 
-    public function paymentOrder(){
-        $userId=auth()->user()->id;
-        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
-        $categories=Category::whereNull('parent_id')->get();
+    public function paymentOrder()
+    {
+        $userId = auth()->user()->id;
+        $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
+        $categories = Category::whereNull('parent_id')->get();
 
-        $cartOrderItems = Payment_order::all();
+        $cartOrderItems = Payment_order::where('user_id',$userId)->get();
         return view('payment_order', compact('cartOrderItems', 'categories', 'shoppingCartItems'));
     }
 
-    public function paymentOrderItem($id){
-        $userId=auth()->user()->id;
-        $shoppingCartItems=Shopping_cart::where('user_id',$userId)->get();
-        $categories=Category::whereNull('parent_id')->get();
+    public function paymentOrderItem($id)
+    {
+        $userId = auth()->user()->id;
+        $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
+        $categories = Category::whereNull('parent_id')->get();
 
-        $orderItems = Payment_order_item::where('order_id',$id)->get();
-        return view('payment_order_item', compact('orderItems','categories', 'shoppingCartItems'));
+        $orderItems = Payment_order_item::where('order_id', $id)->get();
+        return view('payment_order_item', compact('orderItems', 'categories', 'shoppingCartItems'));
     }
 
 }

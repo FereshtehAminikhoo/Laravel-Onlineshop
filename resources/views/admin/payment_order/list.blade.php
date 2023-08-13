@@ -20,7 +20,7 @@
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
                             <td>{{$cartItem->user_id}}</td>
-                            <td>{{$cartItem->status}}</td>
+                            <td>{{$cartItem->stat}}</td>
                             <td>{{$cartItem->jalali_date}}</td>
                             <td>{{number_format($cartItem->total_price)}}</td>
                             <td>

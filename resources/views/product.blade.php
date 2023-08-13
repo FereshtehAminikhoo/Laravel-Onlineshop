@@ -2,7 +2,13 @@
 @section('navbar')
     <script>
         function showMustLoginAlert(){
-            alert("برای افزودن محصول به سبد خرید، ابتدا وارد حساب کاربری خود شوید!")
+            $.toast({
+                heading: 'خطا',
+                text: 'برای افزودن محصول به سبد خرید، ابتدا وارد حساب کاربری خود شوید!',
+                icon: 'error',
+                loader: true,
+                loaderBg: '#9EC600'
+            })
         }
     </script>
     <nav class="navbar navbar-expand-md navbar-light navbar_custom">
