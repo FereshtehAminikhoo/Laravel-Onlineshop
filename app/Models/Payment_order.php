@@ -27,4 +27,22 @@ class Payment_order extends Model
         $newDateTime = explode(' ', $dateTime);
         return $newDateTime['0'];
     }
+
+    public function getStatAttribute()
+    {
+        switch ($this->status) {
+            case 'canceled':
+                return 'باطل شده';
+            case 'completed':
+                return 'کامل شده';
+            case 'delivery_waiting':
+                return 'در انتظار تحویل';
+            case 'sending':
+                return 'در حال ارسال';
+            case 'paid':
+                return 'پرداخت شده';
+            default:
+                return '';
+        }
+    }
 }

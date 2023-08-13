@@ -132,15 +132,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
                                     @foreach($orderItems as $orderItem)
-                                    <th scope="row">{{$loop->iteration}}</th>
+                                        <tr>
+
+                                        <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$orderItem->order_id}}</td>
                                     <td>{{$orderItem->product_id}}</td>
                                     <td>{{$orderItem->count}}</td>
                                     <td>{{number_format($orderItem->price)}}</td>
+                                        </tr>
+
                                     @endforeach
-                                </tr>
                                 </tbody>
                             </table>
                         </div>

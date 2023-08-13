@@ -132,17 +132,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
                                     @foreach($cartOrderItems as $cartOrderItem)
-                                    <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$cartOrderItem->status}}</td>
+                                        <tr>
+
+                                        <th scope="row">{{$loop->iteration}}</th>
+                                    <td>{{$cartOrderItem->stat}}</td>
                                     <td>{{$cartOrderItem->jalali_date}}</td>
-                                    <td>{{number_format($cartOrderItem->totalPrice)}}</td>
+                                    <td>{{number_format($cartOrderItem->total_price)}}</td>
                                     <td>
                                         <a class="btn-info p-2 rounded" href="{{route('payment_order_item',['id'=>$cartOrderItem->id])}}">نمایش لیست آیتم ها</a>
                                     </td>
+                                        </tr>
+
                                     @endforeach
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
