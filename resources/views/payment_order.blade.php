@@ -136,7 +136,7 @@
                                     @foreach($cartOrderItems as $cartOrderItem)
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$cartOrderItem->status}}</td>
-                                    <td>{{$cartOrderItems->payment_date}}</td>
+                                    <td>{{$cartOrderItems->jalali_date}}</td>
                                     <td>{{number_format($cartOrderItem->totalPrice)}}</td>
                                     <td>
                                         <a class="btn-info p-2 rounded" href="{{route('payment_order_item')}}">نمایش لیست آیتم ها</a>

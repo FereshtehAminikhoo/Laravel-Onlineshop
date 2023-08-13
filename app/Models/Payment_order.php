@@ -18,6 +18,13 @@ class Payment_order extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function getJalaliDateAttribute()
+    {
+        $dateTime = verta($this->payment_date);
+        $newDateTime = explode(' ', $dateTime);
+        return $newDateTime['0'];
     }
 }

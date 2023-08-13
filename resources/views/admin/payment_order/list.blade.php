@@ -21,7 +21,7 @@
                             <th scope="row">{{$loop->iteration}}</th>
                             <td>{{$cartItem->user_id}}</td>
                             <td>{{$cartItem->status}}</td>
-                            <td>{{$cartItem->payment_date}}</td>
+                            <td>{{$cartItem->jalali_date}}</td>
                             <td>{{number_format($cartItem->total_price)}}</td>
                             <td>
                                 <a class="btn-info p-2 rounded-pill" href="{{route('payment_order_item_list',['id'=>$cartItem->id])}}">نمایش لیست آیتم ها</a>
