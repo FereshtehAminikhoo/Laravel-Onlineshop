@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/slider/cssfull.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/jquery.toast.min.css">
 
 
     <link rel="stylesheet" href="/css/slider/css1.css" media="screen and (max-width:1365px)">
@@ -28,6 +29,7 @@
     <script src="/js/slider2.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/custom.js"></script>
+    <script src="/js/jquery.toast.min.js"></script>
 </head>
 <body>
 
