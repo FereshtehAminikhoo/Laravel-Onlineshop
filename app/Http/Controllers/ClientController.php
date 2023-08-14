@@ -40,8 +40,10 @@ class ClientController extends Controller
         //dd($request);
         if (auth()->check()) {
             $userId = auth()->user()->id;
+            $user = auth()->user()->name;
         } else {
             $userId = null;
+            $user = '';
         }
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
 
@@ -55,21 +57,23 @@ class ClientController extends Controller
             $productCategories = Category::where('parent_id', $id)->pluck('id')->toArray();
             $viewProducts = Product::whereIn('category_id', $productCategories)->newest($request->time_sort)->price($request->price_sort)->get();
         }
-        return view('category', compact('category', 'categories', 'viewProducts', 'shoppingCartItems'));
+        return view('category', compact('category', 'categories', 'viewProducts', 'shoppingCartItems', 'user'));
     }
 
     public function showProduct($id)
     {
         if (auth()->check()) {
             $userId = auth()->user()->id;
+            $user= auth()->user()->name;
         } else {
             $userId = null;
+            $user = '';
         }
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
 
         $product = Product::where('id', $id)->first();
         $categories = Category::whereNull('parent_id')->get();
-        return view('product', compact('product', 'categories', 'shoppingCartItems'));
+        return view('product', compact('product', 'categories', 'shoppingCartItems', 'user'));
     }
 
     public function addToCart($id)
@@ -84,12 +88,17 @@ class ClientController extends Controller
 
     public function showShoppingCart()
     {
+        if (auth()->check()) {
+            $user= auth()->user()->name;
+        } else {
+            $user = '';
+        }
         $userId = auth()->user()->id;
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
 
         $categories = Category::whereNull('parent_id')->get();
         $items = Shopping_cart::where('user_id', auth()->user()->id)->get();
-        return view('shopping_cart', compact('categories', 'items', 'shoppingCartItems'));
+        return view('shopping_cart', compact('categories', 'items', 'shoppingCartItems', 'user'));
     }
 
     public function deleteItem($id)
@@ -123,7 +132,7 @@ class ClientController extends Controller
         if ($user){
             auth()->loginUsingId($user->id);
         }
-        return redirect()->route('client_home');
+        return redirect()->route('client_login');
     }
 
     public function finalizePayment()
@@ -155,22 +164,53 @@ class ClientController extends Controller
 
     public function paymentOrder()
     {
+        if (auth()->check()) {
+            $user= auth()->user()->name;
+        } else {
+            $user = '';
+        }
         $userId = auth()->user()->id;
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
         $categories = Category::whereNull('parent_id')->get();
 
         $cartOrderItems = Payment_order::where('user_id',$userId)->get();
-        return view('payment_order', compact('cartOrderItems', 'categories', 'shoppingCartItems'));
+        return view('payment_order', compact('cartOrderItems', 'categories', 'shoppingCartItems', 'user'));
     }
 
     public function paymentOrderItem($id)
     {
+        if (auth()->check()) {
+            $user= auth()->user()->name;
+        } else {
+            $user = '';
+        }
         $userId = auth()->user()->id;
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
         $categories = Category::whereNull('parent_id')->get();
 
         $orderItems = Payment_order_item::where('order_id', $id)->get();
-        return view('payment_order_item', compact('orderItems', 'categories', 'shoppingCartItems'));
+        return view('payment_order_item', compact('orderItems', 'categories', 'shoppingCartItems', 'user'));
+    }
+
+    public function contactUs(){
+        if (auth()->check()) {
+            $userId = auth()->user()->id;
+            $user = auth()->user()->name;
+        } else {
+            $userId = null;
+            $user = '';
+        }
+        $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
+        $categories = Category::whereNull('parent_id')->get();
+        return view('contact_us', compact('user', 'shoppingCartItems', 'categories'));
+    }
+
+    public function forgetPassword(){
+        return view('forget_password');
+    }
+
+    public function resetPassword(){
+        return view('reset_password');
     }
 
 }

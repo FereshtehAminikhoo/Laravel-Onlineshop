@@ -37,7 +37,11 @@
                     <input type="text" name="description" class="form-control" />
                     <span>توضیحات</span>
                 </label>
-                <button class="btn btn-primary mt-5" type="submit">افزودن</button>
+                <label class="form-group has-float-label">
+                    <input type="text" name="stock" class="form-control" />
+                    <span>موجودی کالا</span>
+                </label>
+                <button class="btn btn-primary mt-3" type="submit">افزودن</button>
             </form>
         </div>
     </div>

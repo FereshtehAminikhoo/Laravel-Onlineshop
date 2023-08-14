@@ -18,6 +18,9 @@ Route::get('/shopping_cart/delete_item/{id}', 'App\Http\Controllers\ClientContro
 Route::get('/shopping_cart/finalize_payment', 'App\Http\Controllers\ClientController@finalizePayment')->name('finalize_payment');
 Route::get('/payment_order/list', 'App\Http\Controllers\ClientController@paymentOrder')->name('payment_order');
 Route::get('/payment_order_item/list/{id}', 'App\Http\Controllers\ClientController@paymentOrderItem')->name('payment_order_item');
+Route::get('contact_us', 'App\Http\Controllers\ClientController@contactUs')->name('contact_us');
+Route::get('forget_password', 'App\Http\Controllers\ClientController@forgetPassword')->name('forget_password');
+Route::post('reset_password', 'App\Http\Controllers\ClientController@resetPassword')->name('reset_password');
 
 //admin routes
 Route::get('/admin',function (){

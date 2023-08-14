@@ -70,7 +70,19 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                    <a class="btn btn-outline-danger text-light" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" style="line-height: 40px!important;">
+                            {{$user}}
+                        </a>
+                        <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
+                             aria-labelledby="dropdownMenuButton">
+                            <div class="text-left">
+                                <a class="btn text-light" href="{{route('payment_order')}}">لیست سفارشات</a><br>
+                                <a class="btn text-light" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <div class="dropdown">
                         <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -86,17 +98,6 @@
                                 <li class="list-inline-item">کاربر جدید هستید؟</li>
                                 <li class="list-inline-item"><a href="{{route('client_register')}}">ثبت نام</a></li>
                             </ul>
-                            <div class="dropdown-divider"></div>
-                            <div class="text-left">
-                                <button onclick="location.href='http://www.google.com'"
-                                        class="dropdown-item border-0 dropdown-item_custom" type="button"><i
-                                        class="material-icons profile_link pr-2">person</i>پروفایل
-                                </button>
-                                <button onclick="location.href='http://www.google.com'"
-                                        class="dropdown-item border-0 dropdown-item_custom" type="button"><i
-                                        class="material-icons profile_link pr-2">assignment_turned_in</i>پیگیری سفارش
-                                </button>
-                            </div>
                         </div>
                     </div>
                 @endif
@@ -493,42 +494,38 @@
         </a>
     </div>
 
-    <!--start footer-->
-
-
 
 
 
 
 
     <script>
-        $(document).ready(function () {
-            $('#back2Top').click(function () {
-                $("html,body").animate({scrollTop: 0}, "slow")
+        $(document).ready(function(){
+            $('#back2Top').click(function(){
+                $("html,body").animate({scrollTop:0}, "slow")
                 return false;
             });
         })
     </script>
-
     <script>
         $(document).ready()
         {
-            var owl = $('.owl-carousel');
+            var owl=$('.owl-carousel');
             owl.owlCarousel({
-                items: 4,
-                rtl: true,
-                margin: 25,
-                nav: true,
-                loop: true,
-                responsive: {
-                    0: {
-                        items: 1
+                items:4,
+                rtl:true,
+                margin:25,
+                nav:true,
+                loop:true,
+                responsive:{
+                    0:{
+                        items:1
                     },
-                    600: {
-                        items: 2
+                    600:{
+                        items:2
                     },
-                    1000: {
-                        items: 4
+                    1000:{
+                        items:4
                     }
                 }
             });

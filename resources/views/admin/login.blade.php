@@ -24,19 +24,17 @@
                 <div class="card auth-card">
                     <div class="position-relative image-side ">
 
-                        <p class=" text-white h2">MAGIC IS IN THE DETAILS</p>
+                        <p class=" text-white h2">پنل ادمین</p>
 
                         <p class="white mb-0">
-                            Please use your credentials to login.
-                            <br>If you are not a member, please
-                            <a href="#" class="white">register</a>.
+                            برای ورود به پنل ادمین لطفا اطلاعات حساب کاربری خود را وارد نمایید
                         </p>
                     </div>
                     <div class="form-side">
                         <a href="/admin">
                             <span class="logo-single"></span>
                         </a>
-                        <h6 class="mb-4">Login</h6>
+                        <h6 class="mb-4">ورود</h6>
                         <form action="{{ route('login') }}" method="post">
                             @csrf
                             <label class="form-group has-float-label mb-4">
@@ -46,25 +44,25 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span>E-mail</span>
+                                <span>ایمیل</span>
                             </label>
 
                             <label class="form-group has-float-label mb-4">
-                                <input class="form-control @error('password') is-invalid @enderror" type="text" name="password" placeholder="" required />
+                                <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="" required />
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <span>Password</span>
+                                <span>رمز عبور</span>
                             </label>
                             <div class="d-flex justify-content-between align-items-center">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        Forget password?
+                                      رمز عبور خود را فراموش کرده ام
                                     </a>
                                 @endif
-                                <button class="btn btn-primary btn-lg btn-shadow" type="submit">LOGIN</button>
+                                <button class="btn btn-primary btn-lg btn-shadow" type="submit">ورود به پنل ادمین</button>
                             </div>
                         </form>
                     </div>

@@ -26,7 +26,8 @@ class ProductController extends Controller
             'file'=>'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
             'price' => $request->price,
             'color' => $request->color,
-            'description' => $request->description
+            'description' => $request->description,
+            'stock_product' => $request->stock
         ]);
         return redirect()->route('product_list');
     }
@@ -57,7 +58,8 @@ class ProductController extends Controller
             'file' => 'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
             'price' => $request->price,
             'color' => $request->color,
-            'description' => $request->description
+            'description' => $request->description,
+            'stock_product' => $request->stock
         ]);
         return redirect()->route('product_list');
     }

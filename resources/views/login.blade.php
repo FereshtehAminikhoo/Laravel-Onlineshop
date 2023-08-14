@@ -1,5 +1,4 @@
 @extends('main')
-
 @section('content')
 <div class="container-fluid mt-5 bg-white shadow-sm border border-bottom-0 header_login">
     <div class="row">
@@ -45,7 +44,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white icon_form rounded-right"><i class="material-icons">lock_open</i></span>
                             </div>
-                            <input type="text" class="form-control rounded-left input_form0 @error('password') is-invalid @enderror" placeholder="رمز عبور خود را وارد نمایید" name="password" required />
+                            <input type="password" class="form-control rounded-left input_form0 @error('password') is-invalid @enderror" placeholder="رمز عبور خود را وارد نمایید" name="password" required />
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -53,7 +52,6 @@
                             @enderror
                         </div>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="col-md-12 mt-3 text-center">

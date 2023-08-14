@@ -1,16 +1,5 @@
 @extends('main')
 @section('navbar')
-    <script>
-        function showMustLoginAlert(){
-            $.toast({
-                heading: 'خطا',
-                text: 'برای افزودن محصول به سبد خرید، ابتدا وارد حساب کاربری خود شوید!',
-                icon: 'error',
-                loader: true,
-                loaderBg: '#9EC600'
-            })
-        }
-    </script>
     <nav class="navbar navbar-expand-md navbar-light navbar_custom">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu1">
             <span class="navbar-toggler-icon"></span>
@@ -75,7 +64,19 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                    <a class="btn btn-outline-danger text-light" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false" style="line-height: 40px!important;">
+                            {{$user}}
+                        </a>
+                        <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
+                             aria-labelledby="dropdownMenuButton">
+                            <div class="text-left">
+                                <a class="btn text-light" href="{{route('payment_order')}}">لیست سفارشات</a><br>
+                                <a class="btn text-light" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <div class="dropdown">
                         <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -91,17 +92,6 @@
                                 <li class="list-inline-item">کاربر جدید هستید؟</li>
                                 <li class="list-inline-item"><a href="{{route('client_register')}}">ثبت نام</a></li>
                             </ul>
-                            <div class="dropdown-divider"></div>
-                            <div class="text-left">
-                                <button onclick="location.href='http://www.google.com'"
-                                        class="dropdown-item border-0 dropdown-item_custom" type="button"><i
-                                        class="material-icons profile_link pr-2">person</i>پروفایل
-                                </button>
-                                <button onclick="location.href='http://www.google.com'"
-                                        class="dropdown-item border-0 dropdown-item_custom" type="button"><i
-                                        class="material-icons profile_link pr-2">assignment_turned_in</i>پیگیری سفارش
-                                </button>
-                            </div>
                         </div>
                     </div>
                 @endif
@@ -164,13 +154,13 @@
                         </div>
                         <div class="box_color mt-1 text-center text-md-left">
                             <ul class="list-inline">
-                                <li class="list-inline-item title"> رنگ :<span class="box_check1">{{$product->color}}</span></li>
+                                <li class="list-inline-item title"> رنگ : <span class="box_check1">{{$product->color}}</span></li>
                             </ul>
                         </div>
                         <br>
                         <div class="product_guarantee mt-3 text-center text-md-left">
                             <i class="material-icons">offline_pin</i>
-                            <span>سرویس ویژه آنلاین شاپ : 7 روز تضمین تعویض کالا</span>
+                            <span>موجودی کالا : {{$product->stock_product}} عدد</span>
                         </div>
                         <div class="border_bottom mt-3"></div>
                         <div class="product_guarantee mt-2 text-center text-md-left">
@@ -217,15 +207,6 @@
                     <div class="col-md-4 product_params bg-transparent mt-2 text-center text-md-left">
                         <div class="bxo1">
                             <a href="#" class="btn btn-white"><i class="material-icons">store</i>7 فروشنده / گارانتی این کالا</a>
-                        </div>
-                        <div class="box2 mt-4">
-                            <span>ویژگی های محصول</span>
-                            <ul>
-                                <li>قابلیت پخش موسیقی : دارد</li>
-                                <li>قابلیت کنترل صدا و موزیک : ندارد</li>
-                                <li>راهنمایی صوتی : ندارد</li>
-                                <li><a href="#">موارد بیشتر +</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1236,6 +1217,53 @@
         </a>
     </div>
 
+
+
+
+    <script>
+        function showMustLoginAlert(){
+            $.toast({
+                heading: 'خطا',
+                text: 'برای افزودن محصول به سبد خرید، ابتدا وارد حساب کاربری خود شوید!',
+                icon: 'error',
+                loader: true,
+                loaderBg: '#9EC600'
+            })
+        }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#back2Top').click(function(){
+                $("html,body").animate({scrollTop:0}, "slow")
+                return false;
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready()
+        {
+            var owl=$('.owl-carousel');
+            owl.owlCarousel({
+                items:4,
+                rtl:true,
+                margin:25,
+                nav:true,
+                loop:true,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    600:{
+                        items:2
+                    },
+                    1000:{
+                        items:4
+                    }
+                }
+            });
+        }
+    </script>
 @endsection
 @section('footer')
     <div class="container-fluid pt-2 bg_footer">

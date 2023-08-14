@@ -1201,99 +1201,8 @@
     </a>
 </div>
 
-<!--start footer-->
-<div class="container-fluid pt-2 bg_footer">
-    <div class="row">
-        <div class="col-md-3 col-6 serv text-center">
-            <img src="img/serv3.svg">
-            <p>ضمانت اصل بودن کالا</p>
-        </div>
-        <div class="col-md-3 col-6 serv text-center">
-            <img src="img/serv4.svg">
-            <p>هفت روز ضمانت بازگشت</p>
-        </div>
-        <div class="col-md-3 col-6 serv text-center">
-            <img src="img/serv2.svg ">
-            <p>پرداخت درب منزل</p>
-        </div>
-        <div class="col-md-3 col-6 serv text-center">
-            <img src="img/serv5.svg">
-            <p>پشتیبانی همه روزه</p>
-        </div>
-    </div>
-    <div class="container border-bottom"></div>
-    <div class="container border-bottom pb-3 pt-3">
-        <div class="row">
-            <div class="col">
-                <div class="box_footer_links">
-                    <p><a href="#">راهنمایی خرید از آنلاین شاپ</a></p>
-                    <ul>
-                        <li><a href="#">نحوه ثبت سفارش</a></li>
-                        <li><a href="#">رویه ارسال سفارش</a></li>
-                        <li><a href="#">شیوه های پرداخت</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <div class="box_footer_links">
-                    <p><a href="#">خدمات مشتریان</a></p>
-                    <ul>
-                        <li><a href="#">پاسخ به پرسش های متداول</a></li>
-                        <li><a href="#">رویه های بازگردانی کالا</a></li>
-                        <li><a href="#">شرایط استفاده</a></li>
-                        <li><a href="#">حریم خصوصی</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <div class="box_footer_links">
-                    <p><a href="#">با آنلاین شاپ</a></p>
-                    <ul>
-                        <li><a href="#">فروش در آنلاین شاپ</a></li>
-                        <li><a href="#">همکاری با سازمان ها</a></li>
-                        <li><a href="#">فرصت های شغلی</a></li>
-                        <li><a href="#">تماس با آنلاین شاپ</a></li>
-                        <li><a href="#">درباره آنلاین شاپ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col mt-3 mt-sm-0">
-                <div class="footer_form">
-                    <p>از تخفیف ها و جدیدترین های آنلاین شاپ باخبر شوید:</p>
-                    <form>
-                        <div class="input-group text-right">
-                            <input type="text" class="form-control rounded-right bg-white input_search" placeholder="آدرس ایمیل خود را وارد کنید">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text bg-info border-0 custom-input-group-text rounded-left">
-                                    <a href="#" class="text-white">ارسال</a>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <p class="pt-4">آنلاین شاپ را در شبکه های اجتماعی دنبال کنید:</p>
-                    <div class="social_instagram text-center">
-                        <a href="#"><img src="img/instagrams.svg" class="px-1">اینستاگرام آنلاین شاپ</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container pt-3">
-        <div class="row">
-            <div class="footer_box_right ml-auto">
-                <p>هفت روز هفته، 24 ساعت شبانه روز پاسخگوی شما هستیم</p>
-                <ul class="list-inline">
-                    <li class="list-inline-item">شماره تماس: <a href="#">61930000 - 021، 95119095 - 021</a></li>
-                    <li class="list-inline-item">آدرس ایمیل: <a href="#">info@digikala.com</a></li>
-                </ul>
-            </div>
-            <div class="footer_box_left mr-auto">
-                <a href="#"><img src="img/bazar.png"></a>
-                <a href="#"><img src="img/sibapp.png"></a>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 
 
 
@@ -1393,6 +1302,98 @@
 
 @endsection
 @section('footer')
+    <div class="container-fluid pt-2 bg_footer">
+        <div class="row">
+            <div class="col-md-3 col-6 serv text-center">
+                <img src="img/serv3.svg">
+                <p>ضمانت اصل بودن کالا</p>
+            </div>
+            <div class="col-md-3 col-6 serv text-center">
+                <img src="img/serv4.svg">
+                <p>هفت روز ضمانت بازگشت</p>
+            </div>
+            <div class="col-md-3 col-6 serv text-center">
+                <img src="img/serv2.svg ">
+                <p>پرداخت درب منزل</p>
+            </div>
+            <div class="col-md-3 col-6 serv text-center">
+                <img src="img/serv5.svg">
+                <p>پشتیبانی همه روزه</p>
+            </div>
+        </div>
+        <div class="container border-bottom"></div>
+        <div class="container border-bottom pb-3 pt-3">
+            <div class="row">
+                <div class="col">
+                    <div class="box_footer_links">
+                        <p><a href="#">راهنمایی خرید از آنلاین شاپ</a></p>
+                        <ul>
+                            <li><a href="#">نحوه ثبت سفارش</a></li>
+                            <li><a href="#">رویه ارسال سفارش</a></li>
+                            <li><a href="#">شیوه های پرداخت</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box_footer_links">
+                        <p><a href="#">خدمات مشتریان</a></p>
+                        <ul>
+                            <li><a href="#">پاسخ به پرسش های متداول</a></li>
+                            <li><a href="#">رویه های بازگردانی کالا</a></li>
+                            <li><a href="#">شرایط استفاده</a></li>
+                            <li><a href="#">حریم خصوصی</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="box_footer_links">
+                        <p><a href="#">با آنلاین شاپ</a></p>
+                        <ul>
+                            <li><a href="#">فروش در آنلاین شاپ</a></li>
+                            <li><a href="#">همکاری با سازمان ها</a></li>
+                            <li><a href="#">فرصت های شغلی</a></li>
+                            <li><a href="{{route('contact_us')}}">تماس با آنلاین شاپ</a></li>
+                            <li><a href="#">درباره آنلاین شاپ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col mt-3 mt-sm-0">
+                    <div class="footer_form">
+                        <p>از تخفیف ها و جدیدترین های آنلاین شاپ باخبر شوید:</p>
+                        <form>
+                            <div class="input-group text-right">
+                                <input type="text" class="form-control rounded-right bg-white input_search" placeholder="آدرس ایمیل خود را وارد کنید">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text bg-info border-0 custom-input-group-text rounded-left">
+                                        <a href="#" class="text-white">ارسال</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <p class="pt-4">آنلاین شاپ را در شبکه های اجتماعی دنبال کنید:</p>
+                        <div class="social_instagram text-center">
+                            <a href="#"><img src="img/instagrams.svg" class="px-1">اینستاگرام آنلاین شاپ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pt-3">
+            <div class="row">
+                <div class="footer_box_right ml-auto">
+                    <p>هفت روز هفته، 24 ساعت شبانه روز پاسخگوی شما هستیم</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">شماره تماس: <a href="#">61930000 - 021، 95119095 - 021</a></li>
+                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@digikala.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer_box_left mr-auto">
+                    <a href="#"><img src="img/bazar.png"></a>
+                    <a href="#"><img src="img/sibapp.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="container-fluid py-4">
         <div class="row pr-5 pt-5 offset-1">
             <div class="col-lg-6 col-12 footer_digi">

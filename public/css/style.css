@@ -1673,6 +1673,86 @@ color: #6f6f6f;
 .table_payment_order a:hover{
     background-color: #00bfd6;
 }
+/*start contact-us*/
+.contact_us{
+    border-radius: 15px;
+}
+.contact_us .header_contact_us h4{
+    margin-right: 20px;
+    border-bottom: 2px solid #ec430f;
+    line-height: 55px;
+    width: fit-content;
+}
+.contact_us .text_contact_us{
+    margin-right: 20px;
+    color: #4b4a4a;
+    font-size: 16px;
+}
+.contact_us_form1 label ,.contact_us_form2 label{
+    padding-right: 10px;
+    color: #4b4a4a;
+}
+.contact_us_form1{
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.contact_us_form2{
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.textarea_contact_us{
+    padding-right: 31px;
+    padding-left: 31px;
+    border-radius: 7px;
+}
+.textarea_contact_us label{
+    padding-right: 8px;
+    color: #4b4a4a;
+}
+.upload_contact_us .card_upload_contact_us{
+    border-radius: 6px;
+    border: 1px dashed #CED4DA;
+}
+.upload_contact_us p{
+    color: #4b4a4a;
+    padding-top: 12px;
+    padding-bottom: 35px;
+    margin-top: 10px;
+}
+.card_upload_contact_us label{
+    border: 1px solid #DC3545;
+    color: #DC3545;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 9px;
+}
+.card_upload_contact_us label:hover{
+    background: #DC3545;
+    color: #fff;
+}
+.card_upload_contact_us input{
+    display: none;
+    visibility: none;
+}
+.card_upload_contact_us .icon_upload{
+    vertical-align: -7px;
+    padding-left: 6px;
+}
+.submit_contact_us{
+    padding-right: 30px;
+    display: flex;
+    justify-content: end;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+.submit_contact_us .btn_contact_us{
+    color: #fff;
+    background: #bbbaba;
+    border-radius: 6px;
+}
+.submit_contact_us .btn_contact_us:hover{
+    background: #888888;
+}
 
 
 

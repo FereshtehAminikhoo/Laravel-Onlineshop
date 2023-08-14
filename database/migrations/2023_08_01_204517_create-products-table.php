@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
            $table->integer('price');
            $table->string('color');
            $table->string('description');
+           $table->integer('stock_product');
            $table->unsignedInteger('category_id')->nullable();
            $table->unsignedInteger('brand_id')->nullable();
            $table->timestamps();

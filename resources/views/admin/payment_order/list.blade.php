@@ -8,7 +8,7 @@
                     <thead>
                     <tr>
                         <th scope="col">ردیف</th>
-                        <th scope="col">(id) کاربر</th>
+                        <th scope="col">نام کاربر</th>
                         <th scope="col">وضعیت</th>
                         <th scope="col">تاریخ پرداخت</th>
                         <th scope="col">قیمت کل</th>
@@ -19,7 +19,7 @@
                     @foreach($cartItems as $cartItem)
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
-                            <td>{{$cartItem->user_id}}</td>
+                            <td>{{$cartItem->user->name}}</td>
                             <td>{{$cartItem->stat}}</td>
                             <td>{{$cartItem->jalali_date}}</td>
                             <td>{{number_format($cartItem->total_price)}}</td>

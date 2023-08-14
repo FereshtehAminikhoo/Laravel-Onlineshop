@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-    <div class="col-lg-10 col-md-12 mb-4">
+    <div class="col-lg-12 col-md-12 mb-4">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">محصولات</h5>
@@ -15,6 +15,7 @@
                         <th scope="col">قیمت</th>
                         <th scope="col">رنگ</th>
                         <th scope="col">توضیحات</th>
+                        <th scope="col">موجودی کالا</th>
                         <th scope="col">عملیات</th>
                     </tr>
                     </thead>
@@ -46,6 +47,7 @@
                             <td>{{number_format($product->price)}}</td>
                             <td>{{$product->color}}</td>
                             <td>{{$product->description}}</td>
+                            <td>{{$product->stock_product}}</td>
                             <td>
                                 <a class="fa fa-edit fa-2x" href="{{route('product_edit',['id'=>$product->id])}}"></a>
 

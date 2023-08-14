@@ -38,6 +38,10 @@
                     <input type="text" name="description" value="{{$product->description}}" class="form-control" />
                     <span>توضیحات</span>
                 </label>
+                <label class="form-group has-float-label">
+                    <input type="text" name="stock" value="{{$product->stock_product}} class="form-control" />
+                    <span>موجودی کالا</span>
+                </label>
                 <button class="btn btn-primary" type="submit">ثبت</button>
             </form>
         </div>

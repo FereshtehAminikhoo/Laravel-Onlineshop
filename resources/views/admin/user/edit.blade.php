@@ -11,6 +11,18 @@
                     <span>نام</span>
                 </label>
                 <label class="form-group has-float-label">
+                    <input name="family_name" type="text" class="form-control value="{{$user->family_name}}" />
+                    <span>نام خانوادگی</span>
+                </label>
+                <label class="form-group has-float-label">
+                    <input name="national_code" type="number" class="form-control value="{{$user->national_code}}" />
+                    <span>کدملی</span>
+                </label>
+                <label class="form-group has-float-label">
+                    <input name="mobile" type="number" class="form-control value="{{$user->mobile}}" />
+                    <span>شماره تماس</span>
+                </label>
+                <label class="form-group has-float-label">
                     <input name="email" type="email" class="form-control" value="{{$user->email}}" />
                     <span>ایمیل</span>
                 </label>

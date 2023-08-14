@@ -8,8 +8,8 @@
                     <thead>
                     <tr>
                         <th scope="col">ردیف</th>
-                        <th scope="col">(id) سفارش</th>
-                        <th scope="col">(id) محصول</th>
+                        <th scope="col">کد سفارش</th>
+                        <th scope="col">نام محصول</th>
                         <th scope="col">تعداد</th>
                         <th scope="col">قیمت</th>
                     </tr>
@@ -19,7 +19,7 @@
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
                             <td>{{$orderItem->order_id}}</td>
-                            <td>{{$orderItem->product_id}}</td>
+                            <td>{{$orderItem->product->title}}</td>
                             <td>{{$orderItem->count}}</td>
                             <td>{{number_format($orderItem->price)}}</td>
                         </tr>

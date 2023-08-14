@@ -9,6 +9,9 @@
                 <tr>
                     <th scope="col">ردیف</th>
                     <th scope="col">نام</th>
+                    <th scope="col">نام خانوادگی</th>
+                    <th scope="col">کدملی</th>
+                    <th scope="col">شماره تماس</th>
                     <th scope="col">ایمیل</th>
                     <th scope="col">رمزعبور</th>
                     <th scope="col">عملیات</th>
@@ -19,6 +22,9 @@
                     <tr>
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$user->name}}</td>
+                        <td>{{$user->family_name}}</td>
+                        <td>{{$user->national_code}}</td>
+                        <td>{{$user->mobile}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->password}}</td>
                         <td>

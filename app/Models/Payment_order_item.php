@@ -14,4 +14,8 @@ class Payment_order_item extends Model
         'count',
         'price'
     ];
+
+    public function product(){
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }
