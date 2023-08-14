@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/css/vendor/bootstrap-float-label.min.css" />
     <link rel="stylesheet" href="/css/vendor/bootstrap-tagsinput.css" />
     <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/jquery.toast.min.css">
 </head>
 
 <body id="app-container" class="menu-default show-spinner">
@@ -335,6 +336,19 @@
 <script src="/js/vendor/glide.min.js"></script>
 <script src="/js/dore.script.js"></script>
 <script src="/js/scripts.js"></script>
+<script src="/js/jquery.toast.min.js"></script>
+<script>
+    @if(session()->has('notification'))
+    $.toast({
+        heading: "{{session()->get('notification')['heading']}}",
+        text: "{{session()->get('notification')['text']}}",
+        icon: "{{session()->get('notification')['icon']}}",
+        loader: true,
+        loaderBg: '#9EC600',
+        hideAfter: 5000
+    })
+    @endif
+</script>
 </body>
 
 </html>

@@ -7,13 +7,19 @@
             <form method="post" action="{{route('brand_update',['id'=>$brand->id])}}" enctype="multipart/form-data">
                 @csrf
                 <label class="form-group has-float-label">
-                    <input  type="text" name="name" value="{{$brand->name}}" class="form-control" />
+                    <input type="text" name="name" value="{{old('name',$brand->name)}}" class="form-control" />
                     <span>نام</span>
                 </label>
+                @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <label>تصویر</label>
                 <br>
                 <img src="{{asset($brand->file)}}" width="25px" height="25px"/>
                 <input type="file" name="file">
+                @error('file')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <br>
                 <button class="btn btn-primary mt-5" type="submit">ثبت</button>
             </form>

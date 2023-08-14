@@ -17,7 +17,17 @@ class ProductController extends Controller
     }
 
     public function save(Request $request){
-        $file=$request->file('file');;
+        $request->validate([
+            'title' => 'required|string|min:5',
+            'category_id' => 'required|numeric|exists:categories,id',
+            'brand_id' => 'required|numeric|exists:brands,id',
+            'file'=>'required|max:10000|mimes:png,jpeg,jpg,webp',
+            'price' => 'required|numeric|gt:0',
+            'color' => 'required|string',
+            'description' => 'nullable|string',
+            'stock' => 'required|numeric|gt:0',
+        ]);
+        $file=$request->file('file');
         $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
         Product::create([
             'title' => $request->title,
@@ -48,19 +58,52 @@ class ProductController extends Controller
 
     public function update($id, Request $request)
     {
-        $product = Product::where('id',$id)->first();
-        $file=$request->file('file');;
-        $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
-        $product->update([
-            'title' => $request->title,
-            'category_id' => $request->category_id,
-            'brand_id' => $request->brand_id,
-            'file' => 'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
-            'price' => $request->price,
-            'color' => $request->color,
-            'description' => $request->description,
-            'stock_product' => $request->stock
-        ]);
+        if ($request->has('file')){
+            $request->validate([
+                'title' => 'required|string|min:5',
+                'category_id' => 'required|numeric|exists:categories,id',
+                'brand_id' => 'required|numeric|exists:brands,id',
+                'file'=>'required|max:10000|mimes:png,jpeg,jpg,webp',
+                'price' => 'required|numeric|gt:0',
+                'color' => 'required|string',
+                'description' => 'nullable|string',
+                'stock' => 'required|numeric|gt:0',
+            ]);
+            $product = Product::where('id',$id)->first();
+            $file=$request->file('file');
+            $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
+            $product->update([
+                'title' => $request->title,
+                'category_id' => $request->category_id,
+                'brand_id' => $request->brand_id,
+                'file' => 'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
+                'price' => $request->price,
+                'color' => $request->color,
+                'description' => $request->description,
+                'stock_product' => $request->stock
+            ]);
+        }else{
+            $request->validate([
+                'title' => 'required|string|min:5',
+                'category_id' => 'required|numeric|exists:categories,id',
+                'brand_id' => 'required|numeric|exists:brands,id',
+                'price' => 'required|numeric|gt:0',
+                'color' => 'required|string',
+                'description' => 'nullable|string',
+                'stock' => 'required|numeric|gt:0',
+            ]);
+            $product = Product::where('id',$id)->first();
+            $product->update([
+                'title' => $request->title,
+                'category_id' => $request->category_id,
+                'brand_id' => $request->brand_id,
+                'price' => $request->price,
+                'color' => $request->color,
+                'description' => $request->description,
+                'stock_product' => $request->stock
+            ]);
+        }
+
         return redirect()->route('product_list');
     }
 

@@ -16,6 +16,10 @@ class CategoryController extends Controller
     }
     public function save(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|min:5',
+            'file'=>'required|max:10000|mimes:png,jpeg,jpg,webp'
+        ]);
         $file=$request->file('file');;
         $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
         Category::create([
@@ -41,14 +45,31 @@ class CategoryController extends Controller
 
     public function update($id, Request $request)
     {
-        $file=$request->file('file');;
-        $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
-        $category = Category::where('id', $id)->first();
-        $category->update([
-            'name' => $request->name,
-            'parent_id'=>$request->parent_id,
-            'file'=>'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
-        ]);
+
+        if($request->has('file')){
+            $request->validate([
+                'name' => 'required|string|min:5',
+                'file'=>'required|max:10000|mimes:png,jpeg,jpg,webp'
+            ]);
+            $file=$request->file('file');;
+            $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
+            $category = Category::where('id', $id)->first();
+            $category->update([
+                'name' => $request->name,
+                'parent_id'=>$request->parent_id,
+                'file'=>'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
+            ]);
+        }else{
+            $request->validate([
+                'name' => 'required|string|min:5',
+            ]);
+            $category = Category::where('id', $id)->first();
+            $category->update([
+                'name' => $request->name,
+                'parent_id'=>$request->parent_id,
+            ]);
+        }
+
         return redirect()->route('category_list');
     }
 
