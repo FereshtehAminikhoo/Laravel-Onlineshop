@@ -22,11 +22,14 @@ class CategoryController extends Controller
         ]);
         $file=$request->file('file');;
         $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
-        Category::create([
+        $insert = Category::create([
             'name' => $request->name,
             'parent_id'=>$request->parent_id,
             'file'=>'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension()
         ]);
+        if ($insert){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }
         return redirect()->route('category_list');
     }
 
@@ -54,7 +57,7 @@ class CategoryController extends Controller
             $file=$request->file('file');;
             $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
             $category = Category::where('id', $id)->first();
-            $category->update([
+            $update = $category->update([
                 'name' => $request->name,
                 'parent_id'=>$request->parent_id,
                 'file'=>'uploads/'.Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension(),
@@ -64,10 +67,15 @@ class CategoryController extends Controller
                 'name' => 'required|string|min:5',
             ]);
             $category = Category::where('id', $id)->first();
-            $category->update([
+            $update = $category->update([
                 'name' => $request->name,
                 'parent_id'=>$request->parent_id,
             ]);
+        }
+        if ($update){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }else{
+            session()->flash('notification',['heading'=>'ناموفق','text'=>'عملیات انجام نشد.','icon'=>'error']);
         }
 
         return redirect()->route('category_list');

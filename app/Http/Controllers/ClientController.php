@@ -132,7 +132,7 @@ class ClientController extends Controller
         if ($user){
             auth()->loginUsingId($user->id);
         }
-        return redirect()->route('client_login');
+        return redirect()->route('client_home');
     }
 
     public function finalizePayment()
@@ -149,6 +149,9 @@ class ClientController extends Controller
             'status' => 'paid',
             'payment_date' => Carbon::now()->toDateString()
         ]);
+        if ($order){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }
 
         foreach ($cartItems as $cartItem) {
             Payment_order_item::create([

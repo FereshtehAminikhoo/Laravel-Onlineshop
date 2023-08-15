@@ -10,7 +10,15 @@ class UserController extends Controller
 {
     public function save(Request $request)
     {
-        User::create([
+        $request->validate([
+            'name' => 'required|string|min:3',
+            'family_name' => 'required|string|min:4',
+            'national_code' => 'required|numeric|max:10',
+            'mobile' => 'required|numeric|max:11',
+            'email' => 'required|string',
+            'password' => 'required|numeric|min:6'
+        ]);
+        $insert = User::create([
             'name'=>$request->name,
             'family_name'=>$request->family_name,
             'national_code' =>$request->national_code,
@@ -18,6 +26,9 @@ class UserController extends Controller
             'email'=>$request->email,
             'password'=>Hash::make($request->password)
         ]);
+        if ($insert){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }
         return redirect()->route('user_list');
     }
 
@@ -35,12 +46,28 @@ class UserController extends Controller
 
     public function update($id, Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|min:3',
+            'family_name' => 'required|string|min:4',
+            'national_code' => 'required|numeric|max:10',
+            'mobile' => 'required|numeric|max:11',
+            'email' => 'required|string',
+            'password' => 'required|numeric|min:6'
+        ]);
         $user = User::where('id',$id) -> first();
-        $user -> update([
+        $update = $user -> update([
             'name' => $request->name,
             'email' => $request->email,
+            'family_name'=>$request->family_name,
+            'national_code' =>$request->national_code,
+            'mobile'=>$request->mobile,
             'password'=>Hash::make($request->password)
         ]);
+        if ($update){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }else{
+            session()->flash('notification',['heading'=>'ناموفق','text'=>'عملیات انجام نشد.','icon'=>'error']);
+        }
         return redirect() -> route('user_list');
     }
 

@@ -29,7 +29,7 @@ class ProductController extends Controller
         ]);
         $file=$request->file('file');
         $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
-        Product::create([
+        $insert = Product::create([
             'title' => $request->title,
             'category_id' => $request->category_id,
             'brand_id' => $request->brand_id,
@@ -39,6 +39,9 @@ class ProductController extends Controller
             'description' => $request->description,
             'stock_product' => $request->stock
         ]);
+        if ($insert){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }
         return redirect()->route('product_list');
     }
 
@@ -72,7 +75,7 @@ class ProductController extends Controller
             $product = Product::where('id',$id)->first();
             $file=$request->file('file');
             $file->move('uploads',Carbon::now()->timestamp.'.'.$file->getClientOriginalExtension());
-            $product->update([
+            $update = $product->update([
                 'title' => $request->title,
                 'category_id' => $request->category_id,
                 'brand_id' => $request->brand_id,
@@ -93,7 +96,7 @@ class ProductController extends Controller
                 'stock' => 'required|numeric|gt:0',
             ]);
             $product = Product::where('id',$id)->first();
-            $product->update([
+            $update = $product->update([
                 'title' => $request->title,
                 'category_id' => $request->category_id,
                 'brand_id' => $request->brand_id,
@@ -102,6 +105,11 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'stock_product' => $request->stock
             ]);
+        }
+        if ($update){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }else{
+            session()->flash('notification',['heading'=>'ناموفق','text'=>'عملیات انجام نشد.','icon'=>'error']);
         }
 
         return redirect()->route('product_list');

@@ -15,7 +15,7 @@ class BrandController extends Controller
 
     public function save(Request $request){
         $request->validate([
-            'name' => 'required|string|min:5',
+            'name' => 'required|string|min:3',
             'file'=>'required|max:10000|mimes:png,jpeg,jpg,webp'
         ]);
 
@@ -44,7 +44,7 @@ class BrandController extends Controller
     public function update($id, Request $request){
         if($request->has('file')){
             $request->validate([
-                'name' => 'required|string|min:5',
+                'name' => 'required|string|min:3',
                 'file'=>'required|max:10000|mimes:png,jpeg,jpg,webp'
             ]);
             $file=$request->file('file');
@@ -56,7 +56,7 @@ class BrandController extends Controller
             ]);
         }else{
             $request->validate([
-                'name' => 'required|string|min:5',
+                'name' => 'required|string|min:3',
             ]);
             $brand = Brand::where('id', $id)->first();
             $update=$brand -> update([

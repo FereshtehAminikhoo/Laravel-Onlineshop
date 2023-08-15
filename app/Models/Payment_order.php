@@ -45,4 +45,9 @@ class Payment_order extends Model
                 return '';
         }
     }
+
+    /*public function getFullNameAttribute()
+    {
+        return $this->name . ' ' . $this->family_name;
+    }*/
 }
