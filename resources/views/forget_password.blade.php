@@ -13,20 +13,21 @@
                     <div class="border-bottom mt-3"></div>
                     <div class="row">
                         <div class="col-md-12 col-lg-12 mt-3 form_forget_pass">
-                            <form>
+                            <form method="get" action="{{route('forget_password_send_email')}}">
                                 <p>برای بازیابی رمز عبور، ایمیل خود را وارد نمایید</p>
                                 <div class="col-md-12 email_forget_pass">
                                     <label>ایمیل</label>
-                                    <input type="email" class="form-control" placeholder="ایمیل خود را وارد نمایید">
+                                    <input type="email" name="email" class="form-control" placeholder="ایمیل خود را وارد نمایید">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mt-4 pt-2 mb-5 pb-3 text-center btn_forget_pass">
+                                        <button type="submit" class="btn btn_forget">بازیابی رمز عبور</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 mt-4 pt-2 mb-5 pb-3 text-center btn_forget_pass">
-                            <a href="#" class="btn btn_forget">بازیابی رمز عبور</a>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="shaodw-sm border footer_check_email">
                     <div class="row">

@@ -73,6 +73,9 @@ Route::get('admin/payment_order_item/list/{id}', 'App\Http\Controllers\PaymentOr
 //auth routes
 Auth::routes();
 
+Route::get('/password/reset','App\Http\Controllers\Auth\ForgotPasswordController@showResetPasswordForm')->name('password_reset_form');
+Route::get('/password/reset/verify/code','App\Http\Controllers\Auth\ForgotPasswordController@sendVerifyCode')->name('forget_password_send_email');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //auth user routes

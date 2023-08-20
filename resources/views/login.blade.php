@@ -32,11 +32,10 @@
                 <div class="row">
                     <div class="col-md-12 mt-2 d-flex justify-content-between align-items-center">
                         <label class="">رمز عبور</label>
-                        @if (Route::has('password.request'))
-                            <a class="btn btn-link mb-2" href="{{ route('password.request') }}">
+
+                            <a class="btn btn-link mb-2" href="{{ route('password_reset_form') }}">
                                 رمز عبور خود را فراموش کرده اید؟
                             </a>
-                        @endif
                     </div>
 
                     <div class="col-md-12">
