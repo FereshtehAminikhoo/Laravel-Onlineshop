@@ -75,6 +75,7 @@ Auth::routes();
 
 Route::get('/password/reset','App\Http\Controllers\Auth\ForgotPasswordController@showResetPasswordForm')->name('password_reset_form');
 Route::get('/password/reset/verify/code','App\Http\Controllers\Auth\ForgotPasswordController@sendVerifyCode')->name('forget_password_send_email');
+Route::post('/password/reset/verify/code/check','App\Http\Controllers\Auth\ForgotPasswordController@checkVerifyCode')->name('forget_password_check_verify_code');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

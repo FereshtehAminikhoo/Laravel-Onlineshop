@@ -1,12 +1,14 @@
 @component('mail::message')
-# Introduction
+# وب سایت آنلاین شاپ
+## تغییر کلمه عبور
+### {{$user->name.' '.$user->family_name }} عزیز سلام
 
-The body of your message.
 
-@component('mail::button', ['url' => ''])
-Button Text
+این ایمیل به دلیل درخواست شما مبنی بر تغییر کلمه ی عبور در وب سایت آنلاین شاپ ارسال شده است. در صورتی که شخصا درخواست تغییر کلمه عبورتان را نداده اید، این ایمیل را نادیده بگیرید.
+
+@component('mail::panel')
+کد تایید کلمه عبور : {{$code}}
 @endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
+با تشکر، آنلاین شاپ
 @endcomponent

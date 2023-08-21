@@ -32,9 +32,20 @@ class ForgotPasswordController extends Controller
         $request->validate([
             'email' => 'required|email'
         ]);
-        $user=User::where('email',$request->email)->first();
-        if ($user){
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
             $user->resetPasswordNot();
+        }
+        return view('verify-code');
+    }
+
+    public function checkVerifyCode(Request $request){
+        $user=User::where('email',$request->email)->first();
+        if(cache()->get('verify_code_'.$user->id)==$request->verify_code){
+            auth()->loginUsingId($user->id);
+            return view('reset_password');
+        }else{
+            return back()->withErrors(['verify_code'=>'کد وارد شده صحیح نمی باشد.']);
         }
     }
 }
