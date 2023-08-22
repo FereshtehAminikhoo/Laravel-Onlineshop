@@ -51,12 +51,13 @@
     <div class="container-fluid shadow-sm bg-white">
         <div class="row p-3">
             <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
-                <span class="logo"></span>
+                <a class="logo" href="/"></a>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-3 col-6">
                 <form>
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control rounded-right input_search" placeholder="نام کالا، برند و یا دسته مورد نظر خود را وارد کنید...">
+                        <input type="text" class="form-control rounded-right input_search"
+                               placeholder="نام کالا، برند و یا دسته مورد نظر خود را وارد کنید...">
                         <div class="input-group-prepend">
                             <div class="input-group-text rounded-left custom-input-group-text">
                                 <a href="#"><i class="material-icons">search</i></a>
@@ -79,7 +80,8 @@
                              aria-labelledby="dropdownMenuButton">
                             <div class="text-left">
                                 <a class="btn text-light" href="{{route('payment_order')}}">لیست سفارشات</a><br>
-                                <a class="btn text-light" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
+                                <a class="btn text-light" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +94,8 @@
                         <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
                              aria-labelledby="dropdownMenuButton">
                             <div class="btn login_box">
-                                <a class="dropdown-item dropdown-item-custom py-2 btn btn-info" href="{{route('client_login')}}">ورود به آنلاین شاپ</a>
+                                <a class="dropdown-item dropdown-item-custom py-2 btn btn-info"
+                                   href="{{route('client_login')}}">ورود به آنلاین شاپ</a>
                             </div>
                             <ul class="list-inline register">
                                 <li class="list-inline-item">کاربر جدید هستید؟</li>
@@ -104,7 +107,8 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
                 <a href="{{route('show_shopping_cart')}}" class="btn btn-outline-info">
-                    <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>{{count($shoppingCartItems)}}</span>
+                    <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید
+                    <span>{{count($shoppingCartItems)}}</span>
                 </a>
             </div>
         </div>
@@ -122,28 +126,49 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="bg-white mt-4 shadow-sm border shopping_cart_box">
-                @foreach($items as $item)
+                    @foreach($items as $item)
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 <ul class="list-inline">
-                                    <li class="list-inline-item"><a href="{{route('delete_item',['id'=>$item->id])}}"><i class="material-icons">close</i></a></li>
-                                    <li class="list-inline-item"><img src="{{asset($item->product->file)}}" class="img-fluid" /></li>
+                                    <li class="list-inline-item"><a href="{{route('delete_item',['id'=>$item->id])}}"><i
+                                                class="material-icons">close</i></a></li>
+                                    <li class="list-inline-item"><img src="{{asset($item->product->file)}}"
+                                                                      class="img-fluid"/></li>
                                     <li class="list-inline-item"><p>{{$item->product->title}} </p>
                                         <!-- <div class="border-bottom mt-2" style="width: 400px;"></div> -->
-                                    <li class="list-inline-item"><span>{{$item->count}} عدد</span></li>
-                                    <li class="list-inline-item"><span>{{number_format($item->product->price)}}</span></li>
+                                    <li class="list-inline-item quantity">
+                                        <div class=" mb-3 d-flex flex-row flex-wrap justify-content-around">
+                                            <span
+                                                class="input-group-text fa text-center fa-minus bg-warning text-light py-auto my-auto px-0"
+                                                onclick='removeFromCart(this, "{{$item->id}}")'
+                                                style="width: 30px"></span>
+                                            <input value="{{$item->count}}" type="number"
+                                                   max-count="{{$item->product->stock_product}}"
+                                                   class="form-control counter" style="width: 55px"/>
+                                            <span
+                                                class="input-group-text text-center fa fa-plus bg-success text-light py-auto my-auto px-0"
+                                                onclick="addToCart(this,'{{$item->id}}')" style="width: 30px"></span>
+                                            <span class="py-auto my-auto">عدد</span>
+                                        </div>
+                                    </li>
+                                    <li class="list-inline-item unit-price"
+                                        total-data-price="{{$item->product->price*$item->count}}"
+                                        data-price="{{$item->product->price}}">{{number_format($item->count*$item->product->price)}}
+                                        تومان
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="border-bottom"></div>
-                @endforeach
+                    @endforeach
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="bg-white mt-2 shadow-sm border details_box">
                     <div class="row">
                         <div class="col-md-12 mt-3">
-                            <span class="total_price_box">مبلغ کل (<span>{{count($shoppingCartItems)}}</span> کالا)</span>
+                            <span
+                                class="total_price_box">مبلغ کل (<span>{{count($shoppingCartItems)}}</span> کالا)</span>
                             @php
                                 $total_price = 0;
                             @endphp
@@ -152,7 +177,7 @@
                                     $total_price += $item->product->price * $item->count;
                                 @endphp
                             @endforeach
-                            <span class="price_details_box">{{number_format($total_price)}}</span>
+                            <span class="price_details_box" id="sum_price">{{number_format($total_price)}}</span>
                         </div>
                     </div>
                     <div class="row">
@@ -165,9 +190,11 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 mt-3 pt-2 text-center pay_detail_box">
                             <h5>مبلغ قابل پرداخت:</h5>
-                            <span>{{number_format($total_price)}}  تومان</span><br>
-                            <a href="{{route('finalize_payment')}}" class="btn btn-lg"><i class="fa fa-shopping-basket" aria-hidden="true"></i>پرداخت</a>
-                            <p> کالا های موجود در سبد شما ثبت و رزرو نشده اند، برای ثبت سفارش مراحل بعدی را تکمیل کنید.<i class="material-icons">info_outline</i></p>
+                            <span id="sum_price_2">{{number_format($total_price)}}  تومان</span><br>
+                            <a href="{{route('finalize_payment')}}" class="btn btn-lg"><i class="fa fa-shopping-basket"
+                                                                                          aria-hidden="true"></i>پرداخت</a>
+                            <p> کالا های موجود در سبد شما ثبت و رزرو نشده اند، برای ثبت سفارش مراحل بعدی را تکمیل
+                                کنید.<i class="material-icons">info_outline</i></p>
                         </div>
                     </div>
                 </div>
@@ -175,15 +202,15 @@
                     <div class="row">
                         <div class="col-md-12 mt-3 info_sending_products">
                             <ul class="list-inline">
-                                <li class="list-inline-item"><img src="img/serv1.svg"></li>
+                                <li class="list-inline-item"><img src="/img/serv1.svg"></li>
                                 <span>هفت روز ضمانت تعویض</span>
                             </ul>
                             <ul class="list-inline">
-                                <li class="list-inline-item"><img src="img/serv2.svg"></li>
+                                <li class="list-inline-item"><img src="/img/serv2.svg"></li>
                                 <span>پرداخت در محل با کارت بانکی</span>
                             </ul>
                             <ul class="list-inline">
-                                <li class="list-inline-item"><img src="img/serv4.svg"></li>
+                                <li class="list-inline-item"><img src="/img/serv4.svg"></li>
                                 <span>تحویل اکسپرس</span>
                             </ul>
                         </div>
@@ -198,8 +225,6 @@
     <br>
     <br>
     <br>
-
-
     <!--start jump-to-top-->
     <div class="container-fluid text-center box_jump_top">
         <a href="#" id="back2Top" class="d-block jump_top pt-2 pb-2">
@@ -209,15 +234,10 @@
             <span>برگشت به بالا</span>
         </a>
     </div>
-
-
-
-
-
     <script>
-        $(document).ready(function(){
-            $('#back2Top').click(function(){
-                $("html,body").animate({scrollTop:0}, "slow")
+        $(document).ready(function () {
+            $('#back2Top').click(function () {
+                $("html,body").animate({scrollTop: 0}, "slow")
                 return false;
             });
         })
@@ -225,25 +245,123 @@
     <script>
         $(document).ready()
         {
-            var owl=$('.owl-carousel');
+            var owl = $('.owl-carousel');
             owl.owlCarousel({
-                items:4,
-                rtl:true,
-                margin:25,
-                nav:true,
-                loop:true,
-                responsive:{
-                    0:{
-                        items:1
+                items: 4,
+                rtl: true,
+                margin: 25,
+                nav: true,
+                loop: true,
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:2
+                    600: {
+                        items: 2
                     },
-                    1000:{
-                        items:4
+                    1000: {
+                        items: 4
                     }
                 }
             });
+        }
+
+        function addToCart(element, shopping_id) {
+            let counterElement = element.previousElementSibling;
+            let counter = counterElement.value;
+            if (counterElement.value < Number(counterElement.getAttribute('max-count'))) {
+                counter++;
+                $.ajax({
+                    type: "GET",
+                    data: {
+                        cart_id: shopping_id,
+                        count: counter
+                    }, headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "/shopping_cart/add_product_to_cart",
+                    success: function (data) {
+                        if (data.status==='success'){
+                            $.toast({
+                                heading: 'موفقیت آمیز',
+                                text: 'تعداد محصول در سبد خرید با موفقیت به روز شد.',
+                                icon: 'success',
+                                loader: true,
+                                loaderBg: '#ef850b'
+                            })
+                            document.getElementById('sum_price').textContent=new Intl.NumberFormat().format(data.sum)
+                            document.getElementById('sum_price_2').textContent=new Intl.NumberFormat().format(data.sum)+' تومان '
+                        }
+                    },
+                    error: function (jqXHR, exception) {
+                        console.log('no')
+                    }
+                });
+            } else {
+                $.toast({
+                    heading: 'خطا',
+                    text: 'بیشتر از تعداد موجودی محصول نمی توانید سفارش دهید.',
+                    icon: 'warning',
+                    loader: true,
+                    loaderBg: '#ef850b'
+                })
+            }
+            if (counter.length === 0) {
+                counter = 0;
+            }
+            counterElement.value = counter;
+            multiplier(counterElement);
+        }
+
+        function multiplier(element) {
+            var unit_price = element.closest(".quantity").nextElementSibling.getAttribute('data-price')
+            element.closest(".quantity").nextElementSibling.setAttribute('total-data-price', $(element).val() * Number(unit_price))
+            element.closest(".quantity").nextElementSibling.innerText = new Intl.NumberFormat().format($(element).val() * Number(unit_price)) + ' تومان '
+        }
+
+        function removeFromCart(element, id) {
+            let counterElement = element.nextElementSibling;
+            let counter = counterElement.value;
+            counter--;
+            $.ajax({
+                type: "GET",
+                data: {
+                    cart_id: id,
+                    count: counter
+                }, headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/shopping_cart/add_product_to_cart",
+                success: function (data) {
+                    if (data.status==='success'){
+                        $.toast({
+                            heading: 'موفقیت آمیز',
+                            text: 'تعداد محصول در سبد خرید با موفقیت به روز شد.',
+                            icon: 'success',
+                            loader: true,
+                            loaderBg: '#ef850b'
+                        })
+                        document.getElementById('sum_price').textContent=new Intl.NumberFormat().format(data.sum)
+                        document.getElementById('sum_price_2').textContent=new Intl.NumberFormat().format(data.sum)+' تومان '
+                    }
+                },
+                error: function (jqXHR, exception) {
+                    console.log('no')
+                }
+            });
+            if (counter.length === 0 || counter < 1) {
+                counter = 0;
+            }
+            console.log(element.getAttribute("data-id"));
+            if (counter === 0) {
+                if (confirm('آیا میخواهید این آیتم را از سبد خرید حذف کنید؟')) {
+                    window.location = '/shopping_cart/delete_item/' + id;
+                } else {
+                    counterElement.value = 1
+                }
+            }
+            counterElement.value = counter;
+            multiplier(counterElement);
         }
     </script>
 @endsection
@@ -308,7 +426,8 @@
                         <p>از تخفیف ها و جدیدترین های آنلاین شاپ باخبر شوید:</p>
                         <form>
                             <div class="input-group text-right">
-                                <input type="text" class="form-control rounded-right bg-white input_search" placeholder="آدرس ایمیل خود را وارد کنید">
+                                <input type="text" class="form-control rounded-right bg-white input_search"
+                                       placeholder="آدرس ایمیل خود را وارد کنید">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text bg-info border-0 custom-input-group-text rounded-left">
                                         <a href="#" class="text-white">ارسال</a>
@@ -330,7 +449,7 @@
                     <p>هفت روز هفته، 24 ساعت شبانه روز پاسخگوی شما هستیم</p>
                     <ul class="list-inline">
                         <li class="list-inline-item">شماره تماس: <a href="#">61930000 - 021، 95119095 - 021</a></li>
-                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@digikala.com</a></li>
+                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@onlineshop.com</a></li>
                     </ul>
                 </div>
                 <div class="footer_box_left mr-auto">
@@ -361,8 +480,21 @@
         </div>
         <div class="container border_bottom1 pt-4"></div>
         <div class="container text-center copyRight pt-4">
-            <p>استفاده از مطالب فروشگاه اینترنتی آنلاین شاپ فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین شاپ) می باشد.</p>
+            <p>استفاده از مطالب فروشگاه اینترنتی آنلاین شاپ فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است. کلیه
+                حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین شاپ) می باشد.</p>
         </div>
+        <script>
+            @if(session()->has('notification'))
+            $.toast({
+                heading: "{{session()->get('notification')['heading']}}",
+                text: "{{session()->get('notification')['text']}}",
+                icon: "{{session()->get('notification')['icon']}}",
+                loader: true,
+                loaderBg: '#9EC600',
+                hideAfter: 5000
+            })
+            @endif
+        </script>
     </footer>
 
 @endsection

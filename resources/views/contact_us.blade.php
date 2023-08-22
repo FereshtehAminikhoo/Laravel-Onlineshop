@@ -50,7 +50,7 @@
     <div class="container-fluid shadow-sm bg-white">
         <div class="row p-3">
             <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
-                <span class="logo"></span>
+                <a class="logo" href="/"></a>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-3 col-6">
                 <form>

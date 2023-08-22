@@ -3,7 +3,7 @@
 <div class="container-fluid shadow-sm bg-white">
     <div class="row p-3">
         <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
-            <span class="logo"></span>
+            <a class="logo" href="/"></a>
         </div>
         <div class="col-lg-6 col-md-4 col-sm-3 col-6">
             <form>
@@ -911,7 +911,7 @@
                         <div class="owl-carousel owl-theme">
                             @foreach($mobiles as $mobile)
                                 <div class="item">
-                                    <a href="#">
+                                    <a href="{{route('show_product',['id'=>$mobile->id])}}">
                                         <div class="card panel-custom">
                                             <div class="card-body panel-body-custom">
                                                 <img src="{{asset($mobile->file)}}">
@@ -1042,7 +1042,7 @@
                         <div class="owl-carousel owl-theme">
                             @foreach($laptops as $laptop)
                                 <div class="item">
-                                    <a href="#">
+                                    <a href="{{route('show_product',['id'=>$laptop->id])}}">
                                         <div class="card panel-custom">
                                             <div class="card-body panel-body-custom">
                                                 <img src="{{asset($laptop->file)}}">
@@ -1094,7 +1094,7 @@
                         <div class="owl-carousel owl-theme">
                             @foreach($kids_mode as $kid_mode)
                                 <div class="item">
-                                    <a href="#">
+                                    <a href="{{route('show_product',['id'=>$kid_mode->id])}}">
                                         <div class="card panel-custom">
                                             <div class="card-body panel-body-custom">
                                                 <img src="{{asset($kid_mode->file)}}">
@@ -1140,7 +1140,7 @@
                         <div class="owl-carousel owl-theme">
                             @foreach($men_cloths as $men_cloth)
                                 <div class="item">
-                                    <a href="#">
+                                    <a href="{{route('show_product',['id'=>$men_cloth->id])}}">
                                         <div class="card panel-custom">
                                             <div class="card-body panel-body-custom">
                                                 <img src="{{asset($men_cloth->file)}}">
@@ -1384,7 +1384,7 @@
                     <p>هفت روز هفته، 24 ساعت شبانه روز پاسخگوی شما هستیم</p>
                     <ul class="list-inline">
                         <li class="list-inline-item">شماره تماس: <a href="#">61930000 - 021، 95119095 - 021</a></li>
-                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@digikala.com</a></li>
+                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@onlineshop.com</a></li>
                     </ul>
                 </div>
                 <div class="footer_box_left mr-auto">
@@ -1416,5 +1416,17 @@
         <div class="container text-center copyRight pt-4">
             <p>استفاده از مطالب فروشگاه اینترنتی آنلاین شاپ فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین شاپ) می باشد.</p>
         </div>
+        <script>
+            @if(session()->has('notification'))
+            $.toast({
+                heading: "{{session()->get('notification')['heading']}}",
+                text: "{{session()->get('notification')['text']}}",
+                icon: "{{session()->get('notification')['icon']}}",
+                loader: true,
+                loaderBg: '#9EC600',
+                hideAfter: 5000
+            })
+            @endif
+        </script>
     </footer>
 @stop

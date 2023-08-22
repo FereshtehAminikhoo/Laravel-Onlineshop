@@ -45,7 +45,7 @@
     <div class="container-fluid shadow-sm bg-white">
         <div class="row p-3">
             <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
-                <span class="logo"></span>
+                <a class="logo" href="/"></a>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-3 col-6">
                 <form>
@@ -169,9 +169,11 @@
                                 <li class="list-inline-item">
                                     <span>فروشنده</span>
                                     :
-                                    <span><a href="#">بوسمن</a></span>
+                                    <span><a href="#">آنلاین شاپ</a></span>
                                 </li>
+{{--
                                 <li class="seller_rate"><span>رضایت خرید : 53%</span></li>
+--}}
                             </ul>
                         </div>
                         <div class="product_guarantee mt-2 text-center text-md-left">
@@ -198,8 +200,12 @@
                         <div class="box_price mt-2 text-center text-md-left">
                             <p>{{number_format($product->price)}} تومان</p>
                             @if(auth()->check())
+                                @if($product->stock_product>1)
                                 <a href="{{route('add_product_to_cart',['id'=>$product->id])}}" class="btn btn_custom2 shadow-sm"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
-                            @else
+                                @else
+                                    <a href="#" class="btn btn_custom2 shadow-sm" onclick="event.preventDefault();showInsufficientInventoryAlert()"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
+                                @endif
+                                @else
                                 <a href="#" class="btn btn_custom2 shadow-sm" onclick="event.preventDefault();showMustLoginAlert()"><i class="material-icons">shopping_cart</i>افزودن به سبد خرید</a>
                             @endif
                         </div>
@@ -219,9 +225,9 @@
                             <li class="list-inline-item unfair-price"><a href="#">خیر</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-6 box_offer text-right text-center text-md-right">
+                {{--    <div class="col-md-6 box_offer text-right text-center text-md-right">
                         <span><i class="material-icons local_offer">local_offer</i><a href="#">کالای خود را در آنلاین شاپ بفروشید</a></span>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>
@@ -274,6 +280,7 @@
     </div>
 
     <!--start suppliers-->
+{{--
     <div class="container mt-4">
         <div class="title_suppliers">
             <span><i class="material-icons">store</i>لیست فروشنده / گارانتی های این محصول</span>
@@ -345,6 +352,7 @@
             </div>
         </div>
     </div>
+--}}
 
     <!--start slider-->
     <div class="container-fluid mt-3">
@@ -358,111 +366,21 @@
                         </div>
                         <div class="card-body py-1" style="padding: 50px">
                             <div class="owl-carousel owl-theme">
-
+                                @foreach($similar as $pro)
                                 <div class="item">
-                                    <a href="">
+                                    <a href="{{route('show_product',['id'=>$pro->id])}}">
                                         <div class="card panel-custom">
                                             <div class="card-body panel-body-custom">
-                                                <img src="/img/1687421.jpg" alt="">
+                                                <img src="{{asset($pro->file)}}" alt="">
                                             </div>
                                             <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
+                                                <h4>{{$pro->title}}</h4>
+                                                <p>{{number_format($pro->price)}} تومان</p>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -472,6 +390,7 @@
     </div>
 
     <!--start box-tabs-->
+{{--
     <div class="container-fluid box-tabs mt-4">
         <ul class="nav nav-tabs nav-tabs-custom border sticky-top" id="myTab">
             <li class="nav-item border-right">
@@ -1057,6 +976,7 @@
             <!--end tab Q & A-->
         </div>
     </div>
+--}}
 
     <!--start slider-->
     <div class="container-fluid mt-3 mb-5">
@@ -1070,111 +990,21 @@
                         </div>
                         <div class="card-body py-1" style="padding: 50px">
                             <div class="owl-carousel owl-theme">
-
+                                @foreach($bought as $item)
                                 <div class="item">
-                                    <a href="">
+                                    <a href="{{route('show_product',['id'=>$item->id])}}">
                                         <div class="card panel-custom">
                                             <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
+                                                <img src="{{asset($item->file)}}" alt="">
                                             </div>
                                             <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
+                                                <h4>{{$item->title}}</h4>
+                                                <p>{{number_format($item->price)}} تومان</p>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1687421.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>کنسول بازی سونی مدل Playstation 4</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -1182,30 +1012,6 @@
             </section>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!--start jump-to-top-->
     <div class="container-fluid text-center box_jump_top">
@@ -1226,6 +1032,15 @@
                 heading: 'خطا',
                 text: 'برای افزودن محصول به سبد خرید، ابتدا وارد حساب کاربری خود شوید!',
                 icon: 'error',
+                loader: true,
+                loaderBg: '#9EC600'
+            })
+        }
+        function showInsufficientInventoryAlert(){
+            $.toast({
+                heading: 'خطا',
+                text: 'این محصول در حال حاضر قابل سفارش نمی باشد.',
+                icon: 'warning',
                 loader: true,
                 loaderBg: '#9EC600'
             })
@@ -1348,7 +1163,7 @@
                     <p>هفت روز هفته، 24 ساعت شبانه روز پاسخگوی شما هستیم</p>
                     <ul class="list-inline">
                         <li class="list-inline-item">شماره تماس: <a href="#">61930000 - 021، 95119095 - 021</a></li>
-                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@digikala.com</a></li>
+                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@onlineshop.com</a></li>
                     </ul>
                 </div>
                 <div class="footer_box_left mr-auto">
@@ -1381,7 +1196,17 @@
         <div class="container text-center copyRight pt-4">
             <p>استفاده از مطالب فروشگاه اینترنتی آنلاین شاپ فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین شاپ) می باشد.</p>
         </div>
+        <script>
+            @if(session()->has('notification'))
+            $.toast({
+                heading: "{{session()->get('notification')['heading']}}",
+                text: "{{session()->get('notification')['text']}}",
+                icon: "{{session()->get('notification')['icon']}}",
+                loader: true,
+                loaderBg: '#9EC600',
+                hideAfter: 5000
+            })
+            @endif
+        </script>
     </footer>
-
-
 @endsection

@@ -25,7 +25,7 @@ class Payment_order extends Model
     {
         $dateTime = verta($this->payment_date);
         $newDateTime = explode(' ', $dateTime);
-        return $newDateTime['0'];
+        return str_replace('-','/',$newDateTime['0']);
     }
 
     public function getStatAttribute()

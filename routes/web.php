@@ -16,6 +16,7 @@ Route::get('/product/{id}/add_to_cart','App\Http\Controllers\ClientController@ad
 Route::get('/shopping_cart','App\Http\Controllers\ClientController@showShoppingCart')->name('show_shopping_cart');
 Route::get('/shopping_cart/delete_item/{id}', 'App\Http\Controllers\ClientController@deleteItem')->name('delete_item');
 Route::get('/shopping_cart/finalize_payment', 'App\Http\Controllers\ClientController@finalizePayment')->name('finalize_payment');
+Route::get('/shopping_cart/add_product_to_cart', 'App\Http\Controllers\ClientController@changeCartCount')->name('change_cart_count');
 Route::get('/payment_order/list', 'App\Http\Controllers\ClientController@paymentOrder')->name('payment_order');
 Route::get('/payment_order_item/list/{id}', 'App\Http\Controllers\ClientController@paymentOrderItem')->name('payment_order_item');
 Route::get('contact_us', 'App\Http\Controllers\ClientController@contactUs')->name('contact_us');
@@ -76,6 +77,7 @@ Auth::routes();
 Route::get('/password/reset','App\Http\Controllers\Auth\ForgotPasswordController@showResetPasswordForm')->name('password_reset_form');
 Route::get('/password/reset/verify/code','App\Http\Controllers\Auth\ForgotPasswordController@sendVerifyCode')->name('forget_password_send_email');
 Route::post('/password/reset/verify/code/check','App\Http\Controllers\Auth\ForgotPasswordController@checkVerifyCode')->name('forget_password_check_verify_code');
+Route::post('/password/reset/password/change','App\Http\Controllers\Auth\ForgotPasswordController@changePassword')->name('change_password');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

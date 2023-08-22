@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ForgotPasswordController extends Controller
 {
@@ -47,5 +48,16 @@ class ForgotPasswordController extends Controller
         }else{
             return back()->withErrors(['verify_code'=>'کد وارد شده صحیح نمی باشد.']);
         }
+    }
+
+    public function changePassword(Request $request)
+    {
+        $user=User::where('id',auth()->user()->id)->first();
+
+        $user->update([
+            'password'=>Hash::make($request->password)
+        ]);
+        session()->flash('notification',['heading'=>'ناموفق','text'=>'عملیات انجام نشد.','icon'=>'error']);
+        return redirect(route('client_home'));
     }
 }

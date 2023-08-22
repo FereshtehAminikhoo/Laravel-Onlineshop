@@ -37,7 +37,6 @@ class ClientController extends Controller
 
     public function showCategory($id, Request $request)
     {
-        //dd($request);
         if (auth()->check()) {
             $userId = auth()->user()->id;
             $user = auth()->user()->name;
@@ -49,47 +48,62 @@ class ClientController extends Controller
 
         $categories = Category::whereNull('parent_id')->get();
         $category = Category::where('id', $id)->first();
-        //dd($request);
+
         $childCategory = Category::where('parent_id', $id)->get();
         if (count($childCategory) == 0) {
             $viewProducts = Product::where('category_id', $id)->newest($request->time_sort)->price($request->price_sort)->get();
+            $pro_brands = Product::where('category_id', $id)->distinct('brand_id')->pluck('brand_id')->toArray();
+            $brands = Brand::whereIn('id', $pro_brands)->get();
         } else {
             $productCategories = Category::where('parent_id', $id)->pluck('id')->toArray();
+            $pro_brands = Product::whereIn('category_id', $productCategories)->distinct('brand_id')->pluck('brand_id')->toArray();
             $viewProducts = Product::whereIn('category_id', $productCategories)->newest($request->time_sort)->price($request->price_sort)->get();
+            $brands = Brand::whereIn('id', $pro_brands)->get();
         }
-        return view('category', compact('category', 'categories', 'viewProducts', 'shoppingCartItems', 'user'));
+        $other = Product::orderBy('id', 'desc')->take(20)->get()->random(8);
+        return view('category', compact('category', 'categories', 'viewProducts', 'shoppingCartItems', 'user', 'other', 'brands'));
     }
 
     public function showProduct($id)
     {
         if (auth()->check()) {
             $userId = auth()->user()->id;
-            $user= auth()->user()->name;
+            $user = auth()->user()->name;
         } else {
             $userId = null;
             $user = '';
         }
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
-
+        $bought = Product::where('id', '<', 10)->get();
         $product = Product::where('id', $id)->first();
+        $similar = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->get();
         $categories = Category::whereNull('parent_id')->get();
-        return view('product', compact('product', 'categories', 'shoppingCartItems', 'user'));
+        return view('product', compact('product', 'categories', 'shoppingCartItems', 'user', 'bought', 'similar'));
     }
 
     public function addToCart($id)
     {
-        Shopping_cart::create([
-            'product_id' => $id,
-            'user_id' => auth()->user()->id,
-            'count' => 1
-        ]);
+        $exist = Shopping_cart::where('product_id', $id)->where('user_id', auth()->user()->id)->first();
+        if ($exist) {
+            $exist->update([
+                'count' => $exist->count + 1
+            ]);
+        } else {
+            Shopping_cart::create([
+                'product_id' => $id,
+                'user_id' => auth()->user()->id,
+                'count' => 1
+            ]);
+        }
+
+        session()->flash('notification', ['heading' => 'موفقیت آمیز', 'text' => 'محصول موردنظر با موفقیت به سبد خرید اضافه شد.', 'icon' => 'success']);
         return back();
     }
 
     public function showShoppingCart()
     {
         if (auth()->check()) {
-            $user= auth()->user()->name;
+            $user = auth()->user()->name;
         } else {
             $user = '';
         }
@@ -120,7 +134,7 @@ class ClientController extends Controller
 
     public function createAccount(Request $request)
     {
-        $user=User::create([
+        $user = User::create([
             'name' => $request->name,
             'family_name' => $request->family_name,
             'national_code' => $request->national,
@@ -129,7 +143,7 @@ class ClientController extends Controller
             'password' => Hash::make($request->password),
             'repeat_password' => Hash::make($request->repeat_password)
         ]);
-        if ($user){
+        if ($user) {
             auth()->loginUsingId($user->id);
         }
         return redirect()->route('client_home');
@@ -149,8 +163,8 @@ class ClientController extends Controller
             'status' => 'paid',
             'payment_date' => Carbon::now()->toDateString()
         ]);
-        if ($order){
-            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        if ($order) {
+            session()->flash('notification', ['heading' => 'موفقیت آمیز', 'text' => 'عملیات پرداخت با موفقیت انجام شد.', 'icon' => 'success']);
         }
 
         foreach ($cartItems as $cartItem) {
@@ -160,15 +174,33 @@ class ClientController extends Controller
                 'count' => $cartItem->count,
                 'price' => $cartItem->product->price
             ]);
+            $product = Product::where('id', $cartItem->product->id)->first();
+            $product->update([
+                'stock_product' => $product->stock_product - $cartItem->count
+            ]);
             $cartItem->delete();
         }
         return back();
     }
 
+    public function changeCartCount(Request $request)
+    {
+        $cart = Shopping_cart::where('id', $request->cart_id)->first();
+        $cart->update([
+            'count' => $request->count
+        ]);
+        $sum = 0;
+        $rows = Shopping_cart::where('user_id', auth()->user()->id)->get();
+        foreach ($rows as $row) {
+            $sum+=$row->count*$row->product->price;
+        }
+        return response()->json(['status' => 'success','sum' => $sum]);
+    }
+
     public function paymentOrder()
     {
         if (auth()->check()) {
-            $user= auth()->user()->name;
+            $user = auth()->user()->name;
         } else {
             $user = '';
         }
@@ -176,14 +208,14 @@ class ClientController extends Controller
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
         $categories = Category::whereNull('parent_id')->get();
 
-        $cartOrderItems = Payment_order::where('user_id',$userId)->get();
+        $cartOrderItems = Payment_order::where('user_id', $userId)->get();
         return view('payment_order', compact('cartOrderItems', 'categories', 'shoppingCartItems', 'user'));
     }
 
     public function paymentOrderItem($id)
     {
         if (auth()->check()) {
-            $user= auth()->user()->name;
+            $user = auth()->user()->name;
         } else {
             $user = '';
         }
@@ -195,7 +227,8 @@ class ClientController extends Controller
         return view('payment_order_item', compact('orderItems', 'categories', 'shoppingCartItems', 'user'));
     }
 
-    public function contactUs(){
+    public function contactUs()
+    {
         if (auth()->check()) {
             $userId = auth()->user()->id;
             $user = auth()->user()->name;
@@ -208,11 +241,13 @@ class ClientController extends Controller
         return view('contact_us', compact('user', 'shoppingCartItems', 'categories'));
     }
 
-    public function forgetPassword(){
+    public function forgetPassword()
+    {
         return view('forget_password');
     }
 
-    public function resetPassword(){
+    public function resetPassword()
+    {
         return view('reset_password');
     }
 

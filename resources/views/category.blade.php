@@ -51,12 +51,13 @@
     <div class="container-fluid shadow-sm bg-white">
         <div class="row p-3">
             <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
-                <span class="logo"></span>
+                <a class="logo" href="/"></a>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-3 col-6">
                 <form>
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control rounded-right input_search" placeholder="نام کالا، برند و یا دسته مورد نظر خود را وارد کنید...">
+                        <input type="text" class="form-control rounded-right input_search"
+                               placeholder="نام کالا، برند و یا دسته مورد نظر خود را وارد کنید...">
                         <div class="input-group-prepend">
                             <div class="input-group-text rounded-left custom-input-group-text">
                                 <a href="#"><i class="material-icons">search</i></a>
@@ -79,7 +80,8 @@
                              aria-labelledby="dropdownMenuButton">
                             <div class="text-left">
                                 <a class="btn text-light" href="{{route('payment_order')}}">لیست سفارشات</a><br>
-                                <a class="btn text-light" href="{{ route('logout') }}"  onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
+                                <a class="btn text-light" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();">خروج</a>
                             </div>
                         </div>
                     </div>
@@ -92,7 +94,8 @@
                         <div class="dropdown-menu border-0 shadow rounded-0 dropdown-menu_custom text-center"
                              aria-labelledby="dropdownMenuButton">
                             <div class="btn login_box">
-                                <a class="dropdown-item dropdown-item-custom py-2 btn btn-info" href="{{route('client_login')}}">ورود به آنلاین شاپ</a>
+                                <a class="dropdown-item dropdown-item-custom py-2 btn btn-info"
+                                   href="{{route('client_login')}}">ورود به آنلاین شاپ</a>
                             </div>
                             <ul class="list-inline register">
                                 <li class="list-inline-item">کاربر جدید هستید؟</li>
@@ -104,7 +107,8 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-6 text-right">
                 <a href="{{route('show_shopping_cart')}}" class="btn btn-outline-info">
-                    <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید <span>{{count($shoppingCartItems)}}</span>
+                    <i class="material-icons shopping_cart">shopping_cart</i>سبد خرید
+                    <span>{{count($shoppingCartItems)}}</span>
                 </a>
             </div>
         </div>
@@ -118,28 +122,39 @@
             <div class="col-md-3 order-last order-md-first">
                 <div class="bg-white sidebar">
                     <div class="sidebar_header">دسته بندی نتایج</div>
+                    {{--
+                        @if($category->parent_id!=null)
+                            @if($category->parent->parent)
+                                <li class="breadcrumb-item"><a href="{{route('show_category',['id'=>$category->parent->parent->id])}}">
+                                        {{$category->parent->parent->name}}
+                                    </a>
+                                </li>
+                            @endif
+                            <li class="breadcrumb-item"><a href="{{route('show_category',['id'=>$category->parent->id])}}">{{$category->parent->name}}</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('show_category',['id'=>$item->id])}}">{{$category->name}}</a></li>
+                        @endif
+                    --}}
                     <div class="sidebar_catalog">
                         <ul class="pt-1 pr-1">
-                            <a href="#">
-                                <li><span class="material-icons">chevron_left</span>کالای دیجیتال</li>
-                            </a>
-                            <a href="#">
-                                <li class="padding-right15px pt-1"><span class="material-icons">chevron_left</span>کامپیوتر
-                                    و تجهیزات جانبی
-                                </li>
-                            </a>
+                            @if($category->parent)
+                                @if($category->parent->parent)
+                                    <a href="{{route('show_category',['id'=>$category->parent->parent->id])}}">
+                                        <li><span
+                                                class="material-icons">chevron_left</span>{{$category->parent->parent->name}}
+                                        </li>
+                                    </a>
+                                @endif
+                            @endif
+                            @if($category->parent)
+
+                                <a href="{{route('show_category',['id'=>$category->parent->id])}}">
+                                    <li class="padding-right15px pt-1"><span
+                                            class="material-icons">chevron_left</span>{{$category->parent->name}}</li>
+                                </a>
+                            @endif
+
                             <li class="padding-right30px pt-1 sidebar_active"><span
-                                    class="material-icons">chevron_left</span>هدفون، هدست و میکروفون
-                            </li>
-                            <a href="#">
-                                <li class="padding-right55px pt-2">هدفون</li>
-                            </a>
-                            <a href="#">
-                                <li class="padding-right55px pt-2">هدست</li>
-                            </a>
-                            <a href="#">
-                                <li class="padding-right55px pt-2">میکروفون</li>
-                            </a>
+                                    class="material-icons">chevron_left</span>{{$category->name}}</li>
                         </ul>
                     </div>
                 </div>
@@ -174,27 +189,19 @@
                                         <hr>
                                         <div class="form-group input-container">
                                             <div class="col p-0 m-0">
-                                                <div class="checkbox p-1">
-                                                    <label class="checkbox-container">فیلیپس
-                                                        <input type="checkbox">
-                                                        <span class="checkmark-login1"></span>
-                                                    </label>
-                                                    <span class="pull-left pt-1 brand_eng">Philips</span>
-                                                </div>
-                                                <div class="checkbox p-1">
-                                                    <label class="checkbox-container">سونی
-                                                        <input type="checkbox">
-                                                        <span class="checkmark-login2"></span>
-                                                    </label>
-                                                    <span class="pull-left pt-1 brand_eng">Sony</span>
-                                                </div>
-                                                <div class="checkbox p-1">
-                                                    <label class="checkbox-container">ال جی
-                                                        <input type="checkbox">
-                                                        <span class="checkmark-login3"></span>
-                                                    </label>
-                                                    <span class="pull-left pt-1 brand_eng">Lg</span>
-                                                </div>
+                                                @foreach($brands as $brand)
+                                                    <div class="checkbox p-1">
+                                                        <label class="{{--checkbox-container--}}"
+                                                               style="line-height: 15px;margin-right: 20px">{{$brand->name}}
+                                                            <input type="checkbox" name="brand[]"
+                                                                   style="opacity: 1;height: 15px;padding: 15px">
+                                                            {{--<span class="checkmark-login1"></span>--}}
+                                                        </label>
+                                                        {{--
+                                                                                                            <span class="pull-left pt-1 brand_eng">Philips</span>
+                                                        --}}
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </form>
@@ -216,23 +223,26 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <!--start content-->
             <div class="col-md-9 order-first order-md-last">
                 <div class="bg-transparent">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">فروشگاه اینترنتی آنلاین شاپ </a></li>
+                            <li class="breadcrumb-item"><a href="/">فروشگاه اینترنتی آنلاین شاپ </a></li>
                             @if($category->parent_id!=null)
                                 @if($category->parent->parent)
-                                    <li class="breadcrumb-item"><a href="#">
+                                    <li class="breadcrumb-item"><a
+                                            href="{{route('show_category',['id'=>$category->parent->parent->id])}}">
                                             {{$category->parent->parent->name}}
                                         </a>
                                     </li>
                                 @endif
-                                <li class="breadcrumb-item"><a href="#">{{$category->parent->name}}</a></li>
-                                <li class="breadcrumb-item"><a href="#">{{$category->name}}</a></li>
+                                <li class="breadcrumb-item"><a
+                                        href="{{route('show_category',['id'=>$category->parent->id])}}">{{$category->parent->name}}</a>
+                                </li>
+                                <li class="breadcrumb-item"><a
+                                        href="{{route('show_category',['id'=>$item->id])}}">{{$category->name}}</a></li>
                             @endif
                         </ol>
                     </nav>
@@ -286,31 +296,33 @@
     </div>
 
     <!--start pagination-->
-    <div class="container mt-3">
-        <div class="row justify-content-end">
-            <div>
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a href="#" class="page-link">
-                                <span>&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a href="#" class="page-link active_pagination">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item">
-                            <a href="#" class="page-link">
-                                <span>&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+    {{--
+        <div class="container mt-3">
+            <div class="row justify-content-end">
+                <div>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a href="#" class="page-link">
+                                    <span>&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a href="#" class="page-link active_pagination">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">
+                                    <span>&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
+    --}}
 
     <!--start ads-->
     <div class="container-fluid ads mt-4 pt-2 ">
@@ -341,115 +353,25 @@
                 <div class="row">
                     <div class="card panel-title-custom">
                         <div class="card-header  card-header-custom">
-                            <p>محصولات مرتبط
-                            </p>
+                            <p>سایر محصولات</p>
                         </div>
                         <div class="card-body py-1" style="padding: 50px">
                             <div class="owl-carousel owl-theme">
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/2836814.jpg" alt="">
+                                @foreach($other as $item)
+                                    <div class="item">
+                                        <a href="{{route('show_product',['id'=>$item->id])}}">
+                                            <div class="card panel-custom">
+                                                <div class="card-body panel-body-custom">
+                                                    <img src="{{asset($item->file)}}" alt="">
+                                                </div>
+                                                <div class="card-footer panel-footer-custom">
+                                                    <h4>{{$item->title}}</h4>
+                                                    <p>{{number_format($item->price)}} تومان</p>
+                                                </div>
                                             </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/2481611.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>مچ بند هوشمند مدل M2</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1903438.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>ساعت هوشمند بی اس ان ال مدل A9</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/2795704.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>ساعت هوشمند وی سریز مدل A1</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/2836814.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>مچ بند هوشمند شیائومی مدل Mi Band 3</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/2481611.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>مچ بند هوشمند مدل M2</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/1903438.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>ساعت هوشمند بی اس ان ال مدل A9</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="">
-                                        <div class="card panel-custom">
-                                            <div class="card-body panel-body-custom">
-                                                <img src="img/2795704.jpg" alt="">
-                                            </div>
-                                            <div class="card-footer panel-footer-custom">
-                                                <h4>ساعت هوشمند وی سریز مدل A1</h4>
-                                                <p>12300 هزاز تومان</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -457,32 +379,6 @@
             </section>
         </div>
     </div>
-
-    <!--start category-->
-    <div class="container category my-5 bg-white">
-        <div class="row">
-            <span>دسته بندی ها :</span>
-            <a href="#">هدفون</a>
-            -
-            <a href="#">هدفون</a>
-            -
-            <a href="#">هدفون</a>
-            -
-            <a href="#">هدفون</a>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!--start jump-to-top-->
     <div class="container-fluid text-center box_jump_top">
@@ -494,15 +390,10 @@
         </a>
     </div>
 
-
-
-
-
-
     <script>
-        $(document).ready(function(){
-            $('#back2Top').click(function(){
-                $("html,body").animate({scrollTop:0}, "slow")
+        $(document).ready(function () {
+            $('#back2Top').click(function () {
+                $("html,body").animate({scrollTop: 0}, "slow")
                 return false;
             });
         })
@@ -510,22 +401,22 @@
     <script>
         $(document).ready()
         {
-            var owl=$('.owl-carousel');
+            var owl = $('.owl-carousel');
             owl.owlCarousel({
-                items:4,
-                rtl:true,
-                margin:25,
-                nav:true,
-                loop:true,
-                responsive:{
-                    0:{
-                        items:1
+                items: 4,
+                rtl: true,
+                margin: 25,
+                nav: true,
+                loop: true,
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:2
+                    600: {
+                        items: 2
                     },
-                    1000:{
-                        items:4
+                    1000: {
+                        items: 4
                     }
                 }
             });
@@ -594,7 +485,8 @@
                         <p>از تخفیف ها و جدیدترین های آنلاین شاپ باخبر شوید:</p>
                         <form>
                             <div class="input-group text-right">
-                                <input type="text" class="form-control rounded-right bg-white input_search" placeholder="آدرس ایمیل خود را وارد کنید">
+                                <input type="text" class="form-control rounded-right bg-white input_search"
+                                       placeholder="آدرس ایمیل خود را وارد کنید">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text bg-info border-0 custom-input-group-text rounded-left">
                                         <a href="#" class="text-white">ارسال</a>
@@ -616,7 +508,7 @@
                     <p>هفت روز هفته، 24 ساعت شبانه روز پاسخگوی شما هستیم</p>
                     <ul class="list-inline">
                         <li class="list-inline-item">شماره تماس: <a href="#">61930000 - 021، 95119095 - 021</a></li>
-                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@digikala.com</a></li>
+                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@onlineshop.com</a></li>
                     </ul>
                 </div>
                 <div class="footer_box_left mr-auto">
@@ -647,7 +539,8 @@
         </div>
         <div class="container border_bottom1 pt-4"></div>
         <div class="container text-center copyRight pt-4">
-            <p>استفاده از مطالب فروشگاه اینترنتی آنلاین شاپ فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین شاپ) می باشد.</p>
+            <p>استفاده از مطالب فروشگاه اینترنتی آنلاین شاپ فقط برای مقاصد غیر تجاری و با ذکر منبع بلامانع است. کلیه
+                حقوق این سایت متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین شاپ) می باشد.</p>
         </div>
     </footer>
 

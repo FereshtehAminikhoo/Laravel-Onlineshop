@@ -30,6 +30,18 @@
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/custom.js"></script>
     <script src="/js/jquery.toast.min.js"></script>
+    <script>
+        @if(session()->has('notification'))
+        $.toast({
+            heading: "{{session()->get('notification')['heading']}}",
+            text: "{{session()->get('notification')['text']}}",
+            icon: "{{session()->get('notification')['icon']}}",
+            loader: true,
+            loaderBg: '#9EC600',
+            hideAfter: 5000
+        })
+        @endif
+    </script>
 </head>
 <body>
 

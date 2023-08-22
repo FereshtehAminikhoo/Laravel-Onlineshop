@@ -50,7 +50,7 @@
     <div class="container-fluid shadow-sm bg-white">
         <div class="row p-3">
             <div class="col-lg-2 col-md-3 col-sm-3 col-6 pr-2 box-logo">
-                <span class="logo"></span>
+                <a class="logo" href="/"></a>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-3 col-6">
                 <form>
@@ -309,7 +309,7 @@
                     <p>هفت روز هفته، 24 ساعت شبانه روز پاسخگوی شما هستیم</p>
                     <ul class="list-inline">
                         <li class="list-inline-item">شماره تماس: <a href="#">61930000 - 021، 95119095 - 021</a></li>
-                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@digikala.com</a></li>
+                        <li class="list-inline-item">آدرس ایمیل: <a href="#">info@onlineshop.com</a></li>
                     </ul>
                 </div>
                 <div class="footer_box_left mr-auto">
