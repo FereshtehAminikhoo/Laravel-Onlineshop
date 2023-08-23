@@ -157,6 +157,10 @@
                             <i class="material-icons">offline_pin</i>
                             <span>موجودی کالا : {{$product->stock_product}} عدد</span>
                         </div>
+                        <div class="product_guarantee mt-3 text-center text-md-left">
+                            <i class="material-icons">info</i>
+                            <span>توضیحات : {{$product->description}} </span>
+                        </div>
                         <div class="border_bottom mt-3"></div>
                         <div class="product_guarantee mt-2 text-center text-md-left">
                             <ul class="list-inline">
