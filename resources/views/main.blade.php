@@ -41,6 +41,7 @@
             hideAfter: 5000
         })
         @endif
+
     </script>
 </head>
 <body>
@@ -49,5 +50,49 @@
 @yield('header')
 @yield('content')
 @yield('footer')
+<script>
+    function searchInProducts(search_element) {
+        console.log(search_element.value.length)
+        if (search_element.value.length > 0) {
+            $('#search_result').html('')
+            $.ajax({
+                type: "GET",
+                data: {
+                    value: search_element.value,
+                }, headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/search_in_products",
+                success: function (data) {
+                    if (data.products.length > 0) {
+                        console.log(data.products)
+                        var items = data.products
+                        var list = ''
+                        items.forEach(item => {
+                            list += `<li style="background-color: #faeaea;border-bottom: solid 1px black;list-style: none;padding: 15px;margin: 0;">
+                                                <a href="/product/${item.id}" style="color:#000;">
+                                                    <div style="display: flex;flex-direction: row;justify-content: space-between">
+                                                        <span>${item.title}</span>
+                                                        <img src="/${item.file}" width="45px" />
+                                                    </div>
+                                                </a>
+                                            </li>`
+                        })
+                        $('#search_result').html(list)
+                    } else {
+                        $('#search_result').html('')
+                    }
+                },
+                error: function (jqXHR, exception) {
+                    console.log('no')
+                }
+            });
+        } else {
+            $('#search_result').html('')
+        }
+
+    }
+
+</script>
 </body>
 </html>

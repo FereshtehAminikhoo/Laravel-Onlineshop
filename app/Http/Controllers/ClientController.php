@@ -251,4 +251,11 @@ class ClientController extends Controller
         return view('reset_password');
     }
 
+    public function searchInProducts(Request $request)
+    {
+        $products=Product::where('title','LIKE','%'.$request->value.'%')->get();
+        return response()->json(['products' => $products]);
+
+    }
+
 }

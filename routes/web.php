@@ -18,6 +18,9 @@ Route::get('/shopping_cart/delete_item/{id}', 'App\Http\Controllers\ClientContro
 Route::get('/shopping_cart/finalize_payment', 'App\Http\Controllers\ClientController@finalizePayment')->name('finalize_payment');
 Route::get('/shopping_cart/add_product_to_cart', 'App\Http\Controllers\ClientController@changeCartCount')->name('change_cart_count');
 Route::get('/payment_order/list', 'App\Http\Controllers\ClientController@paymentOrder')->name('payment_order');
+
+Route::get('/search_in_products', 'App\Http\Controllers\ClientController@searchInProducts')->name('search_in_products');
+
 Route::get('/payment_order_item/list/{id}', 'App\Http\Controllers\ClientController@paymentOrderItem')->name('payment_order_item');
 Route::get('contact_us', 'App\Http\Controllers\ClientController@contactUs')->name('contact_us');
 Route::get('forget_password', 'App\Http\Controllers\ClientController@forgetPassword')->name('forget_password');
@@ -70,6 +73,7 @@ Route::get('admin/brand/{id}/edit', 'App\Http\Controllers\BrandController@edit')
 Route::post('admin/brand/{id}/update', 'App\Http\Controllers\BrandController@update')->name('brand_update');
 Route::get('admin/brand/{id}/delete', 'App\Http\Controllers\BrandController@delete')->name('brand_delete');
 Route::get('admin/payment_order/list', 'App\Http\Controllers\PaymentOrderController@list')->name('payment_order_list');
+Route::get('admin/payment_order/{id}/invalidate', 'App\Http\Controllers\PaymentOrderController@invalidate')->name('payment_order_invalidate');
 Route::get('admin/payment_order_item/list/{id}', 'App\Http\Controllers\PaymentOrderItemController@list')->name('payment_order_item_list');
 //auth routes
 Auth::routes();

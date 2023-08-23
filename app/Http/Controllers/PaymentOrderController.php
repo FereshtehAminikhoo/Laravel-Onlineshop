@@ -14,5 +14,16 @@ class PaymentOrderController extends Controller
         $cartItems = Payment_order::all();
         return view('admin.payment_order.list', compact('cartItems'));
     }
+    public function invalidate($id)
+    {
+        $cartItem = Payment_order::where('id',$id)->first();
+        $update=$cartItem->update([
+            'status'=>'canceled'
+        ]);
+        if ($update){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }
+        return back();
+    }
 
 }

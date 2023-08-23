@@ -57,7 +57,7 @@
                 <form>
                     <div class="input-group input-group-sm">
                         <input type="text" class="form-control rounded-right input_search"
-                               placeholder="نام کالا، برند و یا دسته مورد نظر خود را وارد کنید...">
+                               placeholder="نام کالای موردنظر خود را وارد کنید..." oninput="searchInProducts(this)">
                         <div class="input-group-prepend">
                             <div class="input-group-text rounded-left custom-input-group-text">
                                 <a href="#"><i class="material-icons">search</i></a>
@@ -65,6 +65,7 @@
                         </div>
                     </div>
                 </form>
+                <ul id="search_result" style="position: absolute;margin-top: 20px;z-index: 2;border-radius: 5px;width: 95%;padding: 0"></ul>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-3 col-6 dropdown_custom text-right">
                 @if(auth()->check())

@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="col-md-12 mt-3 pt-2 text-center repeat_forget_pass">
                             <span>ایمیل ارسال نشد؟</span>
-                            <a href="#">ارسال مجدد</a>
+                            <a href="#" onclick="event.preventDefault();location.reload();">ارسال مجدد</a>
                         </div>
                     </div>
                 </div>

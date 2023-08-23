@@ -24,7 +24,10 @@
                             <td>{{$cartItem->jalali_date}}</td>
                             <td>{{number_format($cartItem->total_price)}}</td>
                             <td>
-                                <a class="btn-info p-2 rounded-pill" href="{{route('payment_order_item_list',['id'=>$cartItem->id])}}">نمایش لیست آیتم ها</a>
+                                <a class="btn-info p-2 border-radius" href="{{route('payment_order_item_list',['id'=>$cartItem->id])}}">نمایش لیست آیتم ها</a>
+                                @if($cartItem->status!='canceled')
+                                    <span class="btn-danger p-2 border-radius" style="cursor: pointer" onclick="cancellationConfirm({{$cartItem->id}})">لغو</span>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -33,4 +36,11 @@
             </div>
         </div>
     </div>
+    <script>
+        function cancellationConfirm(cart_id){
+            if(confirm('آیا از لغو این سفارش مطمئن هستید؟')){
+                window.location='/admin/payment_order/'+cart_id+'/invalidate'
+            }
+        }
+    </script>
 @stop

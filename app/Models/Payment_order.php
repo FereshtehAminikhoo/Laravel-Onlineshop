@@ -32,7 +32,7 @@ class Payment_order extends Model
     {
         switch ($this->status) {
             case 'canceled':
-                return 'باطل شده';
+                return 'لغو شده';
             case 'completed':
                 return 'کامل شده';
             case 'delivery_waiting':
