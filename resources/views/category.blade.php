@@ -415,6 +415,16 @@
                 }
             });
         }
+        @if(session()->has('notification'))
+        $.toast({
+            heading: "{{session()->get('notification')['heading']}}",
+            text: "{{session()->get('notification')['text']}}",
+            icon: "{{session()->get('notification')['icon']}}",
+            loader: true,
+            loaderBg: '#9EC600',
+            hideAfter: 5000
+        })
+        @endif
     </script>
 @endsection
 

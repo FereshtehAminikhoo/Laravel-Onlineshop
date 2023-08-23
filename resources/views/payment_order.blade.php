@@ -137,6 +137,9 @@
                                     <td>{{number_format($cartOrderItem->total_price)}}</td>
                                     <td>
                                         <a class="btn-info p-2 rounded" href="{{route('payment_order_item',['id'=>$cartOrderItem->id])}}">نمایش لیست آیتم ها</a>
+                                        @if($cartOrderItem->status!='canceled')
+                                            <span class="btn-danger p-2 rounded" style="cursor: pointer" onclick="cancellationConfirm({{$cartOrderItem->id}})">لغو</span>
+                                        @endif
                                     </td>
                                         </tr>
 
@@ -197,6 +200,11 @@
                 return false;
             });
         })
+        function cancellationConfirm(cart_id){
+            if(confirm('آیا از لغو این سفارش مطمئن هستید؟')){
+                window.location='/payment_order/'+cart_id+'/invalidate'
+            }
+        }
     </script>
     <script>
         $(document).ready()

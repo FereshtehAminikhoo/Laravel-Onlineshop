@@ -106,8 +106,8 @@ class ClientController extends Controller
             $user = auth()->user()->name;
             $userId = auth()->user()->id;
         } else {
-            $user = '';
-            $userId = null;
+            session()->flash('notification', ['heading' => 'ناموفق', 'text' => 'ابتدا وارد حساب کاربری خود شوید', 'icon' => 'warning']);
+            return back();
         }
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
 
@@ -258,5 +258,15 @@ class ClientController extends Controller
         return response()->json(['products' => $products]);
 
     }
-
+    public function invalidate($id)
+    {
+        $cartItem = Payment_order::where('id',$id)->first();
+        $update=$cartItem->update([
+            'status'=>'canceled'
+        ]);
+        if ($update){
+            session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
+        }
+        return back();
+    }
 }
