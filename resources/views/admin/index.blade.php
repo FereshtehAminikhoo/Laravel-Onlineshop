@@ -80,7 +80,7 @@
                     aria-expanded="false">
                 <span class="name">{{auth()->user()->name.' '.auth()->user()->family_name}}</span>
                 <span>
-                    <img alt="Profile Picture" src="/img/profiles/l-1.jpg"/>
+                    <img alt="Profile Picture" src="/img/profiles/ShowStdPic.gif"/>
                 </span>
             </button>
             <div class="dropdown-menu dropdown-menu-right mt-3">
@@ -146,13 +146,13 @@
                         <ul class="list-unstyled inner-level-menu">
                             <li>
                                 <a href="/admin/product/list">
-                                    <i class="simple-icon-user-following"></i> <span
+                                    <i class="simple-icon-picture"></i> <span
                                         class="d-inline-block">لیست محصولات</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="/admin/product/create">
-                                    <i class="simple-icon-user-follow"></i> <span
+                                    <i class="simple-icon-check"></i> <span
                                         class="d-inline-block">افزودن محصول</span>
                                 </a>
                             </li>
@@ -182,12 +182,14 @@
             <ul class="list-unstyled" data-link="applications">
                 <li>
                     <a href="/admin/user/list">
-                        <i class="simple-icon-picture"></i> <span class="d-inline-block">لیست کاربران</span>
+                        <i class="simple-icon-user-following"></i>
+                        <span class="d-inline-block">لیست کاربران</span>
                     </a>
                 </li>
                 <li>
                     <a href="/admin/user/create">
-                        <i class="simple-icon-check"></i> <span class="d-inline-block">افزودن کاربر</span>
+                        <i class="simple-icon-user-follow"></i>
+                        <span class="d-inline-block">افزودن کاربر</span>
                     </a>
                 </li>
             </ul>
