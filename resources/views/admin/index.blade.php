@@ -189,7 +189,7 @@
                 <li>
                     <a href="/admin/user/create">
                         <i class="simple-icon-user-follow"></i>
-                        <span class="d-inline-block">افزودن کاربر</span>
+                        <span class="d-inline-block">افزودن ادمین</span>
                     </a>
                 </li>
             </ul>

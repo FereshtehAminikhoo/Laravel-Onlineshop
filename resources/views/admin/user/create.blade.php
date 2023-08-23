@@ -2,7 +2,7 @@
 @section('content')
     <div class="card mb-4">
         <div class="card-body">
-            <h5 class="mb-4">افزودن کاربر</h5>
+            <h5 class="mb-4">افزودن ادمین</h5>
 
             <form method="post" action="/admin/user/save">
                 @csrf
