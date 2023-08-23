@@ -4,13 +4,14 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">کاربران</h5>
-            <table class="table table-hover">
+            <table class="table table-hover table-responsive">
                 <thead>
                 <tr>
                     <th scope="col">ردیف</th>
                     <th scope="col">نام</th>
                     <th scope="col">نام خانوادگی</th>
                     <th scope="col">کدملی</th>
+                    <th scope="col">نوع</th>
                     <th scope="col">شماره تماس</th>
                     <th scope="col">ایمیل</th>
                     <th scope="col">رمزعبور</th>
@@ -24,6 +25,7 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->family_name}}</td>
                         <td>{{$user->national_code}}</td>
+                        <td>{{$user->type}}</td>
                         <td>{{$user->mobile}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->password}}</td>

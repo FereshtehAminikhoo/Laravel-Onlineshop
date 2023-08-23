@@ -11,15 +11,15 @@
                     <span>نام</span>
                 </label>
                 <label class="form-group has-float-label">
-                    <input name="family_name" type="text" class="form-control value="{{old('family_name',$user->family_name)}}" />
+                    <input name="family_name" type="text" class="form-control" value="{{old('family_name',$user->family_name)}}" />
                     <span>نام خانوادگی</span>
                 </label>
                 <label class="form-group has-float-label">
-                    <input name="national_code" type="number" class="form-control value="{{old('national_code',$user->national_code)}}" />
+                    <input name="national_code" type="number" class="form-control" value="{{old('national_code',$user->national_code)}}" />
                     <span>کدملی</span>
                 </label>
                 <label class="form-group has-float-label">
-                    <input name="mobile" type="number" class="form-control value="{{old('mobile',$user->mobile)}}" />
+                    <input name="mobile" type="number" class="form-control" value="{{old('mobile',$user->mobile)}}" />
                     <span>شماره تماس</span>
                 </label>
                 <label class="form-group has-float-label">

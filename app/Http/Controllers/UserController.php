@@ -13,9 +13,9 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|min:3',
             'family_name' => 'required|string|min:4',
-            'national_code' => 'required|numeric|max:10',
-            'mobile' => 'required|numeric|max:11',
-            'email' => 'required|string',
+            'national_code' => 'required|numeric|digits:10',
+            'mobile' => 'required|numeric|digits:11',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|numeric|min:6'
         ]);
         $insert = User::create([
@@ -24,6 +24,7 @@ class UserController extends Controller
             'national_code' =>$request->national_code,
             'mobile'=>$request->mobile,
             'email'=>$request->email,
+            'type'=>'admin',
             'password'=>Hash::make($request->password)
         ]);
         if ($insert){
@@ -49,9 +50,9 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|min:3',
             'family_name' => 'required|string|min:4',
-            'national_code' => 'required|numeric|max:10',
-            'mobile' => 'required|numeric|max:11',
-            'email' => 'required|string',
+            'national_code' => 'required|numeric|digits:10',
+            'mobile' => 'required|numeric|digits:11',
+            'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'required|numeric|min:6'
         ]);
         $user = User::where('id',$id) -> first();

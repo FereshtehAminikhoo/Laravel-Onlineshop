@@ -104,14 +104,15 @@ class ClientController extends Controller
     {
         if (auth()->check()) {
             $user = auth()->user()->name;
+            $userId = auth()->user()->id;
         } else {
             $user = '';
+            $userId = null;
         }
-        $userId = auth()->user()->id;
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
 
         $categories = Category::whereNull('parent_id')->get();
-        $items = Shopping_cart::where('user_id', auth()->user()->id)->get();
+        $items = Shopping_cart::where('user_id', $userId)->get();
         return view('shopping_cart', compact('categories', 'items', 'shoppingCartItems', 'user'));
     }
 
