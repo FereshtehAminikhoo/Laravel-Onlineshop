@@ -1304,13 +1304,6 @@
                     </li>
                 @endforeach
             </ul>
-            <div class="mr-auto">
-                <ul class="navbar-nav special_sale">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-white">فروش ویژه</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
