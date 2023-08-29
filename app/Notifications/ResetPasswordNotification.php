@@ -43,11 +43,7 @@ class ResetPasswordNotification extends Notification
     {
         $code=random_int(100000,999999);
         cache()->set('verify_code_'.$notifiable->id,$code,now()->addHours(6));
-        return (new ResetPasswordMail($notifiable,$code))->to($notifiable->email)->subject('کد تایید تغییر کلمه عبور')
-        //return (new ResetPasswordMail($code))
-                    /*->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!')*/;
+        return (new ResetPasswordMail($notifiable,$code))->to($notifiable->email)->subject('کد تایید تغییر کلمه عبور');
     }
 
     /**

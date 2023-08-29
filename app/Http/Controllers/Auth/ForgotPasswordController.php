@@ -53,11 +53,10 @@ class ForgotPasswordController extends Controller
     public function changePassword(Request $request)
     {
         $user=User::where('id',auth()->user()->id)->first();
-
         $user->update([
             'password'=>Hash::make($request->password)
         ]);
-        session()->flash('notification',['heading'=>'ناموفق','text'=>'عملیات انجام نشد.','icon'=>'error']);
+        session()->flash('notification',['heading'=>'موفقیت آمیز','text'=>'عملیات با موفقیت انجام شد.','icon'=>'success']);
         return redirect(route('client_home'));
     }
 }
