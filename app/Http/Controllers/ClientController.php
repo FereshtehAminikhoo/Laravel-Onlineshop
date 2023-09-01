@@ -45,10 +45,8 @@ class ClientController extends Controller
             $user = '';
         }
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
-
         $categories = Category::whereNull('parent_id')->get();
         $category = Category::where('id', $id)->first();
-
         $childCategory = Category::where('parent_id', $id)->get();
         if (count($childCategory) == 0) {
             $viewProducts = Product::where('category_id', $id)->newest($request->time_sort)->price($request->price_sort)->get();
@@ -110,7 +108,6 @@ class ClientController extends Controller
             return back();
         }
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
-
         $categories = Category::whereNull('parent_id')->get();
         $items = Shopping_cart::where('user_id', $userId)->get();
         return view('shopping_cart', compact('categories', 'items', 'shoppingCartItems', 'user'));
@@ -208,7 +205,6 @@ class ClientController extends Controller
         $userId = auth()->user()->id;
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
         $categories = Category::whereNull('parent_id')->get();
-
         $cartOrderItems = Payment_order::where('user_id', $userId)->get();
         return view('payment_order', compact('cartOrderItems', 'categories', 'shoppingCartItems', 'user'));
     }
@@ -223,7 +219,6 @@ class ClientController extends Controller
         $userId = auth()->user()->id;
         $shoppingCartItems = Shopping_cart::where('user_id', $userId)->get();
         $categories = Category::whereNull('parent_id')->get();
-
         $orderItems = Payment_order_item::where('order_id', $id)->get();
         return view('payment_order_item', compact('orderItems', 'categories', 'shoppingCartItems', 'user'));
     }
@@ -256,8 +251,8 @@ class ClientController extends Controller
     {
         $products=Product::where('title','LIKE','%'.$request->value.'%')->get();
         return response()->json(['products' => $products]);
-
     }
+
     public function invalidate($id)
     {
         $cartItem = Payment_order::where('id',$id)->first();

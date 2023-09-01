@@ -25,6 +25,7 @@ Route::get('/payment_order_item/list/{id}', 'App\Http\Controllers\ClientControll
 Route::get('contact_us', 'App\Http\Controllers\ClientController@contactUs')->name('contact_us');
 Route::get('forget_password', 'App\Http\Controllers\ClientController@forgetPassword')->name('forget_password');
 Route::post('reset_password', 'App\Http\Controllers\ClientController@resetPassword')->name('reset_password');
+Route::get('payment_order/{id}/invalidate', 'App\Http\Controllers\ClientController@invalidate')->name('client_payment_order_invalidate');
 
 //admin routes
 Route::get('/admin',function (){
@@ -59,9 +60,6 @@ Route::get('/admin/product/{id}/edit', 'App\Http\Controllers\ProductController@e
 Route::post('/admin/product/{id}/update', '\App\Http\Controllers\ProductController@update')->name('product_update')->middleware(['auth','is_admin']);;
 Route::get('/admin/product/{id}/delete', 'App\Http\Controllers\ProductController@delete')->name('product_delete')->middleware(['auth','is_admin']);;
 
-Route::get('/admin/login','App\Http\Controllers\AdminAuthController@showLoginForm')->name('admin_login_form');
-Route::post('/admin/login','App\Http\Controllers\AdminAuthController@login')->name('admin_login');
-
 
 Route::get('/admin/brand/create', function (){
     return view('admin.brand.create');
@@ -89,4 +87,3 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/client/login','App\Http\Controllers\ClientController@showLoginForm')->name('client_login');
 Route::get('/client/register', 'App\Http\Controllers\ClientController@showRegisterForm')->name('client_register');
 Route::post('/client/createAccount', 'App\Http\Controllers\ClientController@createAccount')->name('client_createAccount');
-Route::get('payment_order/{id}/invalidate', 'App\Http\Controllers\ClientController@invalidate')->name('client_payment_order_invalidate');

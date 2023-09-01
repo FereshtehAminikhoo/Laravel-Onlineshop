@@ -70,13 +70,13 @@
                         var list = ''
                         items.forEach(item => {
                             list += `<li style="background-color: #faeaea;border-bottom: solid 1px black;list-style: none;padding: 15px;margin: 0;">
-                                                <a href="/product/${item.id}" style="color:#000;">
-                                                    <div style="display: flex;flex-direction: row;justify-content: space-between">
-                                                        <span>${item.title}</span>
-                                                        <img src="/${item.file}" width="45px" />
-                                                    </div>
-                                                </a>
-                                            </li>`
+                                        <a href="/product/${item.id}" style="color:#000;">
+                                            <div style="display: flex;flex-direction: row;justify-content: space-between">
+                                                <span>${item.title}</span>
+                                                <img src="/${item.file}" width="45px" />
+                                            </div>
+                                        </a>
+                                     </li>`
                         })
                         $('#search_result').html(list)
                     } else {
