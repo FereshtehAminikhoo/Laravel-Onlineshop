@@ -169,7 +169,7 @@
                                                     <div class="checkbox p-1">
                                                         <label class="{{--checkbox-container--}}"
                                                                style="line-height: 15px;margin-right: 20px">{{$brand->name}}
-                                                            <input type="checkbox" name="brand[]" value="{{$brand->name}}" @if(in_array($brand->name,$request->brand)) checked @endif
+                                                            <input type="checkbox" name="brand[]" value="{{$brand->name}}" @if(is_array($request->brand) && in_array($brand->name,$request->brand)) checked @endif
                                                                    style="opacity: 1;height: 15px;padding: 15px" onchange="Submit()" form="brand_form">
                                                         </label>
                                                     </div>
