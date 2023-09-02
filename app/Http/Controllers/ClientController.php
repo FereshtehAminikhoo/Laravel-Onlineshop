@@ -49,17 +49,17 @@ class ClientController extends Controller
         $category = Category::where('id', $id)->first();
         $childCategory = Category::where('parent_id', $id)->get();
         if (count($childCategory) == 0) {
-            $viewProducts = Product::where('category_id', $id)->newest($request->time_sort)->price($request->price_sort)->get();
+            $viewProducts = Product::where('category_id', $id)->newest($request->time_sort)->price($request->price_sort)->brand($request->brand)->exist($request->exist)->get();
             $pro_brands = Product::where('category_id', $id)->distinct('brand_id')->pluck('brand_id')->toArray();
             $brands = Brand::whereIn('id', $pro_brands)->get();
         } else {
             $productCategories = Category::where('parent_id', $id)->pluck('id')->toArray();
             $pro_brands = Product::whereIn('category_id', $productCategories)->distinct('brand_id')->pluck('brand_id')->toArray();
-            $viewProducts = Product::whereIn('category_id', $productCategories)->newest($request->time_sort)->price($request->price_sort)->get();
+            $viewProducts = Product::whereIn('category_id', $productCategories)->newest($request->time_sort)->price($request->price_sort)->brand($request->brand)->exist($request->exist)->get();
             $brands = Brand::whereIn('id', $pro_brands)->get();
         }
         $other = Product::orderBy('id', 'desc')->take(20)->get()->random(8);
-        return view('category', compact('category', 'categories', 'viewProducts', 'shoppingCartItems', 'user', 'other', 'brands'));
+        return view('category', compact('category', 'categories', 'viewProducts', 'shoppingCartItems', 'user', 'other', 'brands','request'));
     }
 
     public function showProduct($id)

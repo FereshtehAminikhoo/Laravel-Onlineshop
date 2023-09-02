@@ -47,4 +47,19 @@ class Product extends Model
         }
 
     }
+    public function scopeBrand($query,$brands)
+    {
+        if ($brands!=null){
+            $brand_ids=Brand::WhereIn('name',$brands)->pluck('id')->toArray();
+            return $query->WhereIn('brand_id',$brand_ids);
+        }
+
+    }
+    public function scopeExist($query,$exist)
+    {
+        if ($exist=='on'){
+            return $query->Where('stock_product','>',0);
+        }
+
+    }
 }

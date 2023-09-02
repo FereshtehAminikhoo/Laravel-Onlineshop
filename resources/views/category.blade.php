@@ -153,18 +153,6 @@
                     </div>
                 </div>
                 <div class="bg-white sidebar mt-2">
-                    <div class="sidebar_header">جستجو در نتایج :</div>
-                    <div class="sidebar_catalog mt-2 mb-2">
-                        <form>
-                            <div class="input-group col">
-                                <span class="material-icons ic-form-control-search">search</span>
-                                <input type="text" class="form-control rounded-right bg-white input_search1"
-                                       placeholder="نام محصول یا برند مورد نظر را بنویسید">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="bg-white sidebar mt-2">
                     <div id="accordion" class="brand">
                         <div class="card">
                             <a href="#collapseOne" class="card-link" data-toggle="collapse">
@@ -174,26 +162,16 @@
                             </a>
                             <div id="collapseOne" class="collapse show" data-parent="#accordion">
                                 <div class="card-body p-0">
-                                    <form>
-                                        <div class="input-group pt-2">
-                                            <span class="material-icons ic-form-control-search">search</span>
-                                            <input type="text" class="form-control rounded-right bg-white input_search2"
-                                                   placeholder="جستجوی نام برند ..">
-                                        </div>
-                                        <hr>
+                                    <form name="brand_form" id="brand_form">
                                         <div class="form-group input-container">
                                             <div class="col p-0 m-0">
                                                 @foreach($brands as $brand)
                                                     <div class="checkbox p-1">
                                                         <label class="{{--checkbox-container--}}"
                                                                style="line-height: 15px;margin-right: 20px">{{$brand->name}}
-                                                            <input type="checkbox" name="brand[]"
-                                                                   style="opacity: 1;height: 15px;padding: 15px">
-                                                            {{--<span class="checkmark-login1"></span>--}}
+                                                            <input type="checkbox" name="brand[]" value="{{$brand->name}}" @if(in_array($brand->name,$request->brand)) checked @endif
+                                                                   style="opacity: 1;height: 15px;padding: 15px" onchange="Submit()" form="brand_form">
                                                         </label>
-                                                        {{--
-                                                                                                            <span class="pull-left pt-1 brand_eng">Philips</span>
-                                                        --}}
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -207,12 +185,9 @@
                 <div class="bg-white siderbar mt-2">
                     <div class="sidebar_catalog">
                         <div>
-                            <label class="position-relative">
-                                <input type="checkbox" class="ios-switch">
-                                <div>
-                                    <div></div>
-                                </div>
-                                <div class="text-switch"><span>فقط کالاهای موجود</span></div>
+                            <label class="position-relative" style="line-height: 15px;margin-right: 20px">
+                                فقط کالاهای موجود
+                                <input type="checkbox" name="exist" form="brand_form" value="on" class="ios-switch" onchange="Submit()"  style="opacity: 1" @if($request->exist=='on') checked @endif>
                             </label>
                         </div>
                     </div>
@@ -391,8 +366,10 @@
                 return false;
             });
         })
-    </script>
-    <script>
+
+        function Submit(){
+            document.getElementById('brand_form').submit()
+        }
         $(document).ready()
         {
             var owl = $('.owl-carousel');
